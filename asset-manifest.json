@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/music-demo/static/css/main.47526388.css",
-    "main.js": "/music-demo/static/js/main.5b885a0d.js",
+    "main.css": "/music-demo/static/css/main.ceeffade.css",
+    "main.js": "/music-demo/static/js/main.b5223909.js",
     "static/js/38.5f191ce3.chunk.js": "/music-demo/static/js/38.5f191ce3.chunk.js",
-    "static/js/716.4b7866d5.chunk.js": "/music-demo/static/js/716.4b7866d5.chunk.js",
+    "static/js/716.128772e0.chunk.js": "/music-demo/static/js/716.128772e0.chunk.js",
     "static/js/787.3b4c159c.chunk.js": "/music-demo/static/js/787.3b4c159c.chunk.js",
     "static/media/background2.gif": "/music-demo/static/media/background2.313e58ebce71efe82805.gif",
     "static/media/background.gif": "/music-demo/static/media/background.322c89df8d13e7de4b5f.gif",
@@ -12,14 +12,14 @@
     "static/media/merch2.png": "/music-demo/static/media/merch2.e61442a87d4a044d7e5b.png",
     "static/media/logo2.png": "/music-demo/static/media/logo2.47adaeefaaf624920877.png",
     "index.html": "/music-demo/index.html",
-    "main.47526388.css.map": "/music-demo/static/css/main.47526388.css.map",
-    "main.5b885a0d.js.map": "/music-demo/static/js/main.5b885a0d.js.map",
+    "main.ceeffade.css.map": "/music-demo/static/css/main.ceeffade.css.map",
+    "main.b5223909.js.map": "/music-demo/static/js/main.b5223909.js.map",
     "38.5f191ce3.chunk.js.map": "/music-demo/static/js/38.5f191ce3.chunk.js.map",
-    "716.4b7866d5.chunk.js.map": "/music-demo/static/js/716.4b7866d5.chunk.js.map",
+    "716.128772e0.chunk.js.map": "/music-demo/static/js/716.128772e0.chunk.js.map",
     "787.3b4c159c.chunk.js.map": "/music-demo/static/js/787.3b4c159c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.47526388.css",
-    "static/js/main.5b885a0d.js"
+    "static/css/main.ceeffade.css",
+    "static/js/main.b5223909.js"
   ]
 }
