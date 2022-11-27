@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import songs from './songs'
 import Featured from './components/Featured';
 import { useEffect, useState } from 'react';
@@ -19,17 +19,6 @@ function App() {
   const [playing, setPlaying] = useState(false)
   const [song, setSong] = useState(0)
   const [vocalVolume, setVocalVolume] = useState(1.0)
-//   let sound = new Howl({
-// 	  src: audio,
-// 	  autoplay: true
-// 	})
-// 	console.log(sound)
-	
-// 	const playSound = function() {
-// 	  console.log('soundplay')
-// 	  console.log(sound)``
-// 	  sound.play()
-// 	}
 	
 	let activeClassName = "nav-active"
   useEffect(() => {}, [])

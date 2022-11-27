@@ -1,7 +1,7 @@
 import React from "react";
 import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs'
 
-import './Fader.css'
+import './Fader.scss'
 
 const Fader = ({songVolume, visibility, setVocalVolume}) => {
 	return (

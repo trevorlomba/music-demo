@@ -28,7 +28,7 @@ const songs = [
 			background: backgroundImage,
 			logo: logoImage,
 			logo2: logoImage,
-			songLink: 'https://sndup.net/gq89/d',
+			songLink: 'https://sndup.net/r5wc/d',
 			vocalLink: '',
 			featuredLinks: [
 				{

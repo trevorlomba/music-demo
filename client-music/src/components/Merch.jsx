@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import './Fader.css'
+import './Fader.scss'
 import { Link } from "react-router-dom";
 import ContainedButtons from "./ContainedButtons";
 
@@ -12,8 +12,8 @@ import merch2 from '../assets/merch2.png'
 const Fader = ({visibility, song}) => {
 	const [active, setActive] = useState(0)
 	const merch = [
-		{'img': merch1, 'address': 'https://www.internet.com/'} ,
-		{'img': merch2, 'address': 'https://www.internet.com/'} 
+		{ img: merch1, link: 'http://www.google.com/' },
+		{ img: merch2, link: 'http://www.google.com/' },
 	]
 	let activeMerch = merch[active]
 	let image = activeMerch.img

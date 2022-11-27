@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Featured.css'
+import './Featured.scss'
 import { Routes, Route } from 'react-router-dom'
 import { BrowserRouter, NavLink } from 'react-router-dom'
 
