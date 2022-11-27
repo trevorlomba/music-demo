@@ -65,7 +65,7 @@ $merch: #a6a9af;
     /* left: 2vw; */
     /* top: 2vw; */
     /* min-width: 10vw; */
-    max-width: 15vw;
+    max-width: 10vw;
     margin-top: 10vh;
 
     /* margin-left: 10vw; */
@@ -553,7 +553,7 @@ flex-item-5 {
 
     overflow: auto;
     max-height: 70vh;
-    min-width: 33vw;
+    min-width: 50vw;
     padding: 1rem;
     overflow-x: hidden;
 }
@@ -566,7 +566,7 @@ flex-item-5 {
 /* Inline #3 | http://localhost:3000/music-demo/ */
 .featured-links>*>*>* {
     /* font-size: 3vw; */
-    font-size: 3vw;
+    font-size: 1.5vw;
 }
 
 /* Inline #3 | http://localhost:3000/music-demo/ */
@@ -581,4 +581,5 @@ flex-item-5 {
 .featured-links>* {
     /* border-radius: 20px; */
     border-radius: 2vw;
+    max-width: 25vw;
 }
