@@ -2,8 +2,8 @@
 .flex-container {
     display: flex;
     flex-direction:row;
-    /* align-items: flex-start; */
-    justify-content: space-around;
+    /* align-items: flex-start;*/
+    justify-content: space-between;
     /* background-color: #282c34; */
     background-size: cover;
     background-repeat: no-repeat;
@@ -50,14 +50,15 @@
         /* max-width: 12vw; */
         /* display: absolute; */
         /* display: flex; */
-        /* left: 2vw; */
+        /* left: 20vw; */
         /* top: 2vw; */
         /* min-width: 10vw; */
-        max-width: 15vw;
-        margin-top: 10vw;
+        max-width: 10vw;
+        margin-top: 6vh;
+        margin-left: 10vw;
         /* margin-left: 10vw; */
         cursor: pointer;
-        opacity: 95%;
+        /* opacity: 95%; */
         /* padding: 12em; */
     /* height: auto; */
     /* font-size: calc(10px + 2vmin); */
@@ -66,7 +67,7 @@
     transition: 200ms;
     /* position: fixed; */
     cursor: pointer;
-    opacity: 95%;
+    /* opacity: 95%; */
     /* width: 100%; */
     pointer-events: all;
 }
@@ -160,7 +161,9 @@
 }
 
 .featured-links > * > * > * {
-    padding: 1rem 1rem;
+    padding: 1vh 5vw;
+        width: 100vw;
+        min-width: 4rem;
     margin: 1.5rem;
     /* width: 100vw; */
     transform:scaleX(105%);
@@ -183,16 +186,16 @@
 }
 
 .scroll-prompt {
-    font-size: 5vw;
+    font-size: calc(5vw);
     position: absolute;
     display: block;
-    color: rgba(255, 255, 255, 0.073);
+    color: rgb(255, 255, 255);
     text-align: center;
     /* left: calc(50vw); */
     /* margin: auto; */
     opacity: 20%;
     /* transform: translate(-2vw); */
-    transition: 500ms;
+    transition: 50ms;
     /* display: none; */
     cursor: pointer;
     /* display: flex;c */
@@ -200,24 +203,26 @@
 
 }
 .scroll-prompt-top {
-    top: 5%;
-    left: calc(50vw);
+    left: 5vw;
+    top: calc(47.5vh);
+    opacity: 20%;
 }
 
 .scroll-prompt-bottom {
-    bottom: 5%;
-    left: calc(50vw);
+    right: 5vw;
+    top: calc(47.5vh);
+    opacity: 20%;
 }
 
 .scroll-prompt-right {
     /* right: 5%; */
     /* left: 95vw; */
     /* opacity: 100%; */
-    font-size: 7vw;
-    max-width: 100px;
-    position: absolute;
-    right: 15vw;
-    bottom: 10vw;
+    font-size: 10vw;
+    max-width: 10vh;
+    /* position: absolute; */
+    right: 10vw;
+    bottom: calc(5vh);
 }
 
 flex-item-4 {
@@ -245,7 +250,7 @@ flex-item-5 {
 }
 
 .link-title {
-    font-size: 95%;
+    font-size: 2vw;
     /* font-weight: 110%; */
 }
 
@@ -295,19 +300,24 @@ flex-item-5 {
 }
 
 .merch-button {
-    margin-top: 1rem;
-    max-width: 25vw;
+    margin-top: 1vh;
     background-color: #ffffffc8;
     /* border-color: #282c34; */
     font-weight: bold;
-    padding: 1rem 3rem;
-    border-radius: 24px;
+    padding: 1vh 5vw;
+    border-radius: 1vw;
+    /* min-width: 9rem; */
         background-color: #0000002b;
             border: solid rgba(0, 0, 0, 0.106) .5px;
     pointer-events: all;
     cursor:pointer;
-    color: white
+    color: white;
     /* display:none; */
+    display: inline-flex;
+        justify-content: center;
+        width: 25vw;
+        justify-content: center;
+        align-items: center;
 }
 
 .merch-button span {
@@ -315,32 +325,34 @@ flex-item-5 {
     display: inline-block;
     position: relative;
     transition: 500ms;
+    font-size: 2vw;
 }
 
-.merch-button span:after {
+/* .merch-button span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
     top: 0;
     right: -15px;
     transition: 500ms;
-}
+} */
 
 .merch-button:hover {
-    background-color: #0000007a;
-    transition: 200ms
+    background-color: #ffffff7a;
+    transition: 500ms;
+    color: #000000de;
 }
 .merch-button:active {
     color: #aa0a0ade;
     transition: 1ms;
 }
 
-.merch-button:hover span {
+/* .merch-button:hover span {
     padding-right: 15px;
     font-weight: bolder;
     /* transition: 100ms; */
-    /* transition-property: font-weight; */
-}
+    /* transition-property: font-weight; 
+} */
 
 .merch-button:hover span:after {
     opacity: 1;
@@ -356,8 +368,8 @@ flex-item-5 {
         /* display: flex; */
         /* left: 2vw; */
         /* top: 2vw; */
-        max-width: 100px;
-        margin-top: 10vw;
+        max-width: 10vh;
+        margin-top: 5vh;
         margin-right: 10vw;
         cursor: pointer;
         opacity: 95%;
@@ -370,7 +382,8 @@ flex-item-5 {
         /* position: fixed; */
         cursor: pointer;
         opacity: 95%;
-        width: 100%;
+        /* width: 80vw; */
+        font-size: 10vw;
 }
 
 .playButton>* {
@@ -496,6 +509,7 @@ flex-item-5 {
 
 .scroll-container>*>*>* {
     overflow: auto;
+    min-width: 50rem;
 }
 .scroll-container {
     overflow: auto;
@@ -510,5 +524,4 @@ flex-item-5 {
     color: grey;
 
     font-weight: bold;
-
 }

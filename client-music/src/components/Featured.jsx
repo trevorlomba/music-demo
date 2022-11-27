@@ -14,6 +14,15 @@ import FeaturedLinks from './FeaturedLinks'
 import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai'
 import songs from '../songs'
 
+import {
+	BsChevronDoubleDown,
+	BsChevronDoubleUp,
+	BsArrowLeftRight,
+	BsInputCursor,
+} from 'react-icons/bs'
+import { RiLinksFill } from 'react-icons/ri'
+import { IoShirtOutline } from 'react-icons/io5'
+
 const FeaturedImage = React.lazy(() => import('./FeaturedImage'))
 const Logo = React.lazy(() => import('./Logo'))
 
@@ -73,6 +82,7 @@ const Featured = ({
 	}
 
 	return (
+		<div>
 		<div
 			className='flex-container'
 			style={{
@@ -116,7 +126,7 @@ const Featured = ({
 							/>
 						}
 					/>
-					<Route path='/merch' element={<Merch visibility={visibility}/>} />
+					<Route path='/merch' element={<Merch visibility={visibility} />} />
 				</Routes>
 
 				{/* {song.data.element[feature]} */}
@@ -128,7 +138,27 @@ const Featured = ({
 						{!playing ? <AiFillPlayCircle /> : <AiFillPauseCircle />}
 					</div>
 				</div>
-			</div>
+			</div></div>
+			<NavLink
+				to={next}
+				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
+				{next === 'merch' ? (
+					<IoShirtOutline
+						onClick={updateFeature}
+						className={`scroll-prompt scroll-prompt-right ${visibility}`}
+					/>
+				) : next === 'mix' ? (
+					<BsInputCursor
+						onClick={updateFeature}
+						className={`scroll-prompt scroll-prompt-right ${visibility}`}
+					/>
+				) : (
+					<RiLinksFill
+						onClick={updateFeature}
+						className={`scroll-prompt scroll-prompt-right ${visibility}`}
+					/>
+				)}
+			</NavLink>
 		</div>
 	)
 }

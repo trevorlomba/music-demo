@@ -3,7 +3,13 @@ import {
 	BsChevronDoubleDown,
 	BsChevronDoubleUp,
 	BsArrowLeftRight,
+	BsInputCursor
 } from 'react-icons/bs'
+import {
+	RiLinksFill
+} from 'react-icons/ri'
+import { TbPlayerTrackNext, TbPlayerTrackPrev } from 'react-icons/tb'
+import { IoShirtOutline } from 'react-icons/io5'
 import { RiOrderPlayFill } from "react-icons/ri";
 import { NavLink } from 'react-router-dom'
 
@@ -20,22 +26,14 @@ const ScrollPrompts = ({
 }) => {
 	return (
 		<>
-			<BsChevronDoubleUp
+			<TbPlayerTrackPrev
 				onClick={prevSong}
 				className={`scroll-prompt scroll-prompt-top ${visibility}`}
 			/>
-			<BsChevronDoubleDown
+			<TbPlayerTrackNext
 				onClick={nextSong}
 				className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
 			/>
-			<NavLink
-				to={next}
-				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
-				<BsArrowLeftRight
-					onClick={updateFeature}
-					className={`scroll-prompt scroll-prompt-right ${visibility}`}
-				/>
-			</NavLink>
 		</>
 	)
 }
