@@ -36,9 +36,9 @@ const Fader = ({visibility, song}) => {
 			<div>
 				<button
 					className='merch-button'
-					onClick={() => {
-						window.open(`${activeMerch.link}`, '_blank')
-					}}>
+					onClick={() =>
+						window.open('https://trevorlomba.github.io/portfolio/', '_blank')
+					}>
 					<span>Buy Now</span>
 				</button>
 			</div>

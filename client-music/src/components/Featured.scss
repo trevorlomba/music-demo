@@ -135,6 +135,7 @@ $merch: #a6a9af;
 /* position: absolute; */
 /* } */
 
+
 .featured-links {
     display: flex;
 
@@ -150,7 +151,7 @@ $merch: #a6a9af;
     >* {
         /* font-size: large; */
         /* height: 3em; */
-        min-width: 30vw;
+        min-width: 40vw;
         margin: auto;
         border-spacing: 2vh;
         border-radius: 20px;
@@ -183,8 +184,8 @@ $merch: #a6a9af;
             color: white;
             
             >* {
-                padding:  2vh 5vw;
-                margin: 1.5rem;
+                // padding:  2vh 5vw;
+                // margin: 1.5rem;
 
                 /* width: 100vw; */
                 // transform: scaleX(105%);
@@ -193,7 +194,7 @@ $merch: #a6a9af;
                 background-color: #0000002b;
                 border: solid rgba(0, 0, 0, 0.106) 0.5px;
                 border-radius: .7rem;
-                font-size: calc(2*(.8vw + .2vh));
+                font-size: 2vw;
             }
 
             &:hover {
@@ -213,12 +214,12 @@ $merch: #a6a9af;
     font-size: 5vw;
     position: absolute;
     display: block;
-    color: rgba(255, 255, 255, 0.073);
+    color: rgb(255, 255, 255);
     text-align: center;
 
     /* left: calc(50vw); */
     /* margin: auto; */
-    opacity: 20%;
+    opacity: 40%;
 
     /* transform: translate(-2vw); */
     transition: 500ms;
@@ -231,13 +232,13 @@ $merch: #a6a9af;
 }
 
 .scroll-prompt-top {
-    top: 5%;
-    left: calc(50vw);
+    top: 50vh;
+    left: 5vw;
 }
 
 .scroll-prompt-bottom {
-    bottom: 5%;
-    left: calc(50vw);
+    bottom: 50vh;
+    right: 5vw;
 }
 
 .scroll-prompt-right {
@@ -346,24 +347,20 @@ flex-item-5 {
     pointer-events: all;
     cursor: pointer;
     color: white;
-    font-size: calc(.5rem + 1vw);
     padding: 2vh 5vw;
     font-family:'Calibri', sans-serif;
+    display: inline-flex;
+        justify-content: center;
+        /* center the content horizontally */
+        align-items: center;
+        /* center the content vertically */
 
     span {
         cursor: pointer;
         display: inline-block;
         position: relative;
         transition: 500ms;
-
-        &:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -15px;
-            transition: 500ms;
-        }
+            font-size: calc(1vh + 1vw);
     }
 
     &:hover {
@@ -401,7 +398,7 @@ flex-item-5 {
     /* top: 2vw; */
     max-width: 100px;
     margin-top: 10vh;
-    margin-right: 10vw;
+    // margin-right: 10vw;
     cursor: pointer;
     opacity: 95%;
 
@@ -564,4 +561,24 @@ flex-item-5 {
 .nav-active {
     color: grey;
     font-weight: bold;
+}
+
+/* Inline #3 | http://localhost:3000/music-demo/ */
+.featured-links>*>*>* {
+    /* font-size: 3vw; */
+    font-size: 3vw;
+}
+
+/* Inline #3 | http://localhost:3000/music-demo/ */
+
+.featured-links>*>*>* {
+    /* padding: 2vh 5vw; */
+    /* border-radius: 0.7rem; */
+    padding: 2vh 3vw;
+    border-radius: 3vw;
+}
+
+.featured-links>* {
+    /* border-radius: 20px; */
+    border-radius: 2vw;
 }
