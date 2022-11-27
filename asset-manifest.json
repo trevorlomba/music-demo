@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/music-demo/static/css/main.c2fb110a.css",
+    "main.css": "/music-demo/static/css/main.9df03b5f.css",
     "main.js": "/music-demo/static/js/main.ecde9e22.js",
     "static/js/38.5f191ce3.chunk.js": "/music-demo/static/js/38.5f191ce3.chunk.js",
     "static/js/716.4b7866d5.chunk.js": "/music-demo/static/js/716.4b7866d5.chunk.js",
@@ -12,14 +12,14 @@
     "static/media/merch2.png": "/music-demo/static/media/merch2.e61442a87d4a044d7e5b.png",
     "static/media/logo2.png": "/music-demo/static/media/logo2.47adaeefaaf624920877.png",
     "index.html": "/music-demo/index.html",
-    "main.c2fb110a.css.map": "/music-demo/static/css/main.c2fb110a.css.map",
+    "main.9df03b5f.css.map": "/music-demo/static/css/main.9df03b5f.css.map",
     "main.ecde9e22.js.map": "/music-demo/static/js/main.ecde9e22.js.map",
     "38.5f191ce3.chunk.js.map": "/music-demo/static/js/38.5f191ce3.chunk.js.map",
     "716.4b7866d5.chunk.js.map": "/music-demo/static/js/716.4b7866d5.chunk.js.map",
     "787.3b4c159c.chunk.js.map": "/music-demo/static/js/787.3b4c159c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c2fb110a.css",
+    "static/css/main.9df03b5f.css",
     "static/js/main.ecde9e22.js"
   ]
 }
