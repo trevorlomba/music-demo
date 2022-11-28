@@ -111,11 +111,21 @@ const Featured = ({
 			</div>
 			<div className='flex-item flex-item-2'>
 				<Routes>
-					<Route
-						path='/'
+					<Route path='/'
 						element={<FeaturedLinks song={song} visibility={visibility} />}
 					/>
-
+					<Route
+					path='/*'
+						element={<FeaturedLinks song={song} visibility={visibility} />}
+					/>
+					<Route
+						path='/merch'
+						element={<Merch song={song} visibility={visibility} />}
+					/>
+					<Route
+						path='featured'
+						element={<FeaturedLinks song={song} visibility={visibility} />}
+					/>
 					<Route
 						path='/mix'
 						element={
