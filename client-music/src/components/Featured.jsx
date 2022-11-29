@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './Featured.scss'
 import { Routes, Route } from 'react-router-dom'
 import { BrowserRouter, NavLink } from 'react-router-dom'
+// import { useHistory, useLocation } from 'react-router-dom'
+
 
 
 // import featuredImage from '../assets/background.gif'
@@ -69,7 +71,7 @@ const Featured = ({
 	}
 	const visibility = visible ? 'visible' : 'invisible'
 	let activeClassName = 'nav-active'
-	const order = ['', 'mix', 'merch']
+	const order = ['merch', 'featured']
 	let next = order[feature]
 
 	const updateFeature = () => {
@@ -80,6 +82,13 @@ const Featured = ({
 			setFeature(temp+1)
 		}
 	}
+
+	// const history = useHistory()
+	// const location = useLocation()
+
+	// const reload = () => {
+	// 	history.push(location.pathname)
+	// }
 
 	return (
 		<div>
