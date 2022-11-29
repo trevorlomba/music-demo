@@ -26,14 +26,22 @@ const ScrollPrompts = ({
 }) => {
 	return (
 		<>
-			<TbPlayerTrackPrev
-				onClick={prevSong}
-				className={`scroll-prompt scroll-prompt-top ${visibility}`}
-			/>
-			<TbPlayerTrackNext
-				onClick={nextSong}
-				className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
-			/>
+			{/* <NavLink
+				to={next}
+				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
+				<TbPlayerTrackPrev
+					onClick={prevSong}
+					className={`scroll-prompt scroll-prompt-top ${visibility}`}
+				/>
+			</NavLink>
+			<NavLink
+				to={next}
+				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
+				<TbPlayerTrackNext
+					onClick={nextSong}
+					className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
+				/>
+			</NavLink> */}
 		</>
 	)
 }
