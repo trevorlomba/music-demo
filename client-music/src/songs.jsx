@@ -67,9 +67,104 @@ const songs = [
 			// 	{ name: 'merch2', img: merch2, link: '' },
 			// ],
 		},
-	},
+	}
+	,
 	{
 		id: 1,
+		elements: [<FeaturedLinks />, <Fader />, <Merch />],
+		data: {
+			background: backgroundImage,
+			logo: logoImage,
+			logo2: logoImage,
+			songLink: 'https://sndup.net/r5wc/d',
+			vocalLink: '',
+			featuredLinks: [
+				{
+					name: 'TikTok',
+					tag: 'tiktok',
+					link: 'https://www.tiktok.com/@lxvimusic',
+					img: <IoLogoTiktok />,
+				},
+				{
+					name: 'Instagram',
+					tag: 'instagram',
+					link: 'https://www.instagram.com/lxvimusic',
+					img: <TiSocialInstagram />,
+				},
+				{
+					name: 'Spotify',
+					tag: 'spotify',
+					link: 'https://open.spotify.com/artist/1VvdebwNf9wAPhoti1uQtn?C=',
+					img: <RiSpotifyLine />,
+				},
+				{
+					name: `Apple Music`,
+					tag: 'apple',
+					link: 'https://music.apple.com/us/artist/lxvi/990781367',
+					img: <AiOutlineApple />,
+				},
+				// {
+				// 	name: 'Merch',
+				// 	tag: 'merch',
+				// 	link: 'https://www.instagram.com/',
+				// 	img: <IoShirtOutline />,
+				// },
+			],
+			// merch: [
+			// 	{ name: 'merch1', img: merch1, link: '' },
+			// 	{ name: 'merch2', img: merch2, link: '' },
+			// ],
+		},
+	},
+	{
+		id: 2,
+		elements: [<FeaturedLinks />, <Fader />],
+		data: {
+			background: backgroundImage2,
+			logo: logoImage,
+			logo2: logoImage,
+			songLink: 'https://sndup.net/t984/d',
+			vocalLink: '',
+			featuredLinks: [
+				{
+					name: 'TikTok',
+					tag: 'tiktok',
+					link: 'https://www.tiktok.com/@lxvimusic',
+					img: <IoLogoTiktok />,
+				},
+				{
+					name: 'Instagram',
+					tag: 'instagram',
+					link: 'https://www.instagram.com/lxvimusic',
+					img: <TiSocialInstagram />,
+				},
+				{
+					name: 'Spotify',
+					tag: 'spotify',
+					link: 'https://open.spotify.com/artist/1VvdebwNf9wAPhoti1uQtn?C=',
+					img: <RiSpotifyLine />,
+				},
+				{
+					name: `Apple Music`,
+					tag: 'apple',
+					link: 'https://music.apple.com/us/artist/lxvi/990781367',
+					img: <AiOutlineApple />,
+				},
+				// {
+				// 	name: 'Merch',
+				// 	tag: 'merch',
+				// 	link: 'https://www.instagram.com/',
+				// 	img: <IoShirtOutline />,
+				// },
+			],
+			// merch: [
+			// 	{ name: 'merch1', img: merch1, link: '' },
+			// 	// { name: 'merch2', img: merch2, link: '' },
+			// ],
+		},
+	},
+	{
+		id: 3,
 		elements: [<FeaturedLinks />, <Fader />],
 		data: {
 			background: backgroundImage2,

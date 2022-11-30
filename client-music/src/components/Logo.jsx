@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom"
 
 const Logo = ({visibility, visible, toggleVisible, logoImage, logoImage2, activeClassName}) => {
     return (
-			<NavLink
-				to='merch'
+			<div
+				to=''git
 				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
 				<img
 					className={`title ${visibility}`}
@@ -12,7 +12,7 @@ const Logo = ({visibility, visible, toggleVisible, logoImage, logoImage2, active
 					src={`${visible ? logoImage : logoImage2}`}
 					alt='logo'
 				/>
-			</NavLink>
+			</div>
 		)
 }
 

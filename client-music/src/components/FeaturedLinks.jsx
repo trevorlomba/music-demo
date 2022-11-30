@@ -1,9 +1,13 @@
-import React from "react";
+import { React, useEffect } from "react";
 import {TiSocialInstagram} from 'react-icons/ti'
 import links from './links.jsx'
 
 
-const FeaturedLinks = ({song, visibility}) => {
+const FeaturedLinks = ({song, visibility, setSearchParams}) => {
+	// useEffect(()=> {
+	// 	setSearchParams(song.id)
+	// }, [setSearchParams, song.id])
+
 	 const mappedLinks = song.data.featuredLinks.map((link) => (
 				<tr
 					onClick={() => {

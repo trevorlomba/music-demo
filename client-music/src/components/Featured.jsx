@@ -46,8 +46,12 @@ const Featured = ({
 	const [visible, setVisible] = useState(true)
 	const [feature, setFeature] = useState(0)
 	// console.log(song)
-
 	let [searchParams, setSearchParams] = useSearchParams()
+
+	useEffect(() => {
+		setSearchParams({song: song.id})
+		console.log(song)
+	}, [song, feature])
 
 	const prevSong = (event) => {
 		event.preventDefault()
@@ -55,29 +59,63 @@ const Featured = ({
 		// console.log(((song.id - 1) % songs.length) - 1)
 		// setSong((song.id - 1) % songs.length-1)
 		if (song.id < 1) {
-			const newSong = songs.length - 1
-			setSong(newSong)
+			console.log(song.id)
+			let temp = songs.length - 1
+			console.log(temp)
+			setSong(temp)
+			setSearchParams({ song: temp })
+
+			// setSong(newSong)
 		} else {
-			setSong((prevState) => prevState - 1)
-			
+			// setSong((prevState) => prevState - 1)
+			let temp = song.id
+			// console.log(temp)
+			setSong(temp - 1)
+			setSearchParams({ song: temp })
+
 		}
-			setSearchParams({song: song.id})
+		// console.log(songs.length)
+		// console.log(song.id)
+		// // console.log(songs.length - song.id)
+		// let temp = song.id-1
+		// console.log(temp)
+		
+		// const newSong = ((song.id--) % songs.length)
+		// console.log((songs[song.id % songs.length].id))
+		// console.log(newSong)
+		// setSong(newSong)
 	}
 	const nextSong = (event) => {
 		event.preventDefault()
-
-	// console.log(songs.length)
-	// console.log((song.id + 1) % songs.length)
-	// setSong((prevState) => (prevState) % songs.length)
-
+		
+		// console.log(songs.length)
+		// console.log((song.id + 1) % songs.length)
+		// setSong((prevState) => (prevState) % songs.length)
+		
+		// if (song.id === songs.length - 1) {
+			// 	const newSong = 0
+			// 	setSong(newSong)
+			// } else {
+				// 	setSong((prevState) => prevState + 1)
+				// }
+				// 	setSearchParams({ song: song.id })
+				
 		if (song.id === songs.length - 1) {
-			const newSong = 0
-			setSong(newSong)
-		} else {
-			setSong((prevState) => prevState + 1)
+					// console.log(song.id)
+					let temp = 0
+					console.log(temp)
+					setSong(temp)
+					setSearchParams({song: temp})
+					// setSong(newSong)
+				} else {
+			// setSong((prevState) => prevState - 1)
+			let temp = song.id + 1
+			// console.log(temp)
+			console.log(temp, song.id, songs.length, song.id === songs.length)
+			setSong(temp)
+			setSearchParams({song: temp})
+			// console.log(song)
 		}
-			setSearchParams({ song: song.id })
-
 	}
 	const toggleVisible = async () => {
 		setVisible((prevState) => !prevState)
@@ -90,7 +128,7 @@ const Featured = ({
 	}
 	const visibility = visible ? 'visible' : 'invisible'
 	let activeClassName = 'nav-active'
-	const order = ['featured', 'merch']
+	const order = ['merch', 'featured']
 	let next = order[feature]
 	let current = order[feature]
 
@@ -151,11 +189,23 @@ const Featured = ({
 						/>
 						<Route
 							path='/merch'
-							element={<Merch song={song} visibility={visibility} />}
+							element={
+								<Merch
+									song={song}
+									visibility={visibility}
+									setSearchParams={setSearchParams}
+								/>
+							}
 						/>
 						<Route
 							path='/featured'
-							element={<FeaturedLinks song={song} visibility={visibility} />}
+							element={
+								<FeaturedLinks
+									song={song}
+									visibility={visibility}
+									setSearchParams={setSearchParams}
+								/>
+							}
 						/>
 						<Route
 							path='/mix'
@@ -227,8 +277,9 @@ const Featured = ({
 						className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
 					/>
 				</NavLink>
-				{feature}
-				{song.id}
+				{'feature'}{feature}
+				{' song'}{song.id}
+				{' songs'}{songs.length}
 			</>
 		</div>
 	)
