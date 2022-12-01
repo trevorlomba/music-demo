@@ -3,9 +3,7 @@ import './Featured.scss'
 import { Routes, Route } from 'react-router-dom'
 import { BrowserRouter, NavLink, Redirect, useSearchParams, useParams } from 'react-router-dom'
 // import { useHistory, useLocation } from 'react-router-dom'
-import { TbPlayerTrackNext, TbPlayerTrackPrev } from 'react-icons/tb'
-
-
+import { TbPlayerSkipBack, TbPlayerSkipForward } from 'react-icons/tb'
 
 
 // import featuredImage from '../assets/background.gif'
@@ -271,7 +269,7 @@ const Featured = ({
 					className={({ isActive }) =>
 						isActive ? activeClassName : undefined
 					}>
-					<TbPlayerTrackPrev
+					<TbPlayerSkipBack
 						onClick={prevSong}
 						className={`scroll-prompt scroll-prompt-top ${visibility}`}
 					/>
@@ -281,7 +279,7 @@ const Featured = ({
 					className={({ isActive }) =>
 						isActive ? activeClassName : undefined
 					}>
-					<TbPlayerTrackNext
+					<TbPlayerSkipForward
 						onClick={nextSong}
 						className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
 					/>
