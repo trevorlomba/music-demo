@@ -27,7 +27,9 @@ const convoLink = 'http://sndup.net/p4by/d'
 const songs = [
 	{
 		id: 0,
-		title: 'hurtYou',
+		title: 'Hurt You',
+		artist: 'LXVI',
+		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />, <Merch />],
 		data: {
 			background: hurtYouImage,
@@ -75,7 +77,9 @@ const songs = [
 	},
 	{
 		id: 1,
-		title: 'saturday',
+		title: 'Saturday',
+		artist: 'LXVI',
+		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />, <Merch />],
 		data: {
 			background: saturdayImage,
@@ -123,7 +127,9 @@ const songs = [
 	},
 	{
 		id: 2,
-		title: 'convo',
+		title: 'Convo',
+		artist: 'LXVI',
+		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />],
 		data: {
 			background: convoImage,

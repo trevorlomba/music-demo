@@ -8,24 +8,29 @@ const FeaturedLinks = ({song, visibility, setSearchParams}) => {
 	// 	setSearchParams(song.id)
 	// }, [setSearchParams, song.id])
 
-	 const mappedLinks = song.data.featuredLinks.map((link) => (
+	 const mappedLinks = song.data.featuredLinks.map((link, i) => (
 				<tr
 					onClick={() => {
 						window.open(`${link.link}`, '_blank')
 					}}>
-					<td className= {link.tag}>
-						<span className="react-icon">{link.img}</span>
-						<span className="link-title">{link.name}</span>
+					<td className={link.tag}>
+						<span className='react-icon'>{link.img}</span>
+						<span className='link-title'>{link.name}</span>
 					</td>
 				</tr>
-			))
+		))
 	return (
 			<div className={`scroll-container ${visibility}`}>
+		<div><div className='song-title'>{song.title + ' - ' + song.artist}</div>
 				<div className='flex-item flex-item-links featured-links'>
-					<table>{mappedLinks}</table>
+					<table className="featured-links-table">
+			<tbody>
+						{mappedLinks}
+						</tbody>
+						</table>
 					{/* {song.data.featuredLinks[0].link} */}
 				</div>
-			</div>
+			</div></div>
 	)
 }
 

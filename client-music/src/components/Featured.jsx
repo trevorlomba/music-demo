@@ -29,6 +29,7 @@ import { IoShirtOutline } from 'react-icons/io5'
 
 const Logo = React.lazy(() => import('./Logo'))
 
+
 const Featured = ({
 	artistName,
 	playing,
@@ -184,6 +185,7 @@ const Featured = ({
 						activeClassName={activeClassName}
 					/>
 				</div>
+				{/* <div className={`song-title ${visibility}`}>{song.title + ' - ' + song.artist}</div> */}
 				<div className='flex-item flex-item-2'>
 					<Routes>
 						<Route
@@ -284,9 +286,12 @@ const Featured = ({
 						className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
 					/>
 				</NavLink>
-				{'feature'}{feature}
-				{' song'}{song.id}
-				{' songs'}{songs.length}
+				{'feature'}
+				{feature}
+				{' song'}
+				{song.id}
+				{' songs'}
+				{songs.length}
 			</>
 		</div>
 	)
