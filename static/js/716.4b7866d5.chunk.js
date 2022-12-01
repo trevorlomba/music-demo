@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmusic_demo=self.webpackChunkmusic_demo||[]).push([[716],{716:function(e,i,c){c.r(i);c(791);var s=c(504),t=c(184);i.default=function(e){var i=e.visibility,c=e.visible,a=e.toggleVisible,l=e.logoImage,o=e.logoImage2,n=e.activeClassName;return(0,t.jsx)(s.OL,{to:"merch",className:function(e){return e.isActive?n:void 0},children:(0,t.jsx)("img",{className:"title ".concat(i),onClick:a,src:"".concat(c?l:o),alt:"logo"})})}}}]);
-//# sourceMappingURL=716.4b7866d5.chunk.js.map

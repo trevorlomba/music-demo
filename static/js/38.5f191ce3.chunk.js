@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmusic_demo=self.webpackChunkmusic_demo||[]).push([[38],{38:function(e,a,u){u.r(a);u(791);var s=u(184);a.default=function(e){var a=e.featuredImage;return(0,s.jsx)("img",{className:"featured",loading:"lazy",src:a,alt:"..."})}}}]);
-//# sourceMappingURL=38.5f191ce3.chunk.js.map

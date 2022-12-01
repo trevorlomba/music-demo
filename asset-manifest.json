@@ -1,25 +1,24 @@
 {
   "files": {
-    "main.css": "/music-demo/static/css/main.9df03b5f.css",
-    "main.js": "/music-demo/static/js/main.a272240b.js",
-    "static/js/38.5f191ce3.chunk.js": "/music-demo/static/js/38.5f191ce3.chunk.js",
-    "static/js/716.4b7866d5.chunk.js": "/music-demo/static/js/716.4b7866d5.chunk.js",
+    "main.css": "/music-demo/static/css/main.0d7f1533.css",
+    "main.js": "/music-demo/static/js/main.e49ae50a.js",
+    "static/js/716.de9967f7.chunk.js": "/music-demo/static/js/716.de9967f7.chunk.js",
     "static/js/787.3b4c159c.chunk.js": "/music-demo/static/js/787.3b4c159c.chunk.js",
     "static/media/background2.gif": "/music-demo/static/media/background2.23c672c62d305a6468a5.gif",
+    "static/media/convo.gif": "/music-demo/static/media/convo.730ccb6e6e16bfe4d22a.gif",
     "static/media/background.gif": "/music-demo/static/media/background.322c89df8d13e7de4b5f.gif",
     "static/media/logo.png": "/music-demo/static/media/logo.d0e4c7063038209006b5.png",
     "static/media/merch.png": "/music-demo/static/media/merch.849eb7f818cd4ece841a.png",
     "static/media/merch2.png": "/music-demo/static/media/merch2.e61442a87d4a044d7e5b.png",
     "static/media/logo2.png": "/music-demo/static/media/logo2.47adaeefaaf624920877.png",
     "index.html": "/music-demo/index.html",
-    "main.9df03b5f.css.map": "/music-demo/static/css/main.9df03b5f.css.map",
-    "main.a272240b.js.map": "/music-demo/static/js/main.a272240b.js.map",
-    "38.5f191ce3.chunk.js.map": "/music-demo/static/js/38.5f191ce3.chunk.js.map",
-    "716.4b7866d5.chunk.js.map": "/music-demo/static/js/716.4b7866d5.chunk.js.map",
+    "main.0d7f1533.css.map": "/music-demo/static/css/main.0d7f1533.css.map",
+    "main.e49ae50a.js.map": "/music-demo/static/js/main.e49ae50a.js.map",
+    "716.de9967f7.chunk.js.map": "/music-demo/static/js/716.de9967f7.chunk.js.map",
     "787.3b4c159c.chunk.js.map": "/music-demo/static/js/787.3b4c159c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9df03b5f.css",
-    "static/js/main.a272240b.js"
+    "static/css/main.0d7f1533.css",
+    "static/js/main.e49ae50a.js"
   ]
 }
