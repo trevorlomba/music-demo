@@ -49,7 +49,14 @@ const Featured = ({
 	let [searchParams, setSearchParams] = useSearchParams()
 
 	useEffect(() => {
+		let songTemp = searchParams.get('song')
+		if (songTemp)
+		setSong(searchParams.get('song'))
+	}, [])
+
+	useEffect(() => {
 		setSearchParams({song: song.id})
+
 		console.log(song)
 	}, [song, feature])
 

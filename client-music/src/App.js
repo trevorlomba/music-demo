@@ -22,7 +22,6 @@ function App() {
 
   let activeClassName = 'nav-active'
 
-
   return (
 		<BrowserRouter basename='/music-demo'>
 			<div className='App'>
