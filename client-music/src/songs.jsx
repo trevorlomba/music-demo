@@ -28,6 +28,7 @@ const songs = [
 	{
 		id: 0,
 		title: 'hurtYou',
+		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />, <Merch />],
 		data: {
 			background: hurtYouImage,
@@ -76,6 +77,7 @@ const songs = [
 	{
 		id: 1,
 		title: 'saturday',
+		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />, <Merch />],
 		data: {
 			background: saturdayImage,
@@ -124,6 +126,7 @@ const songs = [
 	{
 		id: 2,
 		title: 'convo',
+		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />],
 		data: {
 			background: convoImage,

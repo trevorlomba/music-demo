@@ -29,6 +29,7 @@ import { IoShirtOutline } from 'react-icons/io5'
 
 const Logo = React.lazy(() => import('./Logo'))
 
+
 const Featured = ({
 	artistName,
 	playing,
