@@ -11,17 +11,18 @@ import { IoShirtOutline, IoLogoTiktok } from 'react-icons/io5'
 import { ImSpotify } from 'react-icons/im'
 import { RiSpotifyLine } from 'react-icons/ri'
 
-import hurtYouImage from './assets/background.gif'
+import hurtYouImage from './assets/background9.gif'
 import logoImage from './assets/logo.png'
 import logoImage2 from './assets/logo2.png'
 import saturdayImage from './assets/background2.gif'
-import convoImage from './assets/convo.gif'
+import convoImage from './assets/background3.gif'
 
 import merch1 from './assets/merch.png'
 import merch2 from './assets/merch2.png'
 
-const hurtYouLink = 'http://sndup.net/rs9z/d'
-const saturdayLink = 'http://sndup.net/n8qt/d'
+const hurtYouLink = 'http://sndup.net/zvg8/d'
+// const hurtYouLink = 'http://sndup.net/smy7/d'
+const saturdayLink = 'http://sndup.net/p6fc/d'
 const convoLink = 'http://sndup.net/p4by/d'
 
 const songs = [
