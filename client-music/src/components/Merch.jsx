@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './Fader.scss'
 import { Link } from "react-router-dom";
 import ContainedButtons from "./ContainedButtons";
@@ -9,7 +9,11 @@ import merch2 from '../assets/merch2.png'
 
 
 
-const Fader = ({visibility, song}) => {
+const Fader = ({visibility, song, setSearchParams}) => {
+	// useEffect(() => {
+	// 	setSearchParams(song.id)
+	// }, [])
+
 	const [active, setActive] = useState(0)
 	const merch = [
 		{ img: merch1, link: 'http://www.google.com/' },
@@ -17,6 +21,7 @@ const Fader = ({visibility, song}) => {
 	]
 	let activeMerch = merch[active]
 	let image = activeMerch.img
+	
 	
 	const updateFeature = () => {
 		if (active >= merch.length - 1) {

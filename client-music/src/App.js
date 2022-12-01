@@ -3,7 +3,7 @@ import './App.scss';
 import songs from './songs'
 import Featured from './components/Featured';
 import { useEffect, useState } from 'react';
-import { BrowserRouter, NavLink } from 'react-router-dom'
+import { BrowserRouter, NavLink, useSearchParams } from 'react-router-dom'
 
 // import { Howl, Howler } from 'howler'
 import ReactHowler from 'react-howler'
@@ -19,10 +19,8 @@ function App() {
   const [playing, setPlaying] = useState(false)
   const [song, setSong] = useState(0)
   const [vocalVolume, setVocalVolume] = useState(1.0)
-	
-	let activeClassName = "nav-active"
-  useEffect(() => {}, [])
-  
+
+  let activeClassName = 'nav-active'
 
   return (
 		<BrowserRouter basename='/music-demo'>
