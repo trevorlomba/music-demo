@@ -21,15 +21,16 @@ const FeaturedLinks = ({song, visibility, setSearchParams}) => {
 		))
 	return (
 			<div className={`scroll-container ${visibility}`}>
+		<div><div className='song-title'>{song.title + ' - ' + song.artist}</div>
 				<div className='flex-item flex-item-links featured-links'>
-					<table>
+					<table className="featured-links-table">
 			<tbody>
 						{mappedLinks}
 						</tbody>
 						</table>
 					{/* {song.data.featuredLinks[0].link} */}
 				</div>
-			</div>
+			</div></div>
 	)
 }
 
