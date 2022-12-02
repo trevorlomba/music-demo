@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, lazy } from 'react'
 import './Featured.scss'
 import { Routes, Route } from 'react-router-dom'
 import { BrowserRouter, NavLink, Redirect, useSearchParams, useParams, useLocation } from 'react-router-dom'
@@ -15,6 +15,7 @@ import ScrollPrompts from './ScrollPrompts'
 import FeaturedLinks from './FeaturedLinks'
 import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai'
 import songs from '../songs'
+import axios from 'axios'
 
 import {
 	BsChevronDoubleDown,
@@ -36,7 +37,7 @@ const Featured = ({
 	vocalVolume,
 	setVocalVolume,
 }) => {
-	let featuredImage =song.data.background
+	let featuredImage = song.data.background
 	// let FeaturedImage = React.lazy(() => import('./FeaturedImage'))
 
 	let logoImage = song.data.logo
@@ -137,6 +138,10 @@ const Featured = ({
 	let next = order[feature]
 	// let current = order[feature]
 
+	async function fetchVideo() {
+		const video = await axios.get(song.video)
+		return video
+	}
 
 	const updateFeature = () => {
 		if (feature >= order.length-1) {
@@ -149,6 +154,12 @@ const Featured = ({
 
 	let current = useLocation()
 
+	const [isVideoLoaded, setIsVideoLoaded] = React.useState(false)
+	// const src = getVideoSrc(window.innerWidth)
+	const onLoadedData = () => {
+		console.log('data loaded')
+		setIsVideoLoaded(true)
+	}
 
 	// const history = useHistory()
 	// const location = useLocation()
@@ -242,7 +253,18 @@ const Featured = ({
 					</div>
 				</div>
 			</div>
-			<video key={song.video} autoPlay loop muted id='video'>
+			<video
+				key={song.video}
+				style={
+					{
+						backgroundImage: `url(${featuredImage}`,
+					}
+				}
+				autoPlay
+				loop
+				muted
+				id='video'
+				onLoadedData={onLoadedData}>
 				<source src={song.video} type='video/mp4' />
 			</video>
 			<NavLink
@@ -291,7 +313,7 @@ const Featured = ({
 						className={`scroll-prompt scroll-prompt-bottom ${visibility}`}
 					/>
 				</NavLink>
-				{'feature'}
+				{/* {'feature'}
 				{feature}
 				{' song'}
 				{song.id}
@@ -300,7 +322,7 @@ const Featured = ({
 				{songs.map((song) => {
 					return song.title + ', '
 				})}
-				{current.pathname}
+				{current.pathname} */}
 			</>
 		</div>
 	)

@@ -13,13 +13,22 @@ $merch: #a6a9af;
     justify-content: space-around;
 
     /* background-color: #282c34; */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // z-index: -2;
     height: 100vh;
 
     /* flex-grow: 1; */
     flex-basis: 0;
+}
+
+.background-image {
+    background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -2;
+        height: 100vh;
 }
 
 .flex-item {
@@ -259,6 +268,7 @@ $merch: #a6a9af;
     position: absolute;
     right: 15vw;
     bottom: 10vh;
+    cursor: alias;
 }
 
 flex-item-4 {
@@ -319,7 +329,7 @@ flex-item-5 {
 
 .merch {
     &:hover>span {
-        transition: 300ms;
+        // transition: 300ms;
         color: $merch;
     }
 
@@ -334,16 +344,18 @@ flex-item-5 {
     transition: 500ms;
     transition-delay: 500ms;
     filter: drop-shadow(0 0.3rem 0.4rem rgba(0, 0, 0, 0.4));
-    cursor: pointer;
+    cursor: grab;
 
     &:hover {
         transform: scale(110%);
         transition: 500ms;
+        cursor: grab;
     }
 
     &:active {
         transform: scale(104%);
         transition: 500ms;
+        cursor: grabbing;
     }
 }
 
@@ -374,6 +386,10 @@ flex-item-5 {
         position: relative;
         transition: 500ms;
             font-size: calc(1vh + 1vw);
+            &:active {
+                transition: 500ms;
+                font-size: 1rem;
+            }
     }
 
     &:hover {
@@ -383,7 +399,7 @@ flex-item-5 {
 
     &:active {
         color: #aa0a0ade;
-        transition: 1ms;
+        transition: 0ms;
     }
 
     &:hover span {
@@ -625,7 +641,7 @@ flex-item-5 {
 
     user-select: none;
      /* Standard syntax */
-    text-shadow: 1px 2px #00000055;
+    text-shadow: -1px .8px #00000030;
 }
 
 #video {
@@ -637,4 +653,7 @@ flex-item-5 {
     left: 0;    
     z-index: -10;
     background-color: #111724;
+    background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
 }

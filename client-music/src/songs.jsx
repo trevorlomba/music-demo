@@ -11,11 +11,12 @@ import { IoShirtOutline, IoLogoTiktok } from 'react-icons/io5'
 import { ImSpotify } from 'react-icons/im'
 import { RiSpotifyLine, RiSoundcloudFill } from 'react-icons/ri'
 
-import hurtYouImage from './assets/background9.gif'
+import hurtYouImage from './assets/hurtYouBackground.jpg'
 import logoImage from './assets/logo.png'
 import logoImage2 from './assets/logo2.png'
-import saturdayImage from './assets/background2.gif'
-import convoImage from './assets/background3.gif'
+import saturdayImage from './assets/saturdayBackground.jpg'
+import convoImage from './assets/convoBackground.jpg'
+import alcoholImage from './assets/alcoholBackground.jpg'
 
 import merch1 from './assets/merch.png'
 import merch2 from './assets/merch2.png'
@@ -97,7 +98,7 @@ const songs = [
 		active: 'yes',
 		elements: [<FeaturedLinks />, <Fader />],
 		data: {
-			background: convoImage,
+			background: alcoholImage,
 			logo: logoImage,
 			logo2: logoImage,
 			songLink: alcoholLink,
