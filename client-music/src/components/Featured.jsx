@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Featured.scss'
 import { Routes, Route } from 'react-router-dom'
-import { BrowserRouter, NavLink, Redirect, useSearchParams, useParams } from 'react-router-dom'
+import { BrowserRouter, NavLink, Redirect, useSearchParams, useParams, useLocation } from 'react-router-dom'
 // import { useHistory, useLocation } from 'react-router-dom'
 import { TbPlayerSkipBack, TbPlayerSkipForward } from 'react-icons/tb'
 
@@ -26,7 +26,6 @@ import { RiLinksFill } from 'react-icons/ri'
 import { IoShirtOutline } from 'react-icons/io5'
 
 const Logo = React.lazy(() => import('./Logo'))
-
 
 const Featured = ({
 	artistName,
@@ -136,7 +135,7 @@ const Featured = ({
 	let activeClassName = 'nav-active'
 	const order = ['merch', 'featured']
 	let next = order[feature]
-	let current = order[feature]
+	// let current = order[feature]
 
 
 	const updateFeature = () => {
@@ -147,6 +146,9 @@ const Featured = ({
 			setFeature(temp+1)
 		}
 	}
+
+	let current = useLocation()
+
 
 	// const history = useHistory()
 	// const location = useLocation()
@@ -159,9 +161,11 @@ const Featured = ({
 		<div>
 			<div
 				className='flex-container'
-				style={{
-					backgroundImage: `url(${featuredImage}`,
-				}}>
+				style={
+					{
+						// backgroundImage: `url(${featuredImage}`,
+					}
+				}>
 				<ScrollPrompts
 					visibility={visibility}
 					prevSong={prevSong}
@@ -181,6 +185,7 @@ const Featured = ({
 						logoImage={logoImage}
 						logoImage2={logoImage2}
 						activeClassName={activeClassName}
+						song={song}
 					/>
 				</div>
 				{/* <div className={`song-title ${visibility}`}>{song.title + ' - ' + song.artist}</div> */}
@@ -224,7 +229,6 @@ const Featured = ({
 								/>
 							}
 						/>
-						<Route path='/merch' element={<Merch visibility={visibility} />} />
 					</Routes>
 
 					{/* {song.data.element[feature]} */}
@@ -238,20 +242,23 @@ const Featured = ({
 					</div>
 				</div>
 			</div>
+			<video key={song.video} autoPlay loop muted id='video'>
+				<source src={song.video} type='video/mp4' />
+			</video>
 			<NavLink
 				to={next + '?song=' + song.id}
 				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
-				{next === 'merch' ? (
+				{current.pathname === '/merch' ? (
 					<IoShirtOutline
 						onClick={updateFeature}
 						className={`scroll-prompt scroll-prompt-right ${visibility}`}
 					/>
-				) : next === 'mix' ? (
+				) : next === '/mix' ? (
 					<BsInputCursor
 						onClick={updateFeature}
 						className={`scroll-prompt scroll-prompt-right ${visibility}`}
 					/>
-				) : next === 'featured' ? (
+				) : current === '/featured' ? (
 					<RiLinksFill
 						onClick={updateFeature}
 						className={`scroll-prompt scroll-prompt-right ${visibility}`}
@@ -290,6 +297,10 @@ const Featured = ({
 				{song.id}
 				{' songs'}
 				{songs.length}
+				{songs.map((song) => {
+					return song.title + ', '
+				})}
+				{current.pathname}
 			</>
 		</div>
 	)

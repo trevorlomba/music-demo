@@ -2,6 +2,7 @@ $tiktok: #00f2ea;
 $instagram: #7385e2;
 $spotify: #3bd671;
 $apple: #f6636d;
+$soundcloud: #F26F23;
 $merch: #a6a9af;
 
 .flex-container {
@@ -69,9 +70,11 @@ $merch: #a6a9af;
     /* left: 2vw; */
     /* top: 2vw; */
     /* min-width: 10vw; */
-    width:18vw;
+    width:15vw;
     // min-width: 15vw;
     margin-top: 10vh;
+    margin-left: 5vw;
+    // max-height: 30vh;
 
     /* margin-left: 10vw; */
     cursor: pointer;
@@ -296,23 +299,28 @@ flex-item-5 {
 
 .instagram:hover>span {
     transition: 300ms;
-    color: #7385e2;
+    color: $instagram;
 }
 
 .spotify:hover>span {
     transition: 300ms;
-    color: #3bd671;
+    color: $spotify;
 }
 
 .apple:hover>span {
     transition: 300ms;
-    color: #f6636d;
+    color: $apple;
+}
+
+.soundcloud:hover>span {
+    transition: 300ms;
+    color: $soundcloud;
 }
 
 .merch {
     &:hover>span {
         transition: 300ms;
-        color: #a6a9af;
+        color: $merch;
     }
 
     >* {
@@ -593,7 +601,7 @@ flex-item-5 {
 
 .featured-links-table {
     border-spacing: 2vh;
-    min-width: 100%;
+    min-width: 80%;
     height: 10vh;
 }
 
@@ -617,4 +625,16 @@ flex-item-5 {
 
     user-select: none;
      /* Standard syntax */
+    text-shadow: 1px 2px #00000055;
+}
+
+#video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;    
+    z-index: -10;
+    background-color: #111724;
 }

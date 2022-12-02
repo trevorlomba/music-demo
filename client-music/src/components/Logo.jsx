@@ -1,10 +1,11 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 
-const Logo = ({visibility, visible, toggleVisible, logoImage, logoImage2, activeClassName}) => {
+const Logo = ({visibility, visible, toggleVisible, logoImage, logoImage2, activeClassName, song}) => {
+	const location = useLocation()
     return (
 			<NavLink
-				to=''
+				to={location.pathname + '?song=' + song.id}
 				className={({ isActive }) => (isActive ? activeClassName : undefined)}>
 				<img
 					className={`title ${visibility}`}
