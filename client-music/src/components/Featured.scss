@@ -104,6 +104,8 @@ $merch: #a6a9af;
     /* width: 100%; */
     pointer-events: all;
 
+    filter:drop-shadow(1px 1px)
+
     &:hover {
         transform: scale(0.9);
         transition: 1000ms;
@@ -251,11 +253,13 @@ $merch: #a6a9af;
 .scroll-prompt-top {
     top: 50vh;
     left: 5vw;
+    max-width: 15vh;
 }
 
 .scroll-prompt-bottom {
     top: 50vh;
     right: 5vw;
+    max-width: 15vh;
 }
 
 .scroll-prompt-right {
@@ -532,6 +536,7 @@ flex-item-5 {
 
 .visible {
     transition: 500ms;
+    filter: drop-shadow(1px 1px #00000087);
 }
 
 .title.invisible {

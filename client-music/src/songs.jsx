@@ -27,10 +27,10 @@ const alcoholLink =
 const saturdayLink = 'https://storage.googleapis.com/music-microsite-visuals/saturday%20clip.wav'
 const convoLink = 'https://storage.googleapis.com/music-microsite-visuals/convo%20clip.mov'
 
-const hurtYouVideo = 'https://storage.googleapis.com/music-microsite-visuals/hurtyou.mp4'
-const alcoholVideo = 'https://storage.googleapis.com/music-microsite-visuals/alx.mp4'
-const saturdayVideo = 'https://storage.googleapis.com/music-microsite-visuals/satClip(1).mp4'
-const convoVideo = 'https://storage.googleapis.com/music-microsite-visuals/convoclip.mp4'
+const hurtYouVideo = 'https://storage.googleapis.com/music-microsite-visuals/hurtuMar23(1).mp4'
+const alcoholVideo = 'https://storage.googleapis.com/music-microsite-visuals/secretsMar23(1).mp4'
+const saturdayVideo = 'https://storage.googleapis.com/music-microsite-visuals/satMar23(1).mp4'
+const convoVideo ='https://storage.googleapis.com/music-microsite-visuals/convoMar23(1).mp4'
 
 const songs = [
 	{
