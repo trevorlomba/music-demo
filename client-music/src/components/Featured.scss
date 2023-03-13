@@ -106,7 +106,7 @@ $merch: #a6a9af;
 
     filter:drop-shadow(1px 1px)
 
-    &:hover {
+    &;hover {
         transform: scale(0.9);
         transition: 1000ms;
     }
@@ -407,8 +407,8 @@ flex-item-5 {
     }
 
     &:hover span {
-        padding-right: 15px;
-        padding-left: 15px;
+        // padding-right: 15px;
+        // padding-left: 15px;
         font-weight: bolder;
 
         /* transition: 100ms; */
@@ -661,4 +661,8 @@ flex-item-5 {
     background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+}
+
+.increment_buttons {
+    margin: 2rem;
 }
