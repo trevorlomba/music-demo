@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.scss';
 import songs from './songs'
-import Featured from './components/Featured';
+import {Featured} from './components/Featured';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, NavLink, useSearchParams } from 'react-router-dom'
 import { ShoppingCartProvider } from './context/shoppingCartContext';

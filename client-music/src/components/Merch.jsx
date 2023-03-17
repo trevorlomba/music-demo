@@ -1,37 +1,22 @@
 import React from "react";
-import { useState, useEffec } from "react";
+import { useState, useEffect, useContext } from "react";
 import './Fader.scss'
 import { Link } from "react-router-dom";
 import ContainedButtons from "./ContainedButtons";
-
-import merch1 from '../assets/merch.png'
-import merch2 from '../assets/merch2.png'
-
+import { Featured, CartContext} from "./Featured"
+import commerce from '../lib/commerce'
 
 
-const Fader = ({visibility, song, setSearchParams}) => {
+
+
+const Fader = ({visibility, song, setSearchParams, cartQtyObj, merch, cartSum, active, setActive, setQuantity, size, image, updateSize, activeMerch, incrementQuantity, decrementQuantity}) => {
 	// useEffect(() => {
 	// 	setSearchParams(song.id)
 	// }, [])
+	const [currentMerch, setCurrentMerch] = useState(cartQtyObj[0])
+	const { total, setTotal } = useContext(CartContext)
 
-	const [quantity, setQuantity] = useState(0)
-	const [active, setActive] = useState(0)
-
-	const incrementQuantity = function() {
-		let temp = quantity + 1
-		setQuantity(temp)
-	}
-	const decrementQuantity = function() {
-		let temp = quantity > 0 ? quantity - 1 : 0
-		setQuantity(temp)
-	}
-	const merch = [
-		{ img: merch1, link: 'http://www.google.com/' },
-		{ img: merch2, link: 'http://www.google.com/' },
-	]
-	let activeMerch = merch[active]
-	let image = activeMerch.img
-	
+	useEffect(cartSum)
 	
 	const updateFeature = () => {
 		if (active >= merch.length - 1) {
@@ -39,28 +24,65 @@ const Fader = ({visibility, song, setSearchParams}) => {
 		} else {
 			const temp = active
 			setActive(temp + 1)
+			setQuantity(cartQtyObj[active][size])
 		}
 	}
+
+	const decrQty = () => {
+		decrementQuantity()
+		console.log('decr')
+	}
+	const incrQty = () => {
+		incrementQuantity()
+	}
+
 	return (
 		<div className={`merch ${visibility}`}>
+			
 			<img
 				onClick={updateFeature}
 				className={`merch-image`}
 				src={image}
 				alt='merch'></img>
-			<div>
-				<button onClick={decrementQuantity} className={'increment_buttons'}>
-					-
+			<div className = 'merch-price'>${activeMerch.price}</div>
+			<div><span>{total}</span>
+				<button
+					className={`${
+						size === 'small' ? 'active-size' : 'inactive-size'
+					} size-button`}
+					onClick={() => updateSize('small')}>
+					S
 				</button>
 				<button
-					className='merch-button'
-					onClick={() =>
-						window.open('https://trevorlomba.github.io/portfolio/', '_blank')
-					}>
-					<span>{quantity} in cart</span>
+					className={`${
+						size === 'medium' ? 'active-size' : 'inactive-size'
+					} size-button `}
+					onClick={() => updateSize('medium')}>
+					M
 				</button>
-				<button onClick={incrementQuantity} className={'increment_buttons'}>
-					+
+				<button
+					className={`${
+						size === 'large' ? 'active-size' : 'inactive-size'
+					} size-button `}
+					onClick={() => updateSize('large')}>
+					L
+				</button>
+			</div>
+			<div>
+			</div>
+			<div>
+				<button
+					onClick={decrementQuantity}
+					className={'merch-button increment-button increment-left'}>
+					<span>-</span>
+				</button>
+				<button className='merch-button'>
+					<span>{cartQtyObj[active][size]} in cart</span>
+				</button>
+				<button
+					onClick={incrementQuantity}
+					className={'merch-button increment-button increment-button-right'}>
+					<span>+</span>
 				</button>
 			</div>
 		</div>
