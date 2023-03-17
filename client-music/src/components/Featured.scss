@@ -753,3 +753,18 @@ flex-item-5 {
     font-family: 'Courier New', Courier, monospace;
     font-size: larger;
 }
+
+.cart {
+    position: absolute;
+    background-color: #1c1f27;
+    margin: auto;
+    text-align: center;
+    width: 30vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    right: 0;
+    top: 5vh;
+    bottom: 5vh;
+    overflow: auto;
+    z-index: 10;
+}

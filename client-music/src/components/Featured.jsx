@@ -1,12 +1,18 @@
 import React, { useEffect, useState, lazy, createContext } from 'react'
 import './Featured.scss'
-import { Routes, Route } from 'react-router-dom'
-import { BrowserRouter, NavLink, Redirect, useSearchParams, useParams, useLocation } from 'react-router-dom'
+import { Routes, Route, Switch } from 'react-router-dom'
+import {
+	BrowserRouter,
+	NavLink,
+	Redirect,
+	useSearchParams,
+	useParams,
+	useLocation,
+} from 'react-router-dom'
 // import { useHistory, useLocation } from 'react-router-dom'
 import { TbPlayerSkipBack, TbPlayerSkipForward } from 'react-icons/tb'
-	import merch1 from '../assets/merch.png'
-	import merch2 from '../assets/merch2.png'
-
+import merch1 from '../assets/merch.png'
+import merch2 from '../assets/merch2.png'
 
 // import featuredImage from '../assets/background.gif'
 // import logoImage from '../assets/logo.png'
@@ -25,16 +31,23 @@ import {
 	BsArrowLeftRight,
 	BsInputCursor,
 } from 'react-icons/bs'
-import { RiLinksFill, RiShoppingBag2Fill, RiShoppingBagFill } from 'react-icons/ri'
+import {
+	RiLinksFill,
+	RiShoppingBag2Fill,
+	RiShoppingBagFill,
+} from 'react-icons/ri'
 import { IoShirtOutline } from 'react-icons/io5'
 import ShoppingCart from './ShoppingCart'
 import commerce from '../lib/commerce'
 import ProductsList from './ProductsList.jsx'
+import CartNav from './CartNav'
+import Checkout from './Checkout'
+import Confirmation from './Confirmation'
+import Cart from './Cart'
 
 const Logo = React.lazy(() => import('./Logo'))
 
 export const CartContext = createContext()
-
 
 export const Featured = ({
 	artistName,
@@ -142,9 +155,9 @@ export const Featured = ({
 	}
 	const visibility = visible ? 'visible' : 'invisible'
 	let activeClassName = 'nav-active'
-	const order = ['merch', 'featured']
-	let next = order[feature]
-	// let current = order[feature]
+	const featureOrder = ['merch', 'featured']
+	let next = featureOrder[feature]
+	// let current = featureOrder[feature]
 
 	async function fetchVideo() {
 		const video = await axios.get(song.video)
@@ -152,7 +165,7 @@ export const Featured = ({
 	}
 
 	const updateFeature = () => {
-		if (feature >= order.length - 1) {
+		if (feature >= featureOrder.length - 1) {
 			setFeature(0)
 		} else {
 			const temp = feature
@@ -241,8 +254,6 @@ export const Featured = ({
 
 	const [total, setTotal] = useState(0)
 
-	const [products, setProducts] = useState([])
-
 	/**
 	 * Fetch products data from Chec and stores in the products data object.
 	 * https://commercejs.com/docs/sdk/products
@@ -280,9 +291,140 @@ export const Featured = ({
 			})
 	}
 
+	/**
+	 * Adds a product to the current cart in session
+	 * https://commercejs.com/docs/sdk/cart/#add-to-cart
+	 *
+	 * @param {string} productId The ID of the product being added
+	 * @param {number} quantity The quantity of the product being added
+	 */
+	const handleAddToCart = (productId, quantity) => {
+		commerce.cart
+			.add(productId, quantity)
+			.then((item) => {
+				setCart(item.cart)
+			})
+			.catch((error) => {
+				console.error('There was an error adding the item to the cart', error)
+			})
+	}
+
+	/**
+	 * Updates line_items in cart
+	 * https://commercejs.com/docs/sdk/cart/#update-cart
+	 *
+	 * @param {string} lineItemId ID of the cart line item being updated
+	 * @param {number} newQuantity New line item quantity to update
+	 */
+	const handleUpdateCartQty = (lineItemId, quantity) => {
+		commerce.cart
+			.update(lineItemId, { quantity })
+			.then((resp) => {
+				setCart(resp.cart)
+			})
+			.catch((error) => {
+				console.log('There was an error updating the cart items', error)
+			})
+	}
+
+	/**
+	 * Removes line item from cart
+	 * https://commercejs.com/docs/sdk/cart/#remove-from-cart
+	 *
+	 * @param {string} lineItemId ID of the line item being removed
+	 */
+	const handleRemoveFromCart = (lineItemId) => {
+		commerce.cart
+			.remove(lineItemId)
+			.then((resp) => {
+				setCart(resp.cart)
+			})
+			.catch((error) => {
+				console.error(
+					'There was an error removing the item from the cart',
+					error
+				)
+			})
+	}
+
+	/**
+	 * Empties cart contents
+	 * https://commercejs.com/docs/sdk/cart/#remove-from-cart
+	 */
+	const handleEmptyCart = () => {
+		commerce.cart
+			.empty()
+			.then((resp) => {
+				setCart(resp.cart)
+			})
+			.catch((error) => {
+				console.error('There was an error emptying the cart', error)
+			})
+	}
+
+	/**
+	 * Refreshes to a new cart
+	 * https://commercejs.com/docs/sdk/cart#refresh-cart
+	 */
+	const refreshCart = () => {
+		commerce.cart
+			.refresh()
+			.then((newCart) => {
+				this.setState({
+					cart: newCart,
+				})
+			})
+			.catch((error) => {
+				console.log('There was an error refreshing your cart', error)
+			})
+	}
+
+	/**
+	 * Captures the checkout
+	 * https://commercejs.com/docs/sdk/checkout#capture-order
+	 *
+	 * @param {string} checkoutTokenId The ID of the checkout token
+	 * @param {object} newOrder The new order object data
+	 */
+	const handleCaptureCheckout = (checkoutTokenId, newOrder) => {
+		commerce.checkout
+			.capture(checkoutTokenId, newOrder)
+			.then((order) => {
+				// Save the order into state
+				this.setState({
+					order,
+				})
+				// Clear the cart
+				this.refreshCart()
+				// Send the user to the receipt
+				this.props.history.push('/confirmation')
+				// Store the order in session storage so we can show it again if the
+				// user refreshes the page!
+				window.sessionStorage.setItem('order_receipt', JSON.stringify(order))
+			})
+			.catch((error) => {
+				console.log('There was an error confirming your order', error)
+			})
+	}
+
+	const [merchant, setMerchant] = useState({})
+	const [products, setProducts] = useState([])
+	const [isCartVisible, setIsCartVisible] = useState(false)
+	const [order, setOrder] = useState({})
+
+	useEffect(() => console.log(products), [products])
+
+
 	return (
 		<div>
-			<ProductsList products={products} />
+			{/* <ProductsList products={products} onAddToCart={handleAddToCart} /> */}
+			<CartNav
+				cart={cart}
+				onUpdateCartQty={handleUpdateCartQty}
+				onRemoveFromCart={handleRemoveFromCart}
+				onEmptyCart={handleEmptyCart}
+				products={products}
+			/>
 			<CartContext.Provider value={{ cartQtyObj, setCartQtyObj }}>
 				<ShoppingCart
 					className=''
@@ -304,7 +446,7 @@ export const Featured = ({
 						next={next}
 						updateFeature={updateFeature}
 						feature={feature}
-						order={order}
+						order={featureOrder}
 					/>
 					<div className='flex-item flex-item-1'>
 						<Logo
@@ -322,6 +464,38 @@ export const Featured = ({
 					{/* <div className={`song-title ${visibility}`}>{song.title + ' - ' + song.artist}</div> */}
 					<div className='flex-item flex-item-2'>
 						<Routes>
+							<Route
+								path='/checkout'
+								element={
+									<Checkout
+										cart={cart}
+										onUpdateCartQty={handleUpdateCartQty}
+										onRemoveFromCart={handleRemoveFromCart}
+										onEmptyCart={handleEmptyCart}
+										onCaptureCheckout={handleCaptureCheckout}
+									/>
+								}
+							/>
+							<Route
+								path='/confirmation'
+								exact
+								render={(props) => {
+									if (!this.state.order) {
+										return props.history.push('/')
+									}
+									return <Confirmation {...props} order={order} />
+								}}
+							/>
+
+							<Route
+								path='/productsList'
+								element={
+									<ProductsList
+										products={products}
+										onAddToCart={handleAddToCart}
+									/>
+								}
+							/>
 							<Route
 								path='/'
 								element={<FeaturedLinks song={song} visibility={visibility} />}
@@ -350,6 +524,11 @@ export const Featured = ({
 										activeMerch={activeMerch}
 										incrementQuantity={incrementQuantity}
 										decrementQuantity={decrementQuantity}
+										products={products}
+										cart={cart}
+										handleUpdateCartQty={handleUpdateCartQty}
+										item={cart.lineItems}
+										onAddToCart={handleAddToCart}
 									/>
 								}
 							/>
@@ -429,7 +608,7 @@ export const Featured = ({
 				</NavLink>
 				<>
 					<NavLink
-						to={order[feature] + '?song=' + song.id}
+						to={featureOrder[feature] + '?song=' + song.id}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>
@@ -439,7 +618,7 @@ export const Featured = ({
 						/>
 					</NavLink>
 					<NavLink
-						to={order[feature] + '?song=' + song.id}
+						to={featureOrder[feature] + '?song=' + song.id}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>
