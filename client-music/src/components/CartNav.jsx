@@ -2,21 +2,53 @@ import { React, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Cart from './Cart'
 import { NavLink } from 'react-router-dom'
+import { RiShoppingBagLine } from 'react-icons/ri'
 
-const CartNav = ({ cart, onRemoveFromCart, onUpdateCartQty, onEmptyCart, products }) => {
+const CartNav = ({
+	cart,
+	onRemoveFromCart,
+	onUpdateCartQty,
+	onEmptyCart,
+	products,
+	visibility,
+	cartTotal,
+}) => {
 	const [isCartVisible, setCartVisible] = useState(false)
+	
+	const renderTotal = () => {
+			return <>{cartTotal}</>
+		}
 
-	const renderOpenButton = () => (
-		<button className='nav__cart-btn--open'>
-			<FontAwesomeIcon size='2x' icon='shopping-bag' color='#292B83' />
-			{cart !== null ? <span>{cart.total_items}</span> : ''}
-		</button>
+	// 	return (
+	// 		<>
+	// 			<div className={`${visibility} shopping-cart `}>
+	// 				<RiShoppingBagLine className={`${visibility}`} />
+	// 			</div>
+				
+	// 		</>
+	// 	)
+	// }
+
+	const renderOpenButton = () => (<>
+			<RiShoppingBagLine
+				className={`${visibility} shopping-cart `}
+				color='white' />
+			{cart !== null ? (
+				
+					<div className={`${visibility} cart-count`}>
+						<div className='cart-count-text'>{renderTotal()}</div>
+					</div>
+	
+			) : (
+				''
+			)}</>
 	)
 
 	const renderCloseButton = () => (
-		<button className='nav__cart-btn--close'>
-			<FontAwesomeIcon size='1x' icon='times' color='white' />
-		</button>
+			<RiShoppingBagLine
+				color='#292B83'
+				className={`${visibility} shopping-cart `}
+			/>
 	)
 
 	return (
@@ -29,12 +61,9 @@ const CartNav = ({ cart, onRemoveFromCart, onUpdateCartQty, onEmptyCart, product
 					cart={cart}
 					onUpdateCartQty={onUpdateCartQty}
 					onEmptyCart={onEmptyCart}
-                    products={products}
+					products={products}
 				/>
 			)}
-			<NavLink
-				to='cart'>um
-			</NavLink>
 		</div>
 	)
 }

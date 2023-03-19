@@ -66,6 +66,8 @@ export const Featured = ({
 	const [visible, setVisible] = useState(true)
 	const [feature, setFeature] = useState(0)
 	const [cartTotal, setCartTotal] = useState(0)
+	const [lagCorrect, setLagCorrect] = useState(0)
+
 	// console.log(song)
 	let [searchParams, setSearchParams] = useSearchParams()
 	const [active, setActive] = useState(0)
@@ -80,6 +82,7 @@ export const Featured = ({
 
 		console.log(song)
 	}, [song, feature])
+
 
 	const prevSong = (event) => {
 		event.preventDefault()
@@ -220,13 +223,14 @@ export const Featured = ({
 		{ img: merch2, link: 'http://www.google.com/' },
 	]
 
-	const [size, setSize] = useState('medium')
+	const [size, setSize] = useState(0)
 	const [quantity, setQuantity] = useState(0)
-	const incrementQuantity = function () {
-		let temp = cartQtyObj[active][size] + 1
-		cartQtyObj[active][size] = temp
-		setQuantity(temp)
+
+	const incrementQuantity = function (qty) {
+		let temp = cartTotal + qty
+		setCartTotal(temp)
 	}
+
 	const decrementQuantity = function () {
 		let temp = cartQtyObj[active][size] > 0 ? cartQtyObj[active][size] - 1 : 0
 		cartQtyObj[active][size] = temp
@@ -240,17 +244,17 @@ export const Featured = ({
 		setSize(size)
 	}
 
-	let cartSum = () => {
-		let temp = 0
-		for (let i = 0; i < cartQtyObj.length; i++) {
-			temp += cartQtyObj[i].small
-			temp += cartQtyObj[i].medium
-			temp += cartQtyObj[i].large
-		}
-		setCartTotal(temp)
-	}
+	// let cartSum = () => {
+	// 	let temp = 0
+	// 	for (let i = 0; i < cartQtyObj.length; i++) {
+	// 		temp += cartQtyObj[i].small
+	// 		temp += cartQtyObj[i].medium
+	// 		temp += cartQtyObj[i].large
+	// 	}
+	// 	setCartTotal(temp)
+	// }
 
-	useEffect(cartSum)
+	// useEffect(cartSum)
 
 	const [total, setTotal] = useState(0)
 
@@ -304,7 +308,12 @@ export const Featured = ({
 			.then((item) => {
 				setCart(item.cart)
 			})
+			.then(() => {
+				setLagCorrect(0)
+				console.log(lagCorrect)
+			})
 			.catch((error) => {
+				// incrementQuantity(-quantity)
 				console.error('There was an error adding the item to the cart', error)
 			})
 	}
@@ -412,8 +421,17 @@ export const Featured = ({
 	const [isCartVisible, setIsCartVisible] = useState(false)
 	const [order, setOrder] = useState({})
 
-	useEffect(() => console.log(products), [products])
+	// useEffect(() => console.log(products), [products])
+	useEffect(() => {
+				setCartTotal(cart.total_items)
+				// countQuantity()
+				console.log(cartTotal)
+			
+	}, [cart])
 
+	// useEffect(() => {
+	// 	setCartTotal(cart.total_items)
+	// }, [cart.total_items])
 
 	return (
 		<div>
@@ -424,13 +442,15 @@ export const Featured = ({
 				onRemoveFromCart={handleRemoveFromCart}
 				onEmptyCart={handleEmptyCart}
 				products={products}
+				visibility={visibility}
+				cartTotal={cartTotal}
 			/>
 			<CartContext.Provider value={{ cartQtyObj, setCartQtyObj }}>
-				<ShoppingCart
+				{/* <ShoppingCart
 					className=''
 					visibility={visibility}
 					cartTotal={cartTotal}
-				/>
+				/> */}
 				<div
 					className='flex-container'
 					style={
@@ -514,7 +534,7 @@ export const Featured = ({
 										cartQtyObj={cartQtyObj}
 										merch={merch}
 										setCartTotal={setCartTotal}
-										cartSum={cartSum}
+										// cartSum={cartSum}
 										active={active}
 										setActive={setActive}
 										setQuantity={setQuantity}
@@ -527,8 +547,11 @@ export const Featured = ({
 										products={products}
 										cart={cart}
 										handleUpdateCartQty={handleUpdateCartQty}
-										item={cart.lineItems}
 										onAddToCart={handleAddToCart}
+										cartTotal={cartTotal}
+										lagCorrect={lagCorrect}
+										setLagCorrect={setLagCorrect}
+
 									/>
 								}
 							/>
