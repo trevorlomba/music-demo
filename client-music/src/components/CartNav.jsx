@@ -29,34 +29,37 @@ const CartNav = ({
 	// 	)
 	// }
 
-	const renderOpenButton = () => (<>
+	const renderOpenButton = () => (
+		<>
 			<RiShoppingBagLine
 				className={`${visibility} shopping-cart `}
-				color='white' />
-			{cart !== null ? (
-				
-					<div className={`${visibility} cart-count`}>
-						<div className='cart-count-text'>{renderTotal()}</div>
-					</div>
-	
+				color='white'
+			/>
+			{cart.id ? (
+				<div className={`${visibility} cart-count`}>
+					<div className='cart-count-text'>{renderTotal()}</div>
+				</div>
 			) : (
-				''
-			)}</>
+				<div className={`${visibility} cart-count`}>
+					<div className='cart-count-text'>{'?'}</div>
+				</div>
+			)}
+		</>
 	)
 
 	const renderCloseButton = () => (
-			<RiShoppingBagLine
-				color='#292B83'
-				className={`${visibility} shopping-cart `}
-			/>
+		<RiShoppingBagLine
+			color='#d00'
+			className={`${visibility} shopping-cart `}
+		/>
 	)
 
 	return (
 		<div className='nav'>
 			<div className='nav__cart' onClick={() => setCartVisible(!isCartVisible)}>
-				{!isCartVisible ? renderOpenButton() : renderCloseButton()}
+				{isCartVisible && cart?.id ? renderCloseButton() : renderOpenButton()}
 			</div>
-			{isCartVisible && (
+			{isCartVisible && cart?.id && (
 				<Cart
 					cart={cart}
 					onUpdateCartQty={onUpdateCartQty}

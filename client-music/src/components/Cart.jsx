@@ -2,6 +2,7 @@ import React, { Component, useEffect } from 'react'
 import CartItem from './CartItem'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { RiTruckLine } from 'react-icons/ri'
 
 const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 	const handleEmptyCart = () => {
@@ -37,7 +38,7 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 		</div>
 	)
 
-	useEffect(() => console.log(products), [])
+	useEffect(() => console.log(products, cart.line_items), [])
 
 	return (
 		<div className='cart'>
@@ -46,12 +47,25 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 			<button className='cart__btn-empty' onClick={handleEmptyCart}>
 				Empty cart
 			</button>
+			<Link className='cart__btn-checkout cart__btn-text' to='/checkout'>
+				{/* <RiTruckLine className='cart__btn-text' /> */}
+				Checkout
+			</Link>
 			{renderEmptyMessage()}
-			{renderItems()}
+			{cart.line_items.map((lineItem) => (
+				<CartItem
+					item={lineItem}
+					key={lineItem.id}
+					onUpdateCartQty={onUpdateCartQty}
+					className='cart__inner'
+				/>
+			))}
 			{renderTotal()}
 			<div className='cart__footer'>
-				<button className='cart__btn-empty'>Empty cart</button>
-				<Link className='cart__btn-checkout' to='/checkout'>
+				{/* <button className='cart__btn-empty'>Empty cart</button> */}
+
+				<Link className='cart__btn-checkout cart__btn-text' to='/checkout'>
+					{/* <RiTruckLine className='cart__btn-text' /> */}
 					Checkout
 				</Link>
 			</div>
