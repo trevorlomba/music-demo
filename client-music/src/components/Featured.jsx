@@ -224,6 +224,7 @@ export const Featured = ({
 	]
 
 	const [size, setSize] = useState(0)
+	const [color, setColor] = useState(0)
 	const [quantity, setQuantity] = useState(0)
 
 	const incrementQuantity = function (qty) {
@@ -242,6 +243,9 @@ export const Featured = ({
 
 	const updateSize = (size) => {
 		setSize(size)
+	}
+	const updateColor = (size) => {
+		setColor(size)
 	}
 
 	// let cartSum = () => {
@@ -302,15 +306,15 @@ export const Featured = ({
 	 * @param {string} productId The ID of the product being added
 	 * @param {number} quantity The quantity of the product being added
 	 */
-	const handleAddToCart = (productId, quantity) => {
+	const handleAddToCart = (productId, quantity, variantObject) => {
 		commerce.cart
-			.add(productId, quantity)
+			.add(productId, quantity, variantObject)
 			.then((item) => {
 				setCart(item.cart)
 			})
 			.then(() => {
 				setLagCorrect(0)
-				console.log(lagCorrect)
+				// console.log(lagCorrect)
 			})
 			.catch((error) => {
 				// incrementQuantity(-quantity)
@@ -428,6 +432,16 @@ export const Featured = ({
 				console.log(cartTotal)
 			
 	}, [cart])
+
+
+
+	useEffect(() => {
+		setColor(0)
+		updateSize(0)
+		console.log(size)
+		console.log(color)
+	}, [active])
+
 
 	// useEffect(() => {
 	// 	setCartTotal(cart.total_items)
@@ -551,7 +565,10 @@ export const Featured = ({
 										cartTotal={cartTotal}
 										lagCorrect={lagCorrect}
 										setLagCorrect={setLagCorrect}
-
+										color={color}
+										setColor={setColor}
+										updateColor={updateColor}
+										feature={feature}
 									/>
 								}
 							/>

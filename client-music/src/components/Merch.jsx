@@ -31,7 +31,11 @@ const Fader = ({
 	handleUpdateCartQty,
 	onAddToCart, 
 	lagCorrect,
-	setLagCorrect
+	setLagCorrect,
+	color,
+	setColor,
+	updateColor,
+	feature
 }) => {
 	// useEffect(() => {
 	// 	setSearchParams(song.id)
@@ -80,6 +84,7 @@ const Fader = ({
 		setItemQty(temp)
 	}
 
+	
 	const item = cart.lineItems
 	
 	// useEffect(() => 
@@ -168,6 +173,11 @@ const Fader = ({
 				products={products}
 				lagCorrect={lagCorrect}
 				setLagCorrect={setLagCorrect}
+				renderable={renderable}
+				color={color}
+				setColor={setColor}
+				updateColor={updateColor}
+				feature={feature}
 			/>
 		)
 	}
