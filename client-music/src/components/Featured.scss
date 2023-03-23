@@ -106,7 +106,7 @@ $merch: #a6a9af;
 
     filter:drop-shadow(1px 1px)
 
-    &:hover {
+    &;hover {
         transform: scale(0.9);
         transition: 1000ms;
     }
@@ -370,13 +370,14 @@ flex-item-5 {
 
     /* border-color: #282c34; */
     font-weight: bold;
-    border-radius: calc(2vh + 2vw);
+    // border-radius: calc(1vh + 1vw);
     background-color: #0000002b;
     border: solid rgba(0, 0, 0, 0.106) 0.5px;
     pointer-events: all;
     cursor: pointer;
     color: white;
-    padding: 2vh 5vw;
+    // padding: 2vh 2vw;
+    padding: .5rem 1rem;
     font-family:'Calibri', sans-serif;
     display: inline-flex;
         justify-content: center;
@@ -389,26 +390,24 @@ flex-item-5 {
         display: inline-block;
         position: relative;
         transition: 500ms;
-            font-size: calc(1vh + 1vw);
-            &:active {
-                transition: 500ms;
-                font-size: calc(1.5vh + 1.5vh);
-            }
+            font-size: calc(.8vh + .8vw);
+           
     }
+      
 
-    &:hover {
-        background-color: #0000007a;
-        transition: 200ms;
-    }
+    // &:hover {
+    //     background-color: #0000007a;
+    //     transition: 200ms;
+    // }
 
-    &:active {
-        color: #aa0a0ade;
-        transition: 0ms;
-    }
+    // &:active {
+    //     color: #aa0a0ade;
+    //     transition: 0ms;
+    // }
 
     &:hover span {
-        padding-right: 15px;
-        padding-left: 15px;
+        // padding-right: 15px;
+        // padding-left: 15px;
         font-weight: bolder;
 
         /* transition: 100ms; */
@@ -661,4 +660,114 @@ flex-item-5 {
     background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+}
+
+.increment-button {
+    border-radius: 50% 0 0 50%;
+    // margin: 2rem;
+    // padding: .5rem 1rem;
+    // height: 3rem;
+    // width: 3rem;
+    &:active {
+        transition: 50ms;
+        scale: 105%;
+        color: bisque;
+    }
+    
+}
+.increment-button-left {
+    border-radius: 50% 0 0 50%;
+}
+.increment-button-right {
+    border-radius: 0% 50% 50% 0%;
+}
+
+.shopping-cart {
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+    font-size: calc(2vw + 2vh);
+    color: white;
+    &:hover {
+     cursor: pointer
+    }
+}
+
+.buy-button {
+    margin-top: 1rem;
+    color: white;
+    &:active {
+        scale: 95%;
+    }
+    background-color: rgba(0, 0, 0, 0.635);
+}
+
+
+.size-button {
+    background-color: #a6a9af;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
+    width: calc(2vw + 2vh);
+    height: calc(2vw + 2vh);
+    border-radius: 50%;
+    font-size: calc(.9vw + .9vh);
+    // line-height: calc(2vw + 2vh);
+    box-shadow: none;
+}
+
+.active-size {
+    background-color: white;
+}
+
+.cart-count {
+    position: absolute;
+    display: block;
+        top: calc(1vw + 2vh);
+        right: 1vw;
+        text-align: center;
+        margin: auto;
+        text-justify: auto;
+        color: white;
+        background-color: red;
+        min-width: calc(1vw + 1vh);
+        min-height: calc(1vw + 1vh);
+        line-height: calc(1vw + 1vh);;
+        border-radius: 50%;
+    
+        &:hover {
+            scale: 125%;
+            cursor: pointer
+        }
+}
+
+.cart-count-text {
+    font-size: calc(.5vw + .5vh);
+    font-weight: bolder;
+}
+
+.merch-price {
+    color:white;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+}
+
+.cart {
+    position: absolute;
+    background-color: #d7dff7;
+    margin: auto;
+    text-align: center;
+    width: 40vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    right: 0;
+    top: 5vh;
+    bottom: 5vh;
+    overflow: auto;
+    z-index: 10;
+    border-radius: 15% 0 0 15%;
+    border:rgba(0, 0, 0, 0.635);
+box-shadow: -6px 6px 0px 0px rgba(1, 53, 53, 0.364);
 }

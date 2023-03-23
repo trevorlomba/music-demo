@@ -1,9 +1,10 @@
 // import logo from './logo.svg';
 import './App.scss';
 import songs from './songs'
-import Featured from './components/Featured';
+import {Featured} from './components/Featured';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, NavLink, useSearchParams } from 'react-router-dom'
+import { ShoppingCartProvider } from './context/shoppingCartContext';
 
 // import { Howl, Howler } from 'howler'
 import ReactHowler from 'react-howler'
@@ -23,29 +24,30 @@ function App() {
   let activeClassName = 'nav-active'
 
   return (
-		<BrowserRouter basename='/music-demo'>
-			<div className='App'>
-				<ReactHowler
-					src={songs[song].data.songLink}
-					playing={playing}
-					html5={true}
-					preload={true}
-					format={'m4a'}
-					loop={true}
-					volume={vocalVolume}
-				/>
-				<Featured
-					artistName={artistName}
-					song={songs[song]}
-					setSong={setSong}
-					setArtistName={setArtistName}
-					className='title'
-					playing={playing}
-					setPlaying={setPlaying}
-					vocalVolume={vocalVolume}
-					setVocalVolume={setVocalVolume}
-				/>
-				{/* <div className='volume'>
+		// <ShoppingCartProvider>
+			<BrowserRouter basename='/music-demo'>
+				<div className='App'>
+					<ReactHowler
+						src={songs[song].data.songLink}
+						playing={playing}
+						html5={true}
+						preload={true}
+						format={'m4a'}
+						loop={true}
+						volume={vocalVolume}
+					/>
+					<Featured
+						artistName={artistName}
+						song={songs[song]}
+						setSong={setSong}
+						setArtistName={setArtistName}
+						className='title'
+						playing={playing}
+						setPlaying={setPlaying}
+						vocalVolume={vocalVolume}
+						setVocalVolume={setVocalVolume}
+					/>
+					{/* <div className='volume'>
 				<label>
 					Volume:
 					<span className='slider-container'>
@@ -62,8 +64,9 @@ function App() {
 					</span>
 				</label>
 			</div> */}
-			</div>
-		</BrowserRouter>
+				</div>
+			</BrowserRouter>
+		// </ShoppingCartProvider>
 	)
 }
 
