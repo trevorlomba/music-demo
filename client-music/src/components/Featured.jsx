@@ -1,12 +1,9 @@
-import React, { useEffect, useState, lazy, createContext } from 'react'
+import React, { useEffect, useState, createContext } from 'react'
 import './Featured.scss'
-import { Routes, Route, Switch } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import {
-	BrowserRouter,
 	NavLink,
-	Redirect,
 	useSearchParams,
-	useParams,
 	useLocation,
 } from 'react-router-dom'
 // import { useHistory, useLocation } from 'react-router-dom'
@@ -26,31 +23,23 @@ import songs from '../songs'
 import axios from 'axios'
 
 import {
-	BsChevronDoubleDown,
-	BsChevronDoubleUp,
-	BsArrowLeftRight,
 	BsInputCursor,
 } from 'react-icons/bs'
 import {
 	RiLinksFill,
-	RiShoppingBag2Fill,
-	RiShoppingBagFill,
 } from 'react-icons/ri'
 import { IoShirtOutline } from 'react-icons/io5'
-import ShoppingCart from './ShoppingCart'
 import commerce from '../lib/commerce'
-import ProductsList from './ProductsList.jsx'
 import CartNav from './CartNav'
 import Checkout from './Checkout'
 import Confirmation from './Confirmation'
-import Cart from './Cart'
+import { useSwipeable } from 'react-swipeable'
 
 const Logo = React.lazy(() => import('./Logo'))
 
 export const CartContext = createContext()
 
 export const Featured = ({
-	artistName,
 	playing,
 	setPlaying,
 	song,
@@ -58,11 +47,11 @@ export const Featured = ({
 	vocalVolume,
 	setVocalVolume,
 }) => {
-	let featuredImage = song.data.background
+	let featuredImage = song?.data?.background
 	// let FeaturedImage = React.lazy(() => import('./FeaturedImage'))
 
-	let logoImage = song.data.logo
-	let logoImage2 = song.data.logo2
+	let logoImage = song?.data.logo
+	let logoImage2 = song?.data.logo2
 	const [visible, setVisible] = useState(true)
 	const [feature, setFeature] = useState(0)
 	const [cartTotal, setCartTotal] = useState(0)
@@ -78,19 +67,19 @@ export const Featured = ({
 	}, [])
 
 	useEffect(() => {
-		setSearchParams({ song: song.id })
+		song ? setSearchParams({ song: song?.id }) : setSearchParams({ song: 0})
 
 		console.log(song)
 	}, [song, feature])
 
 
 	const prevSong = (event) => {
-		event.preventDefault()
+		event?.preventDefault()
 		// console.log(song.id)
 		// console.log(((song.id - 1) % songs.length) - 1)
 		// setSong((song.id - 1) % songs.length-1)
 		if (song.id < 1) {
-			console.log(song.id)
+			// console.log(song.id)
 			let temp = songs.length - 1
 			console.log(temp)
 			setSong(temp)
@@ -99,7 +88,7 @@ export const Featured = ({
 			// setSong(newSong)
 		} else {
 			// setSong((prevState) => prevState - 1)
-			let temp = song.id
+			let temp = song?.id
 			// console.log(temp)
 			setSong(temp - 1)
 			setSearchParams({ song: temp })
@@ -116,7 +105,7 @@ export const Featured = ({
 		// setSong(newSong)
 	}
 	const nextSong = (event) => {
-		event.preventDefault()
+		event?.preventDefault()
 
 		// console.log(songs.length)
 		// console.log((song.id + 1) % songs.length)
@@ -130,7 +119,7 @@ export const Featured = ({
 		// }
 		// 	setSearchParams({ song: song.id })
 
-		if (song.id === songs.length - 1) {
+		if (song?.id === songs.length - 1) {
 			// console.log(song.id)
 			let temp = 0
 			console.log(temp)
@@ -139,9 +128,9 @@ export const Featured = ({
 			// setSong(newSong)
 		} else {
 			// setSong((prevState) => prevState - 1)
-			let temp = song.id + 1
+			let temp = song?.id + 1
 			// console.log(temp)
-			console.log(temp, song.id, songs.length, song.id === songs.length)
+			// console.log(temp, song.id, songs.length, song.id === songs.length)
 			setSong(temp)
 			setSearchParams({ song: temp })
 			// console.log(song)
@@ -163,7 +152,7 @@ export const Featured = ({
 	// let current = featureOrder[feature]
 
 	async function fetchVideo() {
-		const video = await axios.get(song.video)
+		const video = await axios.get(song?.video)
 		return video
 	}
 
@@ -428,7 +417,6 @@ export const Featured = ({
 	// useEffect(() => console.log(products), [products])
 	useEffect(() => {
 				setCartTotal(cart.total_items)
-				// countQuantity()
 				console.log(cartTotal)
 			
 	}, [cart])
@@ -438,14 +426,25 @@ export const Featured = ({
 	useEffect(() => {
 		setColor(0)
 		updateSize(0)
-		console.log(size)
-		console.log(color)
 	}, [active])
 
+	React.useEffect(() => {
+		documentRef(document)
+		// Clean up swipeable event listeners
+		return () => documentRef({})
+	})
 
-	// useEffect(() => {
-	// 	setCartTotal(cart.total_items)
-	// }, [cart.total_items])
+	const { ref: documentRef } = useSwipeable({
+		onSwipedLeft: ({ dir, event }) => {
+			prevSong()
+			console.log('swipedLeft')
+		},
+		onSwipedRight: ({ dir, event }) => {
+			nextSong()
+			console.log('swipedLeft')
+		},
+		preventDefaultTouchmoveEvent: true,
+	})
 
 	return (
 		<div>
@@ -494,8 +493,6 @@ export const Featured = ({
 							song={song}
 						/>
 					</div>
-
-					{/* <div className={`song-title ${visibility}`}>{song.title + ' - ' + song.artist}</div> */}
 					<div className='flex-item flex-item-2'>
 						<Routes>
 							<Route
@@ -510,18 +507,21 @@ export const Featured = ({
 									/>
 								}
 							/>
+
+							{/* refactored from commerceJS documentation */}
 							<Route
 								path='/confirmation'
-								exact
-								render={(props) => {
-									if (!this.state.order) {
-										return props.history.push('/')
-									}
-									return <Confirmation {...props} order={order} />
-								}}
+								element={
+									this?.state?.order ? (
+										<Confirmation order={order} />
+									) : (
+										<Navigate to='/featured' />
+									)
+								}
 							/>
 
-							<Route
+							{/* list all products */}
+							{/* <Route
 								path='/productsList'
 								element={
 									<ProductsList
@@ -529,7 +529,7 @@ export const Featured = ({
 										onAddToCart={handleAddToCart}
 									/>
 								}
-							/>
+							/> */}
 							<Route
 								path='/'
 								element={<FeaturedLinks song={song} visibility={visibility} />}
@@ -542,20 +542,14 @@ export const Featured = ({
 								path='/merch'
 								element={
 									<Merch
-										song={song}
 										visibility={visibility}
-										setSearchParams={setSearchParams}
 										cartQtyObj={cartQtyObj}
-										merch={merch}
 										setCartTotal={setCartTotal}
-										// cartSum={cartSum}
 										active={active}
 										setActive={setActive}
-										setQuantity={setQuantity}
 										size={size}
 										image={image}
 										updateSize={updateSize}
-										activeMerch={activeMerch}
 										incrementQuantity={incrementQuantity}
 										decrementQuantity={decrementQuantity}
 										products={products}
@@ -608,7 +602,7 @@ export const Featured = ({
 					</div>
 				</div>
 				<video
-					key={song.video}
+					key={song?.video}
 					style={{
 						backgroundImage: `url(${featuredImage}`,
 					}}
@@ -617,10 +611,10 @@ export const Featured = ({
 					muted
 					id='video'
 					onLoadedData={onLoadedData}>
-					<source src={song.video} type='video/mp4' />
+					<source src={song?.video} type='video/mp4' />
 				</video>
 				<NavLink
-					to={next + '?song=' + song.id}
+					to={next + '?song=' + song?.id}
 					className={({ isActive }) =>
 						isActive ? activeClassName : undefined
 					}>
@@ -648,7 +642,8 @@ export const Featured = ({
 				</NavLink>
 				<>
 					<NavLink
-						to={featureOrder[feature] + '?song=' + song.id}
+						to={featureOrder[feature]}
+						// to={featureOrder[feature] + '?song=' + song.id}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>
@@ -658,7 +653,8 @@ export const Featured = ({
 						/>
 					</NavLink>
 					<NavLink
-						to={featureOrder[feature] + '?song=' + song.id}
+						to={featureOrder[feature]}
+						// to={featureOrder[feature] + '?song=' + song.id}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>

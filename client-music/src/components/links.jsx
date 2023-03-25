@@ -1,9 +1,7 @@
 import React from 'react'
 import { TiSocialInstagram } from 'react-icons/ti'
-import { TbBrandSpotify } from 'react-icons/tb'
 import { AiOutlineApple } from 'react-icons/ai'
-import { IoShirtOutline, IoLogoTiktok } from 'react-icons/io5'
-import { ImSpotify } from 'react-icons/im'
+import { IoLogoTiktok } from 'react-icons/io5'
 import { RiSpotifyLine } from 'react-icons/ri'
 
 const links = [
@@ -31,12 +29,6 @@ const links = [
 		link: 'https://music.apple.com/us/artist/lxvi/990781367',
 		img: <AiOutlineApple />,
 	},
-	// {
-	// 	name: 'Merch',
-	// 	tag: 'merch',
-	// 	link: 'https://www.instagram.com/',
-	// 	img: <IoShirtOutline />,
-	// },
 ]
 
 export default links

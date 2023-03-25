@@ -1,12 +1,6 @@
-import { React, useEffect } from "react";
-import {TiSocialInstagram} from 'react-icons/ti'
-import links from './links.jsx'
+import { React } from "react";
 
-
-const FeaturedLinks = ({song, visibility, setSearchParams}) => {
-	// useEffect(()=> {
-	// 	setSearchParams(song.id)
-	// }, [setSearchParams, song.id])
+const FeaturedLinks = ({song, visibility}) => {
 
 	 const mappedLinks = song.data.featuredLinks.map((link, i) => (
 				<tr
@@ -28,7 +22,6 @@ const FeaturedLinks = ({song, visibility, setSearchParams}) => {
 						{mappedLinks}
 						</tbody>
 						</table>
-					{/* {song.data.featuredLinks[0].link} */}
 				</div>
 			</div></div>
 	)

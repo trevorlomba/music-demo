@@ -2,7 +2,7 @@ $tiktok: #00f2ea;
 $instagram: #7385e2;
 $spotify: #3bd671;
 $apple: #f6636d;
-$soundcloud: #F26F23;
+$soundcloud: #f26f23;
 $merch: #a6a9af;
 
 .flex-container {
@@ -25,10 +25,10 @@ $merch: #a6a9af;
 
 .background-image {
     background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        z-index: -2;
-        height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -2;
+    height: 100vh;
 }
 
 .flex-item {
@@ -57,7 +57,7 @@ $merch: #a6a9af;
 .flex-item-3 {
     justify-content: flex-start;
     max-width: 10vw;
-        min-width: 10vw;
+    min-width: 10vw;
 }
 
 .flex-item-banner {
@@ -79,7 +79,7 @@ $merch: #a6a9af;
     /* left: 2vw; */
     /* top: 2vw; */
     /* min-width: 10vw; */
-    width:15vw;
+    width: 15vw;
     // min-width: 15vw;
     margin-top: 10vh;
     margin-left: 5vw;
@@ -104,9 +104,9 @@ $merch: #a6a9af;
     /* width: 100%; */
     pointer-events: all;
 
-    filter:drop-shadow(1px 1px)
+    filter: drop-shadow(1px 1px) &;
 
-    &;hover {
+    hover {
         transform: scale(0.9);
         transition: 1000ms;
     }
@@ -154,7 +154,6 @@ $merch: #a6a9af;
 /* position: absolute; */
 /* } */
 
-
 .featured-links {
     display: flex;
 
@@ -201,7 +200,7 @@ $merch: #a6a9af;
             /* height: 3em; */
             margin: auto;
             color: white;
-            
+
             >* {
                 // padding:  2vh 5vw;
                 // margin: 1.5rem;
@@ -212,7 +211,7 @@ $merch: #a6a9af;
                 cursor: pointer;
                 background-color: #0000002b;
                 border: solid rgba(0, 0, 0, 0.106) 0.5px;
-                border-radius: .7rem;
+                border-radius: 0.7rem;
                 font-size: 2vw;
             }
 
@@ -340,6 +339,7 @@ flex-item-5 {
     >* {
         /* min-width: 30vw; */
     }
+
     // max-height: 50vh;
 }
 
@@ -363,14 +363,14 @@ flex-item-5 {
         cursor: grabbing;
     }
 }
+
 .product__image {
-    height: 20vw;
-    max-width: 95%;
+    max-height: 50vh;
+    max-width: 30vw;
     transition: 500ms;
     transition-delay: 500ms;
     filter: drop-shadow(0 0.3rem 0.4rem rgba(0, 0, 0, 0.4));
     // cursor: grab;
-
 
     &:hover {
         transform: scale(95%);
@@ -399,23 +399,21 @@ flex-item-5 {
     cursor: pointer;
     color: white;
     // padding: 2vh 2vw;
-    padding: .5rem 1rem;
-    font-family:'Calibri', sans-serif;
+    padding: 0.5rem 1rem;
+    font-family: "Calibri", sans-serif;
     display: inline-flex;
-        justify-content: center;
-        /* center the content horizontally */
-        align-items: center;
-        /* center the content vertically */
+    justify-content: center;
+    /* center the content horizontally */
+    align-items: center;
+    /* center the content vertically */
 
     span {
         cursor: pointer;
         display: inline-block;
         position: relative;
         transition: 500ms;
-            font-size: calc(.8vh + .8vw);
-           
+        font-size: calc(0.8vh + 0.8vw);
     }
-      
 
     // &:hover {
     //     background-color: #0000007a;
@@ -468,10 +466,12 @@ flex-item-5 {
     cursor: pointer;
     opacity: 95%;
     width: 100%;
+
     &:hover {
-            // transform: scale(95%);
-            transition: 500ms;
-        }
+        // transform: scale(95%);
+        transition: 500ms;
+    }
+
     >* {
         color: rgb(255, 255, 255);
         font-size: calc(3vw + 3vh);
@@ -480,8 +480,6 @@ flex-item-5 {
         transform: scale(110%);
         pointer-events: fill;
         margin: 5vh, 5vh, 0 0;
-
-       
 
         &:active {
             transform: scale(105%);
@@ -581,7 +579,7 @@ flex-item-5 {
 }
 
 .scroll-container.invisible {
-    opacity: 0.0;
+    opacity: 0;
     pointer-events: none;
 }
 
@@ -659,15 +657,17 @@ flex-item-5 {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     opacity: 100%;
+
     &.invisible {
         opacity: 0%;
     }
+
     padding-bottom: 1rem;
     // cursor:grabbing;
 
     user-select: none;
-     /* Standard syntax */
-    text-shadow: -1px .8px #00000030;
+    /* Standard syntax */
+    text-shadow: -1px 0.8px #00000030;
 }
 
 #video {
@@ -676,16 +676,17 @@ flex-item-5 {
     height: 100vh;
     position: fixed;
     top: 0;
-    left: 0;    
+    left: 0;
     z-index: -10;
     background-color: #1c1f27;
     background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .increment-button {
     border-radius: 50% 0 0 50%;
+
     // margin: 2rem;
     // padding: .5rem 1rem;
     // height: 3rem;
@@ -695,11 +696,12 @@ flex-item-5 {
         scale: 105%;
         color: bisque;
     }
-    
 }
+
 .increment-button-left {
     border-radius: 50% 0 0 50%;
 }
+
 .increment-button-right {
     border-radius: 0% 50% 50% 0%;
 }
@@ -710,20 +712,22 @@ flex-item-5 {
     right: 1vw;
     font-size: calc(2vw + 2vh);
     color: white;
+
     &:hover {
-     cursor: pointer
+        cursor: pointer;
     }
 }
 
 .buy-button {
     margin-top: 1rem;
     color: white;
+
     &:active {
         scale: 95%;
     }
+
     background-color: rgba(0, 0, 0, 0.635);
 }
-
 
 .color-button {
     margin-left: 1vw;
@@ -733,16 +737,18 @@ flex-item-5 {
     width: calc(2vw + 2vh);
     height: calc(2vw + 2vh);
     border-radius: 50%;
-    font-size: calc(.9vw + .9vh);
+    font-size: calc(0.9vw + 0.9vh);
     // line-height: calc(2vw + 2vh);
     box-shadow: none;
 }
 
 .active-color-button {
-        box-shadow: .1em .1em rgb(88, 88, 255), -.2em -.1em rgb(213, 213, 3);
+    box-shadow: 0.1em 0.1em rgb(88, 88, 255), -0.2em -0.1em rgb(213, 213, 3);
+
     &.white {
         background-color: white;
     }
+
     &.black {
         background-color: black;
     }
@@ -751,54 +757,51 @@ flex-item-5 {
 .black {
     background-color: black;
 }
+
 .white {
     background-color: white;
 }
+
 .grey {
     background-color: grey;
 }
+
 .red {
     background-color: red;
 }
 
-
-.inactive-color-button {
-}
-
-
-
-
+.inactive-color-button {}
 
 .cart-count {
     position: absolute;
     display: block;
-        top: calc(1vw + 2vh);
-        right: 1vw;
-        text-align: center;
-        margin: auto;
-        text-justify: auto;
-        color: white;
-        background-color: red;
-        min-width: calc(1vw + 1vh);
-        min-height: calc(1vw + 1vh);
-        line-height: calc(1vw + 1vh);;
-        border-radius: 50%;
-    
-        &:hover {
-            scale: 125%;
-            cursor: pointer
-        }
+    top: calc(1vw + 2vh);
+    right: 1vw;
+    text-align: center;
+    margin: auto;
+    text-justify: auto;
+    color: white;
+    background-color: red;
+    min-width: calc(1vw + 1vh);
+    min-height: calc(1vw + 1vh);
+    line-height: calc(1vw + 1vh);
+    border-radius: 50%;
+
+    &:hover {
+        scale: 125%;
+        cursor: pointer;
+    }
 }
 
 .cart-count-text {
-    font-size: calc(.5vw + .5vh);
+    font-size: calc(0.5vw + 0.5vh);
     font-weight: bolder;
 }
 
 .merch-price {
-    color:white;
+    color: white;
     font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     font-size: larger;
 }
 
@@ -816,8 +819,8 @@ flex-item-5 {
     overflow: auto;
     z-index: 10;
     border-radius: 15% 0 0 15%;
-    border:rgba(0, 0, 0, 0.635);
-box-shadow: -6px 6px 0px 0px rgba(1, 53, 53, 0.364);
+    border: rgba(0, 0, 0, 0.635);
+    box-shadow: -6px 6px 0px 0px rgba(1, 53, 53, 0.364);
 }
 
 .checkout__select {
@@ -831,6 +834,7 @@ box-shadow: -6px 6px 0px 0px rgba(1, 53, 53, 0.364);
 .color_select {
     color: white;
 }
+
 .color_select_label {
     padding-bottom: 2vh;
 }
@@ -838,10 +842,12 @@ box-shadow: -6px 6px 0px 0px rgba(1, 53, 53, 0.364);
 .product__info {
     // margin-top: -2vh;
 }
+
 .product__name {
     // margin-top: 5em;
     color: white;
 }
+
 .product__price {
     margin-top: -1vh;
     color: white;

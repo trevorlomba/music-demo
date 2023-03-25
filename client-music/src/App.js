@@ -28,7 +28,7 @@ function App() {
 			<BrowserRouter basename='/music-demo'>
 				<div className='App'>
 					<ReactHowler
-						src={songs[song].data.songLink}
+						src={songs[song]?.data?.songLink}
 						playing={playing}
 						html5={true}
 						preload={true}

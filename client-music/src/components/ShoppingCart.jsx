@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { RiShoppingBagLine } from 'react-icons/ri'
-import commerce from '../lib/commerce'
+
 
 
 const ShoppingCart = ({ visibility, cartTotal, cart }) => 
