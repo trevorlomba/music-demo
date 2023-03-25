@@ -1,8 +1,7 @@
-import React, { Component, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import CartItem from './CartItem'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { RiTruckLine } from 'react-icons/ri'
 
 const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 	const handleEmptyCart = () => {
@@ -48,7 +47,7 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 				Empty cart
 			</button>
 			<Link className='cart__btn-checkout cart__btn-text' to='/checkout'>
-				{/* <RiTruckLine className='cart__btn-text' /> */}
+
 				Checkout
 			</Link>
 			{renderEmptyMessage()}
@@ -62,10 +61,8 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 			))}
 			{renderTotal()}
 			<div className='cart__footer'>
-				{/* <button className='cart__btn-empty'>Empty cart</button> */}
 
 				<Link className='cart__btn-checkout cart__btn-text' to='/checkout'>
-					{/* <RiTruckLine className='cart__btn-text' /> */}
 					Checkout
 				</Link>
 			</div>

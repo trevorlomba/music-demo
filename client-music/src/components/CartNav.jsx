@@ -1,5 +1,4 @@
 import { React, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Cart from './Cart'
 import { NavLink } from 'react-router-dom'
 import { RiShoppingBagLine } from 'react-icons/ri'
@@ -18,16 +17,6 @@ const CartNav = ({
 	const renderTotal = () => {
 			return <>{cartTotal}</>
 		}
-
-	// 	return (
-	// 		<>
-	// 			<div className={`${visibility} shopping-cart `}>
-	// 				<RiShoppingBagLine className={`${visibility}`} />
-	// 			</div>
-				
-	// 		</>
-	// 	)
-	// }
 
 	const renderOpenButton = () => (
 		<>

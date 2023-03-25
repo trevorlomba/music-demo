@@ -10,24 +10,17 @@ import ProductItem from "./ProductItem";
 
 
 
-const Fader = ({
+const Merch = ({
 	visibility,
-	song,
-	setSearchParams,
 	cartQtyObj,
-	merch,
-	cartSum,
 	active,
 	setActive,
-	setQuantity,
 	size,
 	updateSize,
-	activeMerch,
 	incrementQuantity,
 	decrementQuantity,
 	products,
 	cart,
-	fetchProducts,
 	handleUpdateCartQty,
 	onAddToCart, 
 	lagCorrect,
@@ -37,12 +30,9 @@ const Fader = ({
 	updateColor,
 	feature
 }) => {
-	// useEffect(() => {
-	// 	setSearchParams(song.id)
-	// }, [])
+
 	const [currentMerch, setCurrentMerch] = useState(cartQtyObj[0])
 	const { total, setTotal } = useContext(CartContext)
-	// useEffect (() => setActive(0), [])
 	
 	const [activeProduct, setActiveProduct] = useState(products[active])
 	
@@ -56,8 +46,6 @@ const Fader = ({
 			setItemQty( cart.line_items.find(({ id }) => id === activeProduct.id)) }, [active, products])
 	
 	
-	// useEffect(cartSum)
-	// useEffect(()=>{console.log(products[active].id)})
 	const [itemQty, setItemQty] = useState(0)
 
 	const countQuantity = () => {
@@ -72,47 +60,22 @@ const Fader = ({
 						({ product_id }) => product_id === products[active].id
 				  ).quantity
 				: 0
-		// console.log(temp)
-		// console.log(products && products[active] ? products[active].id : '')
-		// console.log(
-		// 	cart.line_items &&
-		// 		cart.total_unique_items > 0
-		// 		? cart.line_items.find(
-		// 			({ product_id }) => product_id === products[active].id
-		// 		) : ''
-		// )
 		setItemQty(temp)
 	}
 
 	
 	const item = cart.lineItems
 	
-	// useEffect(() => 
-	// {
-	// 	if (products.length) {
-	// 		setActiveProduct(products[active])}})
-			
-	// useEffect(() => {
-	// 	if (active) {
-	// 		countQuantity()
-	// 	}
-	// }
-	// )
 	const handleUpdateFeature = () => {
 		updateFeature()
 		setTimeout(() => countQuantity(), 1000)
 	}
 	function updateFeature() {
 		if (active >= products.length - 1) {
-					// countQuantity()
-					// console.log(itemQty)
 					setActive(0);
-					// console.log(itemQty)
 				} else {
-					// console.log(itemQty)
 					const temp = active;
 					setActive(temp + 1);
-					// console.log(itemQty)
 				}
 			}
 			
@@ -125,10 +88,6 @@ const Fader = ({
 			}
 			let image
 			let price
-			
-			// useEffect(()=> {
-				// 	handleUpdateProduct()
-				// }, [products])
 				
 				const [loadProduct, setLoadProduct] = useState(false)
 				
@@ -153,29 +112,21 @@ const Fader = ({
 		}
 		return (
 			<ProductItem
-				// key={products[active].id}
 				product={activeProduct}
-				updateFeature={updateFeature}
 				size={size}
 				updateSize={updateSize}
-				decrementQuantity={decrementQuantity}
-				incrementQuantity={incrementQuantity}
-				cartQtyObj={cartQtyObj}
 				active={active}
-				handleUpdateCartQty={handleUpdateCartQty}
 				item={item}
 				cart={cart}
 				onAddToCart={onAddToCart}
 				itemQty={itemQty}
 				setItemQty={setItemQty}
-				countQuantity={countQuantity}
 				handleUpdateFeature={handleUpdateFeature}
 				products={products}
 				lagCorrect={lagCorrect}
 				setLagCorrect={setLagCorrect}
 				renderable={renderable}
 				color={color}
-				setColor={setColor}
 				updateColor={updateColor}
 				feature={feature}
 			/>
@@ -193,4 +144,4 @@ const Fader = ({
 	)
 }
 
-export default Fader
+export default Merch
