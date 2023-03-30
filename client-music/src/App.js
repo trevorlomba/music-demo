@@ -10,8 +10,8 @@ import { ShoppingCartProvider } from './context/shoppingCartContext';
 import ReactHowler from 'react-howler'
 
 import ReactGA from 'react-ga'
-ReactGA.initialize('G-22X1L2K6WV')
-ReactGA.pageview(window.location.pathname + window.location.search)
+// ReactGA.initialize('G-22X1L2K6WV')
+// ReactGA.pageview(window.location.pathname + window.location.search)
 
 
 
@@ -32,7 +32,7 @@ function App() {
 						playing={playing}
 						html5={true}
 						preload={true}
-						format={'m4a'}
+						format={['m4a']}
 						loop={true}
 						volume={vocalVolume}
 					/>

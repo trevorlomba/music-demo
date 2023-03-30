@@ -3,7 +3,7 @@ import { React } from "react";
 const FeaturedLinks = ({song, visibility}) => {
 
 	 const mappedLinks = song.data.featuredLinks.map((link, i) => (
-				<tr
+				<tr key = {i}
 					onClick={() => {
 						window.open(`${link.link}`, '_blank')
 					}}>
