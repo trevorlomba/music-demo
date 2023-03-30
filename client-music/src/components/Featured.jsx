@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createContext } from 'react'
 import './Featured.scss'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import {
 	NavLink,
 	useSearchParams,
@@ -47,139 +47,153 @@ export const Featured = ({
 	vocalVolume,
 	setVocalVolume,
 }) => {
-	let featuredImage = song?.data?.background
-	// let FeaturedImage = React.lazy(() => import('./FeaturedImage'))
-
-	let logoImage = song?.data.logo
-	let logoImage2 = song?.data.logo2
+	// Initialize state variables
 	const [visible, setVisible] = useState(true)
 	const [feature, setFeature] = useState(0)
 	const [cartTotal, setCartTotal] = useState(0)
 	const [lagCorrect, setLagCorrect] = useState(0)
-
-	// console.log(song)
-	let [searchParams, setSearchParams] = useSearchParams()
+	const [searchParams, setSearchParams] = useSearchParams()
 	const [active, setActive] = useState(0)
+	const current = useLocation()
+	const [path, setPath] = useState('/')
+
+		// Navigate to the new path when the state changes
+	const navigate = useNavigate()
+	
+	useEffect(() => {
+			navigate(`/${featureOrder[feature]}`)
+		}, [feature, navigate])
+
+	// Update the path based on some state
+	function handleUpdateFeature(newState) {
+		const newPath = feature >= featureOrder.length - 1 ? 0 : feature + 1
+		setFeature(newPath)
+	}
+
+
+
+	// Get featured image and logo images from song data
+	let featuredImage = song?.data?.background
+	let logoImage = song?.data.logo
+	let logoImage2 = song?.data.logo2
+
+	// Log song data (commented out for production)
+	// console.log(song)
 
 	useEffect(() => {
-		let songTemp = searchParams.get('song')
-		if (songTemp) setSong(searchParams.get('song'))
+		const songId = searchParams.get('song')
+		if (songId !== null) {
+			setSong(songId)
+		}
 	}, [])
 
+	
 	useEffect(() => {
-		song ? setSearchParams({ song: song?.id }) : setSearchParams({ song: 0})
-
-		console.log(song)
+		if (song) {
+			setSearchParams({ song: song.id })
+		} else {
+			setSearchParams({ song: 0 })
+		}
+		// console.log(song)
 	}, [song, feature])
+
+	useEffect(() => {
+		// setFeature(featureOrder.find(feature => feature === current))
+	}, [feature])
 
 
 	const prevSong = (event) => {
-		event?.preventDefault()
-		// console.log(song.id)
-		// console.log(((song.id - 1) % songs.length) - 1)
-		// setSong((song.id - 1) % songs.length-1)
-		if (song.id < 1) {
-			// console.log(song.id)
-			let temp = songs.length - 1
-			console.log(temp)
-			setSong(temp)
-			setSearchParams({ song: temp })
-
-			// setSong(newSong)
-		} else {
-			// setSong((prevState) => prevState - 1)
-			let temp = song?.id
-			// console.log(temp)
-			setSong(temp - 1)
-			setSearchParams({ song: temp })
+		if (event) {
+			event.preventDefault()
 		}
-		// console.log(songs.length)
-		// console.log(song.id)
-		// // console.log(songs.length - song.id)
-		// let temp = song.id-1
-		// console.log(temp)
 
-		// const newSong = ((song.id--) % songs.length)
-		// console.log((songs[song.id % songs.length].id))
-		// console.log(newSong)
-		// setSong(newSong)
+		const prevId = song?.id - 1
+
+		if (prevId < 0) {
+			const lastId = songs.length - 1
+			setSong(lastId)
+			setSearchParams({ song: lastId })
+		} else {
+			setSong(prevId)
+			setSearchParams({ song: prevId })
+		}
 	}
+
 	const nextSong = (event) => {
-		event?.preventDefault()
-
-		// console.log(songs.length)
-		// console.log((song.id + 1) % songs.length)
-		// setSong((prevState) => (prevState) % songs.length)
-
-		// if (song.id === songs.length - 1) {
-		// 	const newSong = 0
-		// 	setSong(newSong)
-		// } else {
-		// 	setSong((prevState) => prevState + 1)
-		// }
-		// 	setSearchParams({ song: song.id })
-
-		if (song?.id === songs.length - 1) {
-			// console.log(song.id)
-			let temp = 0
-			console.log(temp)
-			setSong(temp)
-			setSearchParams({ song: temp })
-			// setSong(newSong)
-		} else {
-			// setSong((prevState) => prevState - 1)
-			let temp = song?.id + 1
-			// console.log(temp)
-			// console.log(temp, song.id, songs.length, song.id === songs.length)
-			setSong(temp)
-			setSearchParams({ song: temp })
-			// console.log(song)
+		if (event) {
+			event.preventDefault()
 		}
-	}
-	const toggleVisible = async () => {
-		setVisible((prevState) => !prevState)
-		// if (!visible) {
-		// 	setFeature(1)
-		// }
-	}
-	const togglePlaying = () => {
-		setPlaying((prevState) => !prevState)
-	}
-	const visibility = visible ? 'visible' : 'invisible'
-	let activeClassName = 'nav-active'
-	const featureOrder = ['merch', 'featured']
-	let next = featureOrder[feature]
-	// let current = featureOrder[feature]
 
-	async function fetchVideo() {
-		const video = await axios.get(song?.video)
-		return video
-	}
+		const nextId = song?.id + 1
 
-	const updateFeature = () => {
-		if (feature >= featureOrder.length - 1) {
-			setFeature(0)
+		if (nextId >= songs.length) {
+			setSong(0)
+			setSearchParams({ song: 0 })
 		} else {
-			const temp = feature
-			setFeature(temp + 1)
+			setSong(nextId)
+			setSearchParams({ song: nextId })
 		}
 	}
 
-	let current = useLocation()
+const toggleVisible = () => {
+	setVisible((prevState) => !prevState)
+}
 
-	const [isVideoLoaded, setIsVideoLoaded] = React.useState(false)
-	// const src = getVideoSrc(window.innerWidth)
-	const onLoadedData = () => {
-		console.log('data loaded')
-		setIsVideoLoaded(true)
-	}
+const togglePlaying = () => {
+	setPlaying((prevState) => !prevState)
+}
 
-	// const history = useHistory()
-	// const location = useLocation()
+const visibility = visible ? 'visible' : 'invisible'
 
-	// const reload = () => {
-	// 	history.push(location.pathname)
-	// }
+const activeClassName = 'nav-active'
+
+const featureOrder = ['featured', 'merch']
+
+let next = featureOrder[feature]
+
+let tempFeat 
+// useEffect(() => {
+
+//  tempFeat = featureOrder.findIndex(name => '/'+name === current.pathname) ? featureOrder.findIndex(name => '/'+name === current.pathname) : 0 
+//  console.log(tempFeat)
+
+// // 	console.log(feature)
+// // 	// console.log(featureOrder.findIndex(name => '/'+name === current.pathname))
+// }, [feature])
+
+// useEffect(() => {
+//  	tempFeat = featureOrder.findIndex((name) => '/' + name === current.pathname)
+// 		? featureOrder.findIndex((name) => '/' + name === current.pathname)
+// 		: 0 
+
+// 	setFeature(tempFeat)
+// 	console.log(feature)
+// 	// console.log(featureOrder.findIndex(name => '/'+name === current.pathname))
+// }, [])
+
+
+async function fetchVideo() {
+	const video = await axios.get(song?.video)
+	return video
+}
+
+const updateFeature = () => {
+	// console.log(feature)
+	// console.log(featureOrder.length - 1)
+	const temp = feature >= featureOrder.length - 1 ? 0 : feature + 1
+	console.log(temp)
+	setFeature(temp)
+	// next = featureOrder[feature]
+	// navigate(feature)
+}
+
+
+const [isVideoLoaded, setIsVideoLoaded] = React.useState(false)
+
+const onLoadedData = () => {
+	setIsVideoLoaded(true)
+}
+
 
 	const CQO = [
 		{
@@ -416,12 +430,9 @@ export const Featured = ({
 
 	// useEffect(() => console.log(products), [products])
 	useEffect(() => {
-				setCartTotal(cart.total_items)
-				console.log(cartTotal)
-			
+		setCartTotal(cart.total_items)
+		// console.log(cartTotal)
 	}, [cart])
-
-
 
 	useEffect(() => {
 		setColor(0)
@@ -437,11 +448,11 @@ export const Featured = ({
 	const { ref: documentRef } = useSwipeable({
 		onSwipedLeft: ({ dir, event }) => {
 			prevSong()
-			console.log('swipedLeft')
+			// console.log('swipedLeft')
 		},
 		onSwipedRight: ({ dir, event }) => {
 			nextSong()
-			console.log('swipedLeft')
+			// console.log('swipedLeft')
 		},
 		preventDefaultTouchmoveEvent: true,
 	})
@@ -449,6 +460,7 @@ export const Featured = ({
 	return (
 		<div>
 			{/* <ProductsList products={products} onAddToCart={handleAddToCart} /> */}
+			{feature}
 			<CartNav
 				cart={cart}
 				onUpdateCartQty={handleUpdateCartQty}
@@ -495,6 +507,7 @@ export const Featured = ({
 					</div>
 					<div className='flex-item flex-item-2'>
 						<Routes>
+							{/* <Redirect to="/featured" /> */}
 							<Route
 								path='/checkout'
 								element={
@@ -613,37 +626,36 @@ export const Featured = ({
 					onLoadedData={onLoadedData}>
 					<source src={song?.video} type='video/mp4' />
 				</video>
+					{current.pathname === '/merch' ? (
 				<NavLink
-					to={next + '?song=' + song?.id}
+					to={'/featured' + '?song=' + song?.id}
 					className={({ isActive }) =>
 						isActive ? activeClassName : undefined
 					}>
-					{current.pathname === '/merch' ? (
 						<IoShirtOutline
-							onClick={updateFeature}
+							onClick={handleUpdateFeature}
 							className={`scroll-prompt scroll-prompt-right ${visibility}`}
-						/>
-					) : next === '/mix' ? (
-						<BsInputCursor
-							onClick={updateFeature}
-							className={`scroll-prompt scroll-prompt-right ${visibility}`}
-						/>
-					) : current === '/featured' ? (
+						/> 
+						</NavLink>
+						) : (
+				<NavLink
+					to={'/merch' + '?song=' + song?.id}
+					className={({ isActive }) =>
+						isActive ? activeClassName : undefined
+					}>
 						<RiLinksFill
-							onClick={updateFeature}
+							onClick={handleUpdateFeature}
 							className={`scroll-prompt scroll-prompt-right ${visibility}`}
-						/>
-					) : (
-						<RiLinksFill
-							onClick={updateFeature}
-							className={`scroll-prompt scroll-prompt-right ${visibility}`}
-						/>
+						/></NavLink>
 					)}
-				</NavLink>
 				<>
 					<NavLink
-						to={featureOrder[feature]}
-						// to={featureOrder[feature] + '?song=' + song.id}
+						// to={
+						// 	featureOrder[feature] + 1
+						// 		? featureOrder[feature]
+						// 		: featureOrder[0]
+						// }
+						to={featureOrder[feature] + '?song=' + song.id}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>
@@ -653,8 +665,8 @@ export const Featured = ({
 						/>
 					</NavLink>
 					<NavLink
-						to={featureOrder[feature]}
-						// to={featureOrder[feature] + '?song=' + song.id}
+						// to={featureOrder[feature]}
+						to={featureOrder[feature] + '?song=' + song.id}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>

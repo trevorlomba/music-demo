@@ -1,8 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
-import {stripHtml} from 'string-strip-html'
 import PropTypes from 'prop-types'
-import CartItem from './CartItem'
-import commerce from '../lib/commerce'
 
 const ProductItem = ({
 	product,
@@ -29,61 +26,60 @@ const ProductItem = ({
 	const renderable = product && product.variant_groups
 	const [productImage, setProductImage] = useState()
 
-	useEffect(() => {
-		result = product ? stripHtml(product.description, item) : ''
-		let temp =
-			cart === null ? cart.line_items.find(({ id }) => id === product.id) : ''
-		variant()
-	}, [])
+	// useEffect(() => {
+	// 	result = product ? stripHtml(product.description, item) : ''
+	// 	let temp =
+	// 		cart === null ? cart.line_items.find(({ id }) => id === product.id) : ''
+	// 	variant()
+	// }, [])
 
-	useEffect(() => {
-		console.log(variantObject)
-		console.log(product)
-		console.log(product?.assets?.find(({ id }) => id === product.variant_groups.find(({ name }) => name === 'Color').options[color].assets[0]).url, [variantObject])})
+	// useEffect(() => {
+	// 	console.log(variantObject)
+	// 	console.log(product)
+	// 	console.log(product?.assets?.find(({ id }) => id === product.variant_groups.find(({ name }) => name === 'Color').options[color].assets[0]).url, [variantObject])})
 
-	useEffect(() => {
-		const temp = {}
-		temp[colorObject.name] = colorObject.variant
-		temp[sizeObject.name] = sizeObject.variant
-		setVariantObject(temp)
-		console.log(colorObject)
-		console.log(sizeObject)
-		console.log(temp)
-	}, [colorObject, sizeObject])
+useEffect(() => {
+	if (renderable && product && product.variant_groups) {
+		const colorTemp = {
+			name:
+				product.variant_groups.find(({ name }) => name === 'Color')?.id || '',
+			variant:
+				product.variant_groups.find(({ name }) => name === 'Color')?.options[
+					color
+				]?.id || '',
+		}
+		setColorObject(colorTemp)
 
-	useEffect(() => {
-		const temp = renderable
-			? {
-					name: product.variant_groups.find(({ name }) => name === 'Color').id,
-					variant: product.variant_groups.find(({ name }) => name === 'Color')
-						.options[color].id,
-			  }
-			: ''
-			
-		setColorObject(temp)
-	}, [color, feature, product])
-		
-	useEffect(() => {
-		const temp = renderable
-			? {
-					name: product.variant_groups.find(({ name }) => name === 'Size').id,
-					variant: product.variant_groups.find(({ name }) => name === 'Size')
-						.options[size].id,
-			  }
-			: ''
-		setSizeObject(temp)
-	}, [size, feature, product])
-
-	const incrementCount = (qty) => {
-		const tempLag = lagCorrect + qty
-		setLagCorrect(tempLag)
+		const sizeTemp = {
+			name:
+				product.variant_groups.find(({ name }) => name === 'Size')?.id || '',
+			variant:
+				product.variant_groups.find(({ name }) => name === 'Size')?.options[
+					size
+				]?.id || '',
+		}
+		setSizeObject(sizeTemp)
+		const tempVariantObject = {}
+		tempVariantObject[colorObject.name] = colorObject?.variant
+		tempVariantObject[sizeObject.name] = sizeObject?.variant
+		setVariantObject(tempVariantObject)
+	} else {
+		console.error('Unable to set variant objects:', { renderable, product })
 	}
-	const incrementTotal = (qty) => {
-		let temp = itemQty + qty
-		setItemQty(temp)
-	}
+}, [color, feature, product, renderable, size])
 
-	const renderCount = () => {
+const incrementLagCorrect = (quantity) => {
+	const newLagCorrect = lagCorrect + quantity
+	setLagCorrect(newLagCorrect)
+}
+
+const incrementItemQty = (quantity) => {
+	const newQty = itemQty + quantity
+	setItemQty(newQty)
+}
+
+
+	const getLineItemCount = () => {
 		return cart.line_items &&
 			cart.line_items.find(
 				({ product_id }) => product_id === products[active].id
@@ -95,22 +91,18 @@ const ProductItem = ({
 	}
 
 	const handleAddToCart = (product, qty) => {
-		console.log(sizeObject)
-		console.log(colorObject)
-		console.log(variantObject)
 		if (qty < 0 && itemQty <= 0) {
 			return null
 		} else {
-			console.log('this it ' + itemQty)
-			incrementCount(qty)
-			incrementTotal(qty)
+			incrementLagCorrect(qty)
+			incrementItemQty(qty)
 			onAddToCart(product, qty, variantObject)
 		}
 	}
 
 	const handleUpdateSize = (e) => {
-		const currentValue = e.target.value
-		updateSize(currentValue)
+		const newSize = e.target.value
+		updateSize(newSize)
 	}
 
 
@@ -146,15 +138,13 @@ const ProductItem = ({
 
 		return (
 			<>
-
 				<div className='color_select'>
-
 					<div className='color_select_label'>
 						<span>Color: </span>
-						{renderable ? 
-							product.variant_groups.find(({ name }) => name === 'Color')
-								.options
-						[color].name : ''}
+						{renderable
+							? product.variant_groups.find(({ name }) => name === 'Color')
+									.options[color].name
+							: ''}
 					</div>
 					{product.variant_groups
 						.find(({ name }) => name === 'Color')
@@ -166,7 +156,8 @@ const ProductItem = ({
 											? 'active-color-button'
 											: 'inactive-color-button'
 									} color-button ${colorOption.name.toLowerCase()}`}
-									onClick={() => updateColor(i)}></button>
+									onClick={() => updateColor(i)}
+									key={i}></button>
 							</>
 						))}
 				</div>
@@ -174,14 +165,6 @@ const ProductItem = ({
 		)
 	}
 
-
-	const variant = () => {
-		if (commerce.products && product && product.id) {
-			commerce.products.getVariants(product.id, {}).then((variants) => {
-				console.log(variants.data)
-			})
-		}
-	}
 
 	return (
 		<>
@@ -221,7 +204,7 @@ const ProductItem = ({
 						</button>
 						<button className='merch-button'>
 							<span>
-								{renderCount() + lagCorrect} in cart
+								{getLineItemCount() + lagCorrect} in cart
 							</span>
 						</button>
 						<button
