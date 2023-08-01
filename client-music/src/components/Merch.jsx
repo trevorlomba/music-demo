@@ -49,7 +49,7 @@ const Merch = ({
 	const [itemQty, setItemQty] = useState(0)
 
 	const countQuantity = () => {
-		console.log(active)
+		// console.log(active)
 		const temp =
 			cart.line_items &&
 			cart.total_unique_items > 0 &&

@@ -1,8 +1,9 @@
 import { React } from "react";
+import { IoShirtOutline } from "react-icons/io5";
 
-const FeaturedLinks = ({song, visibility}) => {
+const FeaturedLinks = ({song, visibility, handleUpdateFeature}) => {
 
-	 const mappedLinks = song.data.featuredLinks.map((link, i) => (
+	 const mappedLinks = !visibility ? '' : song.data.featuredLinks.map((link, i) => (
 				<tr key = {i}
 					onClick={() => {
 						window.open(`${link.link}`, '_blank')
@@ -19,6 +20,14 @@ const FeaturedLinks = ({song, visibility}) => {
 				<div className='flex-item flex-item-links featured-links'>
 					<table className="featured-links-table">
 			<tbody>
+{/* 							
+							<tr
+								onClick={handleUpdateFeature}>
+								<td >
+									<span className='react-icon'><IoShirtOutline/></span>
+									<span className='link-title'>{'Buy Merch'}</span>
+								</td>
+							</tr> */}
 						{mappedLinks}
 						</tbody>
 						</table>

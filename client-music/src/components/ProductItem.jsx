@@ -102,6 +102,9 @@ const incrementItemQty = (quantity) => {
 
 	const handleUpdateSize = (e) => {
 		const newSize = e.target.value
+		// console.log('size')
+		// console.log(size)
+		// console.log(e)
 		updateSize(newSize)
 	}
 
@@ -111,7 +114,7 @@ const incrementItemQty = (quantity) => {
 		return (
 			<>
 				<div>
-					<select
+					{/* <select
 						value={size}
 						name='Choose a Size'
 						onChange={(e) => handleUpdateSize(e)}
@@ -129,7 +132,19 @@ const incrementItemQty = (quantity) => {
 								)
 							})}
 						;
-					</select>
+					</select> */}
+					<div className='button-group' onChange={(e) => handleUpdateSize(e)}>
+						{/* <div className='button-group__title'>Choose a Size</div> */}
+						{product.variant_groups
+							.find(({ name }) => name === 'Size')
+							.options.map((sizeOption, i) => {
+								return (
+									<button value={i} key={i} onClick = {(e) => handleUpdateSize(e)} className={i == size ? 'size__button_active' : 'size__button'}>
+										{sizeOption.name.replace(/[^A-Z]+/g, '')}
+									</button>
+								)
+							})}
+					</div>
 				</div>
 			</>
 		)
@@ -139,13 +154,13 @@ const incrementItemQty = (quantity) => {
 		return (
 			<>
 				<div className='color_select'>
-					<div className='color_select_label'>
+					{/* <div className='color_select_label'>
 						<span>Color: </span>
 						{renderable
 							? product.variant_groups.find(({ name }) => name === 'Color')
 									.options[color].name
 							: ''}
-					</div>
+					</div> */}
 					{product.variant_groups
 						.find(({ name }) => name === 'Color')
 						.options.map((colorOption, i) => (
@@ -170,7 +185,6 @@ const incrementItemQty = (quantity) => {
 		<>
 			{product ? (
 				<div className='product__card'>
-					<h4 className='product__name'>{product.name}</h4>
 					<img
 						className='product__image'
 						src={product?.assets ? 
@@ -183,31 +197,43 @@ const incrementItemQty = (quantity) => {
 						}
 						alt={product.name}
 						onClick={handleUpdateFeature}
-					/>
+						/>
+					<div className="product_details">
+
+					<div >
+						{/* <span onClick={ () => handleUpdateFeature(-1) }><</span> */}
+					</div>
+						<div className='product__name'>{product.name}
+						</div>
+							<p className='product__price'>
+								{product.price.formatted_with_symbol}
+							</p>
+
 					<div className='product__info'>
 						<p className='product__description'>
 							{result}
 						</p>
 						<div className='product__details'>
-							<p className='product__price'>
-								{product.price.formatted_with_symbol}
-							</p>
 						</div>
 					</div>
 					<div>{renderable ? renderColors() : ''}</div>
 					<div>
 						<div>{renderable ? renderSizes() : ''}</div>
-						<button
+						{/* <button
 							onClick={() => handleAddToCart(product.id, -1)}
 							className={'merch-button increment-button increment-left'}>
 							<span>-</span>
-						</button>
+						</button> */}
 						<button className='merch-button'>
 							<span>
-								{getLineItemCount() + lagCorrect} in cart
+								{/* {getLineItemCount() + lagCorrect} in cart */}
+								{/* Add to cart */}
+								SOLD OUT
 							</span>
 						</button>
-						<button
+						</div>
+
+						{/* <button
 							onClick={() => {
 								handleAddToCart(product.id, 1)
 							}}
@@ -215,7 +241,7 @@ const incrementItemQty = (quantity) => {
 								'merch-button increment-button increment-button-right'
 							}>
 							<span>+</span>
-						</button>
+						</button> */}
 					</div>
 				</div>
 			) : (

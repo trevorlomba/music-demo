@@ -181,7 +181,7 @@ const updateFeature = () => {
 	// console.log(feature)
 	// console.log(featureOrder.length - 1)
 	const temp = feature >= featureOrder.length - 1 ? 0 : feature + 1
-	console.log(temp)
+	// console.log(temp)
 	setFeature(temp)
 	// next = featureOrder[feature]
 	// navigate(feature)
@@ -460,7 +460,7 @@ const onLoadedData = () => {
 	return (
 		<div>
 			{/* <ProductsList products={products} onAddToCart={handleAddToCart} /> */}
-			{feature}
+			{/* {feature} */}
 			<CartNav
 				cart={cart}
 				onUpdateCartQty={handleUpdateCartQty}
@@ -545,11 +545,11 @@ const onLoadedData = () => {
 							/> */}
 							<Route
 								path='/'
-								element={<FeaturedLinks song={song} visibility={visibility} />}
+								element={<FeaturedLinks song={song} visibility={visibility} handleUpdateFeature={handleUpdateFeature} />}
 							/>
 							<Route
 								path='/*'
-								element={<FeaturedLinks song={song} visibility={visibility} />}
+								element={<FeaturedLinks song={song} visibility={visibility} handleUpdateFeature={handleUpdateFeature} />}
 							/>
 							<Route
 								path='/merch'

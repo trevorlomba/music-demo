@@ -42,6 +42,7 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 	return (
 		<div className='cart'>
 			<h4 className='cart__heading'>Your Shopping Cart</h4>
+			{cart.total_unique_items ? <div>
 
 			<button className='cart__btn-empty' onClick={handleEmptyCart}>
 				Empty cart
@@ -50,6 +51,7 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 
 				Checkout
 			</Link>
+			</div> : ''}
 			{renderEmptyMessage()}
 			{cart.line_items.map((lineItem) => (
 				<CartItem
@@ -62,9 +64,9 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, products }) => {
 			{renderTotal()}
 			<div className='cart__footer'>
 
-				<Link className='cart__btn-checkout cart__btn-text' to='/checkout'>
+				{/* <Link className='cart__btn-checkout cart__btn-text' to='/checkout'>
 					Checkout
-				</Link>
+				</Link> */}
 			</div>
 		</div>
 	)

@@ -10,7 +10,7 @@ import { AiOutlineApple } from 'react-icons/ai'
 import { IoShirtOutline, IoLogoTiktok } from 'react-icons/io5'
 import { ImSpotify } from 'react-icons/im'
 import { RiSpotifyLine, RiSoundcloudFill } from 'react-icons/ri'
-
+// import { IoShirtOutline } from 'react-icons/io5'
 import hurtYouImage from './assets/hurtYouBackground.jpg'
 import logoImage from './assets/logo.png'
 import logoImage2 from './assets/logo2.png'
