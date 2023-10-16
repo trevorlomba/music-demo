@@ -9,26 +9,36 @@ import { ShoppingCartProvider } from './context/shoppingCartContext';
 // import { Howl, Howler } from 'howler'
 import ReactHowler from 'react-howler'
 
-import ReactGA from 'react-ga'
+import ReactGA, { set } from 'react-ga'
 // ReactGA.initialize('G-22X1L2K6WV')
 // ReactGA.pageview(window.location.pathname + window.location.search)
 
+let params = new URLSearchParams(window.location.search)
 
 
 function App() {
   const [artistName, setArtistName] = useState('yes')
   const [playing, setPlaying] = useState(false)
   const [song, setSong] = useState(0)
+	const [songId, setSongId] = useState(songs?.findIndex(song => params.get('song') === song.data.path || 0))
   const [vocalVolume, setVocalVolume] = useState(1.0)
 
   let activeClassName = 'nav-active'
 
+  useEffect(() => {
+	let params = new URLSearchParams(window.location.search)
+	if (params.has('song')) {
+		setSongId(songs.findIndex(song => params.get('song') === song.data.path))
+		setSong(songs[params.get('song')])
+	}
+  }
+  , [])
   return (
 		// <ShoppingCartProvider>
 			<BrowserRouter basename='/music-demo'>
 				<div className='App'>
 					<ReactHowler
-						src={songs[song]?.data?.songLink}
+						src={songs[songId]?.data?.songLink}
 						playing={playing}
 						html5={true}
 						preload={true}
@@ -38,7 +48,9 @@ function App() {
 					/>
 					<Featured
 						artistName={artistName}
-						song={songs[song]}
+						song={songs[songId]}
+						songId = {songId}
+						setSongId = {setSongId}
 						setSong={setSong}
 						setArtistName={setArtistName}
 						className='title'

@@ -1,0 +1,76 @@
+/* Global styles for the body */
+.body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #00000025;
+  color: #333;
+}
+
+/* Styles for the navigation bar container */
+.navbar-logo-center {
+  background-color: #333; /* Change to your desired background color */
+  color: white; /* Change to your desired text color */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Styles for the logo image */
+.navbar-logo-center img {
+  max-width: 100%; /* Ensure the image fits within the container */
+  height: auto;
+}
+
+/* Styles for the main content container */
+.image-4 {
+  width: 50%; /* Make the image responsive */
+  max-width: 100%;
+  height: auto;
+    display: block;
+    margin-left: 0;
+}
+
+/* Styles for each section */
+.music-section,
+.videos-section,
+.shop-section,
+.bio-section,
+.socials-section {
+  padding: 20px;
+  background-color: white; /* Change to your desired background color */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Add specific styles for each section if needed */
+/* For example, change the font size or colors */
+
+/* Example style for the music section */
+.music-section {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Example style for the videos section */
+.videos-section {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Example style for the shop section */
+.shop-section {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Example style for the bio section */
+.bio-section {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Example style for the socials section */
+.socials-section {
+  font-size: 1.2rem;
+  color: #333;
+}

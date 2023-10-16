@@ -10,6 +10,9 @@ import {
 import { TbPlayerSkipBack, TbPlayerSkipForward } from 'react-icons/tb'
 import merch1 from '../assets/merch.png'
 import merch2 from '../assets/merch2.png'
+import MainSite from './MainSite Components/MainSite'
+
+import MusicComponent from './MainSite Components/MusicComponent'
 
 // import featuredImage from '../assets/background.gif'
 // import logoImage from '../assets/logo.png'
@@ -46,6 +49,8 @@ export const Featured = ({
 	setSong,
 	vocalVolume,
 	setVocalVolume,
+	songId,
+	setSongId
 }) => {
 	// Initialize state variables
 	const [visible, setVisible] = useState(true)
@@ -70,7 +75,10 @@ export const Featured = ({
 		setFeature(newPath)
 	}
 
-
+	function useQuery() {
+		return new URLSearchParams(useLocation().search);
+	}
+	
 
 	// Get featured image and logo images from song data
 	let featuredImage = song?.data?.background
@@ -90,9 +98,9 @@ export const Featured = ({
 	
 	useEffect(() => {
 		if (song) {
-			setSearchParams({ song: song.id })
+			setSearchParams({ song: song.data.path })
 		} else {
-			setSearchParams({ song: 0 })
+			setSearchParams({ song: songs[0].data.path })
 		}
 		// console.log(song)
 	}, [song, feature])
@@ -112,10 +120,12 @@ export const Featured = ({
 		if (prevId < 0) {
 			const lastId = songs.length - 1
 			setSong(lastId)
-			setSearchParams({ song: lastId })
+			setSearchParams({ song: songs[lastId].data.path })
+			setSongId(lastId)
 		} else {
 			setSong(prevId)
-			setSearchParams({ song: prevId })
+			setSearchParams({ song: songs[prevId].data.path })
+			setSongId(prevId)
 		}
 	}
 
@@ -125,15 +135,23 @@ export const Featured = ({
 		}
 
 		const nextId = song?.id + 1
+		console.log('nextId: ' + nextId)
 
 		if (nextId >= songs.length) {
+			console.log('nextId is greater than songs.length')
 			setSong(0)
-			setSearchParams({ song: 0 })
+			setSearchParams({ song: songs[0].data.path })
+			setSongId(0)
 		} else {
+			console.log('nextId is less than songs.length')
 			setSong(nextId)
-			setSearchParams({ song: nextId })
+			console.log(songs[nextId])
+			console.log(song)
+			setSearchParams({ song: songs[nextId].data.path })
+			setSongId (nextId)
 		}
 	}
+
 
 const toggleVisible = () => {
 	setVisible((prevState) => !prevState)
@@ -655,7 +673,7 @@ const onLoadedData = () => {
 						// 		? featureOrder[feature]
 						// 		: featureOrder[0]
 						// }
-						to={featureOrder[feature] + '?song=' + song.id}
+						to={featureOrder[feature] + '?song=' + song?.data.path}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>
@@ -666,7 +684,7 @@ const onLoadedData = () => {
 					</NavLink>
 					<NavLink
 						// to={featureOrder[feature]}
-						to={featureOrder[feature] + '?song=' + song.id}
+						to={featureOrder[feature] + '?song=' + song?.data.path}
 						className={({ isActive }) =>
 							isActive ? activeClassName : undefined
 						}>
@@ -687,6 +705,12 @@ const onLoadedData = () => {
 				{current.pathname} */}
 				</>
 			</CartContext.Provider>
+			<MusicComponent 
+			setSong={setSong}
+			setSongId={setSongId}
+			songId={songId}
+		/>
+
 		</div>
 	)
 }

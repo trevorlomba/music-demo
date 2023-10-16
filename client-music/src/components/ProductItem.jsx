@@ -185,6 +185,9 @@ const incrementItemQty = (quantity) => {
 		<>
 			{product ? (
 				<div className='product__card'>
+					<div className='product__name'>
+						{/* {product.name} */}
+					</div>
 					<img
 						className='product__image'
 						src={product?.assets ? 
@@ -203,11 +206,10 @@ const incrementItemQty = (quantity) => {
 					<div >
 						{/* <span onClick={ () => handleUpdateFeature(-1) }><</span> */}
 					</div>
-						<div className='product__name'>{product.name}
-						</div>
+{/* 						
 							<p className='product__price'>
 								{product.price.formatted_with_symbol}
-							</p>
+							</p> */}
 
 					<div className='product__info'>
 						<p className='product__description'>

@@ -3,7 +3,7 @@ import { IoShirtOutline } from "react-icons/io5";
 
 const FeaturedLinks = ({song, visibility, handleUpdateFeature}) => {
 
-	 const mappedLinks = !visibility ? '' : song.data.featuredLinks.map((link, i) => (
+	 const mappedLinks = !visibility ? '' : song?.data.featuredLinks.map((link, i) => (
 				<tr key = {i}
 					onClick={() => {
 						window.open(`${link.link}`, '_blank')
@@ -16,7 +16,7 @@ const FeaturedLinks = ({song, visibility, handleUpdateFeature}) => {
 		))
 	return (
 			<div className={`scroll-container ${visibility}`}>
-		<div><div className='song-title'>{song.title + ' - ' + song.artist}</div>
+		<div><div className='song-title'>{song?.title + ' - ' + song?.artist}</div>
 				<div className='flex-item flex-item-links featured-links'>
 					<table className="featured-links-table">
 			<tbody>

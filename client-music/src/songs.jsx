@@ -9,7 +9,7 @@ import { TbBrandSpotify } from 'react-icons/tb'
 import { AiOutlineApple } from 'react-icons/ai'
 import { IoShirtOutline, IoLogoTiktok } from 'react-icons/io5'
 import { ImSpotify } from 'react-icons/im'
-import { RiSpotifyLine, RiSoundcloudFill } from 'react-icons/ri'
+import { RiSpotifyLine, RiSoundcloudFill, RiAppleLine } from 'react-icons/ri'
 // import { IoShirtOutline } from 'react-icons/io5'
 import hurtYouImage from './assets/hurtYouBackground.jpg'
 import logoImage from './assets/logo.png'
@@ -17,6 +17,10 @@ import logoImage2 from './assets/logo2.png'
 import saturdayImage from './assets/saturdayBackground.jpg'
 import convoImage from './assets/convoBackground.jpg'
 import alcoholImage from './assets/alcoholBackground.jpg'
+import saturdayArtwork from './assets/saturdayArtwork.jpg'
+import convoArtwork from './assets/convoArtwork.jpg'
+import alcoholArtwork from './assets/alcoholArtwork.jpg'
+import hurtYouArtwork from './assets/hurtYouArtwork.jpg'
 
 import merch1 from './assets/merch.png'
 import merch2 from './assets/merch2.png'
@@ -46,6 +50,8 @@ const songs = [
 			logo2: logoImage,
 			songLink: saturdayLink,
 			vocalLink: '',
+			artwork: saturdayArtwork,
+			path: 'saturday',
 			featuredLinks: [
 				{
 					name: 'Listen on Spotify',
@@ -57,7 +63,7 @@ const songs = [
 					name: 'Listen on Apple Music',
 					tag: 'apple',
 					link: 'https://music.apple.com/us/album/saturday-single/1469468736',
-					img: <RiSpotifyLine />,
+					img: <RiAppleLine />,
 				},
 				{
 					name: 'Listen on SoundCloud',
@@ -100,9 +106,11 @@ const songs = [
 		data: {
 			background: alcoholImage,
 			logo: logoImage,
+			path: 'alcohol',
 			logo2: logoImage,
 			songLink: alcoholLink,
 			vocalLink: '',
+			artwork: alcoholArtwork,
 			featuredLinks: [
 				{
 					name: 'Listen on Spotify',
@@ -160,6 +168,8 @@ const songs = [
 			logo2: logoImage,
 			songLink: hurtYouLink,
 			vocalLink: '',
+			artwork: hurtYouArtwork,
+			path: 'hurt-you',
 			featuredLinks: [
 				{
 					name: 'Listen on Spotify',
@@ -171,7 +181,7 @@ const songs = [
 					name: 'Listen on Apple Music',
 					tag: 'apple',
 					link: 'https://music.apple.com/us/album/hurt-you-single/1449223788',
-					img: <RiSpotifyLine />,
+					img: <RiAppleLine />,
 				},
 				{
 					name: 'Listen on SoundCloud',
@@ -217,6 +227,8 @@ const songs = [
 			logo2: logoImage,
 			songLink: convoLink,
 			vocalLink: '',
+			artwork: convoArtwork,
+			path: 'convo',
 			featuredLinks: [
 				{
 					name: 'Listen on Spotify',
@@ -228,7 +240,7 @@ const songs = [
 					name: 'Listen on Apple Music',
 					tag: 'apple',
 					link: 'https://music.apple.com/us/artist/lxvi/990781367',
-					img: <RiSpotifyLine />,
+					img: <RiAppleLine />,
 				},
 				{
 					name: 'Listen on SoundCloud',

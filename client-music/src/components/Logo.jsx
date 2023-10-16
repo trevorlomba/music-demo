@@ -13,7 +13,7 @@ const Logo = ({
 	const location = useLocation()
 	return (
 		<NavLink
-			to={location + '?song=' + song?.id}
+			to={location + '?song=' + song?.data.path}
 			className={({ isActive }) => (isActive ? activeClassName : undefined)}>
 			<img
 				className={`title ${visibility}`}

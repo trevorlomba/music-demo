@@ -1,0 +1,61 @@
+// MusicComponent.scss
+.musictitle {
+    // Your styles for the music title
+}
+
+.owl-carousel {
+  position: relative; // Make sure this is relative if it's not already
+
+  // These are examples of positioning the buttons. You'll need to adjust as necessary for your design.
+  .owl-nav {
+    position: absolute;
+    top: 50%; // This example positions the buttons halfway down the container.
+    // width: 80%;
+    transform: translateY(-50%); // Adjusts for the height of the buttons themselves, centering them.
+    display: flex;
+    justify-content: space-around;
+
+
+    .owl-prev, .owl-next {
+      position: absolute; // This takes the buttons out of the document flow, allowing them to be positioned more freely.
+    }
+
+    .owl-prev {
+      left: -5px; // For example, this would position the left button 50px to the left of the carousel container.
+    }
+
+    .owl-next {
+      right: -5px; // Similarly, this would position the right button 50px to the right of the container.
+    }
+  }
+}
+
+// ... add other styles as needed
+
+.albumartwork {
+    max-width: 15vw;
+    border-radius: 4%;
+    margin-left: auto;
+    margin-right: auto; 
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: 500ms;
+    transform: scale(1.1);
+  }
+}
+
+    .musicwrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
