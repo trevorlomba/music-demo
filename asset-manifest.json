@@ -1,25 +1,29 @@
 {
   "files": {
-    "main.css": "/music-demo/static/css/main.1262275a.css",
-    "main.js": "/music-demo/static/js/main.fbdd51cf.js",
-    "static/js/716.1aefa5cd.chunk.js": "/music-demo/static/js/716.1aefa5cd.chunk.js",
+    "main.css": "/music-demo/static/css/main.49b78e6b.css",
+    "main.js": "/music-demo/static/js/main.9aa2d001.js",
+    "static/js/716.a3c1ad0e.chunk.js": "/music-demo/static/js/716.a3c1ad0e.chunk.js",
     "static/js/787.3b4c159c.chunk.js": "/music-demo/static/js/787.3b4c159c.chunk.js",
     "static/media/logo.png": "/music-demo/static/media/logo.d0e4c7063038209006b5.png",
     "static/media/merch.png": "/music-demo/static/media/merch.6480a987e7eb44e1a92d.png",
+    "static/media/convoArtwork.jpg": "/music-demo/static/media/convoArtwork.c8a4cabd2c8b9e4d7a27.jpg",
     "static/media/alcoholBackground.jpg": "/music-demo/static/media/alcoholBackground.d88d4242bcda5a8b45b7.jpg",
+    "static/media/saturdayArtwork.jpg": "/music-demo/static/media/saturdayArtwork.fb1563af7e724218981e.jpg",
     "static/media/logo2.png": "/music-demo/static/media/logo2.47adaeefaaf624920877.png",
     "static/media/merch2.png": "/music-demo/static/media/merch2.e4483d87e74c6f878392.png",
+    "static/media/hurtYouArtwork.jpg": "/music-demo/static/media/hurtYouArtwork.1aee88db359ab60082f5.jpg",
     "static/media/convoBackground.jpg": "/music-demo/static/media/convoBackground.a626ea74681932dadea1.jpg",
     "static/media/hurtYouBackground.jpg": "/music-demo/static/media/hurtYouBackground.8642cdc39a40f9256f6b.jpg",
     "static/media/saturdayBackground.jpg": "/music-demo/static/media/saturdayBackground.c066120a475e1767d44a.jpg",
+    "static/media/alcoholArtwork.jpg": "/music-demo/static/media/alcoholArtwork.ddf38744ca3a7631ec21.jpg",
     "index.html": "/music-demo/index.html",
-    "main.1262275a.css.map": "/music-demo/static/css/main.1262275a.css.map",
-    "main.fbdd51cf.js.map": "/music-demo/static/js/main.fbdd51cf.js.map",
-    "716.1aefa5cd.chunk.js.map": "/music-demo/static/js/716.1aefa5cd.chunk.js.map",
+    "main.49b78e6b.css.map": "/music-demo/static/css/main.49b78e6b.css.map",
+    "main.9aa2d001.js.map": "/music-demo/static/js/main.9aa2d001.js.map",
+    "716.a3c1ad0e.chunk.js.map": "/music-demo/static/js/716.a3c1ad0e.chunk.js.map",
     "787.3b4c159c.chunk.js.map": "/music-demo/static/js/787.3b4c159c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1262275a.css",
-    "static/js/main.fbdd51cf.js"
+    "static/css/main.49b78e6b.css",
+    "static/js/main.9aa2d001.js"
   ]
 }
