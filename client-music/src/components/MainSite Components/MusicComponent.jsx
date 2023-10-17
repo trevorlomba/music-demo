@@ -75,7 +75,7 @@ const MusicComponent = (
     const location = useLocation();
     
     return (
-        <div className="" id="">
+        <div className="music-drawer" id="">
             <div className="content">
                 {/* Other content... */}
                 <div className="view-content">
@@ -86,17 +86,22 @@ const MusicComponent = (
                             margin={10}
                             nav={false}
                         >
-                            {musicData.map((item, index) => (
+                        {musicData.map((item, index) => (
+                            index !== songId ? (
                                 <div key={index} className="item">
-                                    <div className="musicwrapper">
-                                        <span
-                                            onClick={() => updateSong(item.path)} rel="noreferrer">
-                                            <img
-                                                className="albumartwork" loading="lazy" src={item.albumArtwork} alt={item.title} />
-                                        </span>
-                                    </div>
+                                    <div className="musicwrapper" onClick={() => updateSong(item.path)}>
+                                        <div className='albumartworkcontainer'>
+                                        <img
+                                                className="albumartwork"
+                                            loading="lazy"
+                                            src={item.albumArtwork}
+                                            alt={item.title}
+                                            style={{ cursor: 'pointer' }}  // indicates the item is clickable
+                                        />
+                                        </div></div>
                                 </div>
-                            ))}
+                            ) : null  // It's better to return 'null' instead of an empty string for components you don't want to render
+                        ))}
                         </OwlCarousel>
                     
                 </div>

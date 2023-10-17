@@ -1,10 +1,42 @@
 // MusicComponent.scss
+
+.music-drawer {
+       &::after {
+        content: '';
+        position: absolute;
+        top: -10vh; /* Adjust positioning as necessary. */
+        left: 0;
+        right: 0;
+        bottom: 0; /* Extends to the full dimensions of the parent. */
+        background-color: aliceblue;
+        z-index: -1; /* Puts the pseudo-element behind the content of .music-drawer. */
+        opacity: 0;
+    }
+        
+  position: fixed;
+  bottom: -24vh; /* This is the part that initially hides the component off-screen. */
+  left: 0;
+  width: 100%;
+  height: 25vh;
+  background: #333333a0;
+  color: white;
+  transition: bottom 0.5s ease-in-out; /* Makes the movement smooth */
+  z-index: 1000; /* Ensures the drawer is above other elements */
+  transition: 500ms;
+  opacity: 50%;
+}
+
+.music-drawer:hover {
+  bottom: -15vh; /* This is what brings the component into view when hovered over. */
+//   background: #0000004d;
+  transition: 500ms;
+  opacity: 100%;
+}
 .musictitle {
     // Your styles for the music title
 }
 
 .owl-carousel {
-  position: relative; // Make sure this is relative if it's not already
 
   // These are examples of positioning the buttons. You'll need to adjust as necessary for your design.
   .owl-nav {
@@ -32,17 +64,67 @@
 
 // ... add other styles as needed
 
+.albumartworkcontainer {
+       &::after {
+    content: '';
+    position: absolute;
+    background-color: aliceblue;
+    top: -10%; // These values extend the area outside the image. Adjust as needed.
+    right: -10%;
+    bottom: -50%;
+    left: -10%;
+    opacity: 0 ;
+    z-index: 1000; // Places the pseudo-element below the actual image content.
+  }
+     filter: grayscale(20%);
+
+
+
+    &:hover {
+        >* {
+            margin-top: -10vh;
+             transform: scale(1.1);
+             opacity: 100%; 
+            
+        }
+        cursor: pointer;
+    }
+}
+
 .albumartwork {
+    // max-width: 15vw;
+    position: relative;
+    // make sure each image is a square and doesn't go off the screen
     max-width: 15vw;
+    max-height: 15vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin-top: 3vh;
+    // margin: 5vh;
     border-radius: 4%;
     margin-left: auto;
     margin-right: auto; 
+   position: relative; // Ensure this is positioned
+  z-index: 10; // Set to a number high enough to be on top of other items, adjust accordingly
+  // ... other styles
+  transition: 500ms;
+  
+    // Your styles for the image
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
+    
+
   &:hover {
-    box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.4);
+    &image {box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.4);}
     cursor: pointer;
     transition: 500ms;
-    transform: scale(1.1);
+    
+    // transform: scale(1.1);
+    // move the image up a bit
+             opacity: 100%; 
+
+    z-index: 1001; // Set to a number high enough to be on top of other items, adjust accordingly
+  // ... other styles
   }
 }
 
@@ -50,12 +132,18 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    // margin-top: 5%;
+    // margin-bottom: 5%;
 }
 
 .content {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.owl-carousel .owl-stage-outer {
+	position: relative;
+	overflow:visible;
+	-webkit-transform: translate3d(0px, 0px, 0px);
 }
