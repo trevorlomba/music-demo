@@ -7,6 +7,9 @@ const Navbar = () => {
         <nav className="navbar">
             <ul className="navbar-nav">
                 <li className="nav-item">
+                    <a href="#about" className="nav-link">About</a>
+                </li>
+                <li className="nav-item">
                     <a href="#music" className="nav-link">Music</a>
                 </li>
                 <li className="nav-item">
@@ -14,9 +17,6 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                     <a href="#shop" className="nav-link">Shop</a>
-                </li>
-                <li className="nav-item">
-                    <a href="#bio" className="nav-link">Bio</a>
                 </li>
                 <li className="nav-item">
                     <a href="#socials" className="nav-link">Socials</a>

@@ -1,0 +1,114 @@
+// MusicComponent.scss
+
+.music-inline {
+  &::after {
+    content: '';
+    
+    background-color: aliceblue;
+    z-index: -1; 
+    opacity: 0;
+  }
+  width: 80%;
+  height: 25vh;
+  background: #333333a0;
+  color: white;
+  transition: bottom 0.5s ease-in-out, opacity 500ms; 
+  z-index: 1000; 
+  // opacity: 50%;
+}
+
+.music-inline:hover {
+  // bottom: -15vh; 
+  opacity: 100%;
+}
+
+.musictitle {
+  // Your styles for the music title
+}
+
+.owl-carousel {
+//   .owl-nav {
+//     position: relative;
+//     top: 50%; 
+//     transform: translateY(-50%); 
+//     display: flex;
+//     justify-content: space-around;
+
+//     .owl-prev, .owl-next {
+//       left: auto; 
+//       right: auto; 
+//     }
+
+//     .owl-prev {
+//       left: -5px; 
+//     }
+
+//     .owl-next {
+//       right: -5px; 
+//     }
+//   }
+// }
+
+// .albumartworkcontainerinline {
+//   &::after {
+//     content: '';
+//     position: relative;
+//     background-color: aliceblue;
+//     top: -10%; 
+//     right: -10%;
+//     bottom: -50%;
+//     left: -10%;
+//     opacity: 0;
+//     z-index: 1; 
+//   }
+//   filter: grayscale(20%);
+
+  &:hover {
+    >* {
+      // margin-top: -1vh;
+      transform: scale(1.1);
+      opacity: 100%; 
+    }
+    cursor: pointer;
+  }
+}
+
+.albumartworkinline {
+  position: relative; 
+  max-width: 10vw;
+  max-height: 15vw;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin-top: 3vh;
+  border-radius: 4%;
+  margin-left: auto;
+  margin-right: auto; 
+  z-index: 10; 
+  transition: 500ms;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+    opacity: 100%; 
+    z-index: 1001; 
+  }
+}
+
+.musicwrapperinline {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.content {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: visible;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}

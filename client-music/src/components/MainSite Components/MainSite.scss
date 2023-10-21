@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&display=swap');
+
 /* Global styles for the body */
 .body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #00000025;
-  color: #333;
+  background-color: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
 }
 
 /* Styles for the navigation bar container */
 .navbar-logo-center {
   background-color: #333; /* Change to your desired background color */
   color: white; /* Change to your desired text color */
-  padding: 20px;
   text-align: center;
 }
 
@@ -26,8 +28,8 @@
   width: 50%; /* Make the image responsive */
   max-width: 100%;
   height: auto;
-    display: block;
-    margin-left: 0;
+  display: block;
+  margin-left: 0;
 }
 
 /* Styles for each section */
@@ -36,41 +38,181 @@
 .shop-section,
 .bio-section,
 .socials-section {
-  padding: 20px;
-  background-color: white; /* Change to your desired background color */
-  margin-bottom: 20px;
+  // padding: 20px;
+  background-color: rgb(255, 255, 255); /* Change to your desired background color */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  text-align: center; /* Center the content */
 }
 
-/* Add specific styles for each section if needed */
-/* For example, change the font size or colors */
-
-/* Example style for the music section */
+/* Example styles for each section */
 .music-section {
   font-size: 1.2rem;
-  color: #333;
+  color: #d7d7d7;
 }
-
-/* Example style for the videos section */
-.videos-section {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* Example style for the shop section */
-.shop-section {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* Example style for the bio section */
-.bio-section {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* Example style for the socials section */
+.videos-section,
+.shop-section,
+.bio-section,
 .socials-section {
   font-size: 1.2rem;
   color: #333;
+}
+
+.bio-text,
+.bio-title {
+  // color: white;
+}
+
+.bio-img {
+  height: 50vh;
+  width: auto;
+  padding: 5vh;
+}
+
+.music-container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+
+  .artwork-container {
+    flex: .5;
+  }
+
+  .album-art {
+    flex: 1;
+    max-width: 80%;
+    margin-left: 20%;
+
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.4); /* Add a drop shadow to the bottom right */
+
+    
+  }
+
+  .info-container {
+    flex: 1;
+    // max-width: 80%;
+    padding-right: 0%;
+    
+
+   .main-header {
+  font-size: calc(3vh + 3vw);
+  margin-bottom: 10px;
+  font-family: 'Fira Sans', sans-serif; 
+  font-weight: 600;  /* Semibold weight for Fira Sans is typically 600 */
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); /* Add a drop shadow to the bottom right */
+
+}
+
+.sub-header {
+   font-size: calc(1.5vh + 1.5vw);
+   margin-top: (-1.5vh);
+
+  margin-bottom: 3vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;  /* Regular weight is typically 400 */
+       text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); /* Add a drop shadow to the bottom right */
+
+
+}
+
+    .icon-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;  // Horizontally center the content
+      align-items: center;      // Vertically center the content (if there's a height set to the container)
+
+      img {
+        max-width: 40px;
+      }
+    }
+  }
+}
+
+.icon {
+   font-size: calc(2vh + 2vw);
+  line-height:180%;
+  height: 100%; /* Ensure equal height for a perfect circle */
+  border-radius: 50%;
+  background-size: cover;  /* To ensure image covers the entire space */
+  background-repeat: no-repeat;
+  background-position: center;  /* Center the background image */
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.icon-container {
+  background-color: black;
+  border-radius: 50%;  /* Set to 50% to create a perfect circle */
+  width: calc(3vh + 3vw);
+  height: calc(3vh + 3vw); /* Ensure equal height for a perfect circle */
+  display: flex;  /* Use flexbox to center child elements */
+  align-items: center;  /* Center child vertically */
+  justify-content: center;  /* Center child horizontally */
+  box-shadow:0 0 10px 3px rgba(208, 208, 208, 0.323); /* Add a white glow effect */
+
+  
+  &:hover {
+    // cursor: pointer;
+    transform: scale(1.1);
+    transition: 500ms;
+    box-shadow: 0 0 10px 3px rgba(208, 208, 208, 0.782);
+  }
+
+}
+
+.music-container {
+                    
+  background-size: cover;
+  background-position: center;
+  width: 101vw;
+  // margin: 1vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.owl-carousel.owl-loaded {
+	display: block;
+  width: 101vw;
+}
+
+.owl-item.cloned {
+  width: 100vw
+}
+
+.inline-owl{
+	overflow: hidden;
+  cursor:grab;
+  
+  :active {
+    cursor: grabbing
+  }
+
+}
+
+.owl-carousel .owl-nav .owl-next {
+	/* left: 5px; */
+	font-size: 50px;
+	position: absolute;
+	right: -98vw!important;
+}
+.owl-carousel .owl-nav .owl-prev {
+	/* left: 5px; */
+	font-size: 50px;
+	position: absolute;
+  left: 2vw!important;
+}
+
+.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next, .owl-carousel button.owl-dot {
+	color: inherit;
+	font: inherit;
+	font-size: 5vw!important;
+         text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4); /* Add a drop shadow to the bottom right */
+
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover {
+	background: #2e3c3700!important; 
+	color: #fff;
+	text-decoration: none;
 }

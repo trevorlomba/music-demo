@@ -10,7 +10,15 @@ body {
    ::-webkit-scrollbar {
     width: 0; // Making it effectively invisible
     background: transparent; // Optional: Just in case there's a background, making it fully transparent
-}
+     /* Make the overflow not visible */
+  overflow-y: auto;
+  
+  /* Create a padding space to push the scrollbar out of view */
+  padding-right: 15px; /* Adjust (increase) this value if the scrollbar takes more space */
+  
+  /* Use a container to clip the padded area (scrollbar hiding zone) */
+  margin-right: -15px; /* Same value as padding-right */
+  }
 }
 
 code {

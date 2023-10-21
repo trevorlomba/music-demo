@@ -4,6 +4,13 @@ import Fader from './components/Fader'
 import FeaturedLinks from './components/FeaturedLinks'
 import Merch from './components/Merch'
 
+import hurtYouBanner from '../src/assets/hurtyoubanner.jpg'
+import saturdayBanner from '../src/assets/saturdaybanner.jpg'
+import convoBanner from '../src/assets/convobanner.jpg'
+import alcoholBanner from '../src/assets/alcoholbanner.jpg'
+
+
+
 import { TiSocialInstagram } from 'react-icons/ti'
 import { TbBrandSpotify } from 'react-icons/tb'
 import { AiOutlineApple } from 'react-icons/ai'
@@ -36,6 +43,8 @@ const alcoholVideo = 'https://storage.googleapis.com/music-microsite-visuals/sec
 const saturdayVideo = 'https://storage.googleapis.com/music-microsite-visuals/satMar23(1).mp4'
 const convoVideo ='https://storage.googleapis.com/music-microsite-visuals/convoMar23(1).mp4'
 
+
+
 const songs = [
 	{
 		id: 0,
@@ -50,6 +59,7 @@ const songs = [
 			logo2: logoImage,
 			songLink: saturdayLink,
 			vocalLink: '',
+			banner: saturdayBanner,
 			artwork: saturdayArtwork,
 			path: 'saturday',
 			featuredLinks: [
@@ -105,6 +115,7 @@ const songs = [
 		elements: [<FeaturedLinks />, <Fader />],
 		data: {
 			background: alcoholImage,
+			banner: alcoholBanner,
 			logo: logoImage,
 			path: 'alcohol',
 			logo2: logoImage,
@@ -169,6 +180,7 @@ const songs = [
 			songLink: hurtYouLink,
 			vocalLink: '',
 			artwork: hurtYouArtwork,
+			banner: hurtYouBanner,
 			path: 'hurt-you',
 			featuredLinks: [
 				{
@@ -228,6 +240,7 @@ const songs = [
 			songLink: convoLink,
 			vocalLink: '',
 			artwork: convoArtwork,
+			banner: convoBanner,
 			path: 'convo',
 			featuredLinks: [
 				{

@@ -10,6 +10,7 @@ import { ShoppingCartProvider } from './context/shoppingCartContext';
 import ReactHowler from 'react-howler'
 
 import ReactGA, { set } from 'react-ga'
+import MainSite from './components/MainSite Components/MainSite';
 // ReactGA.initialize('G-22X1L2K6WV')
 // ReactGA.pageview(window.location.pathname + window.location.search)
 
@@ -59,6 +60,7 @@ function App() {
 						vocalVolume={vocalVolume}
 						setVocalVolume={setVocalVolume}
 					/>
+					<MainSite />	
 					{/* <div className='volume'>
 				<label>
 					Volume:

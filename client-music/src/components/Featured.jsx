@@ -12,7 +12,7 @@ import merch1 from '../assets/merch.png'
 import merch2 from '../assets/merch2.png'
 import MainSite from './MainSite Components/MainSite'
 
-import MusicComponent from './MainSite Components/MusicComponent'
+import MusicComponent from '../components/MusicComponent'
 
 // import featuredImage from '../assets/background.gif'
 // import logoImage from '../assets/logo.png'
