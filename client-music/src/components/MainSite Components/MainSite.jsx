@@ -6,7 +6,7 @@ import Bio from "./Bio";
 import banner from '../../assets/hurtyoubanner.jpg'
 import songs from "../../songs";
 
-function MainSite() {
+function MainSite({songId, song}) {
 
     return (
         <div className="body template-index">
@@ -20,7 +20,10 @@ function MainSite() {
                 {/* <Bio />  */}
             </div>
             <div id="music" className="music-section">
-                <MusicInline />
+                <MusicInline 
+                    songId={songId}
+                    song={song}
+                />
 
                 
 

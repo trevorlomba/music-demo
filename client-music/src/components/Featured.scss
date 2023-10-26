@@ -1,9 +1,49 @@
+
 $tiktok: #00f2ea;
 $instagram: #7385e2;
 $spotify: #3bd671;
 $apple: #f6636d;
 $soundcloud: #f26f23;
 $merch: #a6a9af;
+
+.tiktok:hover>span {
+    transition: 300ms;
+    color: $tiktok;
+}
+
+.instagram:hover>span {
+    transition: 300ms;
+    color: $instagram;
+}
+
+.spotify:hover>span {
+    transition: 300ms;
+    color: $spotify;
+}
+
+.apple:hover>span {
+    transition: 300ms;
+    color: $apple;
+}
+
+.soundcloud:hover>span {
+    transition: 300ms;
+    color: $soundcloud;
+}
+
+.merch {
+    &:hover>span {
+        // transition: 300ms;
+        color: $merch;
+    }
+
+    >* {
+        /* min-width: 30vw; */
+    }
+
+    // max-height: 50vh;
+}
+
 
 .flex-container {
     display: flex;
@@ -70,6 +110,7 @@ $merch: #a6a9af;
 }
 
 .title {
+    position:fixed;
     /* height: auto; */
     /* max-height: 100vh; */
     /* width: auto; */
@@ -80,6 +121,7 @@ $merch: #a6a9af;
     /* top: 2vw; */
     /* min-width: 10vw; */
     width: 15vw;
+    max-width: 150px;
     // min-width: 15vw;
     margin-top: 10vh;
     margin-left: 5vw;
@@ -234,6 +276,8 @@ $merch: #a6a9af;
     display: block;
     color: rgb(255, 255, 255);
     text-align: center;
+    // add a drop shadow
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
     /* left: calc(50vw); */
     /* margin: auto; */
@@ -305,43 +349,6 @@ flex-item-5 {
     /* font-weight: 110%; */
 }
 
-.tiktok:hover>span {
-    transition: 300ms;
-    color: $tiktok;
-}
-
-.instagram:hover>span {
-    transition: 300ms;
-    color: $instagram;
-}
-
-.spotify:hover>span {
-    transition: 300ms;
-    color: $spotify;
-}
-
-.apple:hover>span {
-    transition: 300ms;
-    color: $apple;
-}
-
-.soundcloud:hover>span {
-    transition: 300ms;
-    color: $soundcloud;
-}
-
-.merch {
-    &:hover>span {
-        // transition: 300ms;
-        color: $merch;
-    }
-
-    >* {
-        /* min-width: 30vw; */
-    }
-
-    // max-height: 50vh;
-}
 
 .merch-image {
     width: 70vw;
@@ -442,6 +449,7 @@ flex-item-5 {
 }
 
 .playButton {
+    position: fixed;
     /* height: auto; */
     /* max-height: 100vh; */
     /* width: auto; */

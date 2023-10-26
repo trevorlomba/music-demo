@@ -1,5 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&display=swap');
 
+
+$tiktok: #00f2ea;
+$instagram: #7385e2;
+$spotify: #3bd671;
+$apple: #f6636d;
+$soundcloud: #f26f23;
+$merch: #a6a9af;
+
+.tiktok:hover>* {
+    transition: 300ms;
+    color: $tiktok!important;
+}
+
+.instagram:hover>* {
+    transition: 300ms;
+    color: $instagram;
+}
+
+.spotify:hover>* {
+    transition: 300ms;
+    color: $spotify;
+}
+
+.apple:hover>* {
+    transition: 300ms;
+    color: $apple;
+}
+
+.soundcloud:hover>* {
+    transition: 300ms;
+    color: $soundcloud;
+}
+
+.merch {
+    &:hover>span {
+        // transition: 300ms;
+        color: $merch;
+    }
+
+    >* {
+        /* min-width: 30vw; */
+    }
+
+    // max-height: 50vh;
+}
+
+
 /* Global styles for the body */
 .body {
   font-family: Arial, sans-serif;
@@ -153,7 +200,7 @@
 
   
   &:hover {
-    // cursor: pointer;
+    cursor: pointer;
     transform: scale(1.1);
     transition: 500ms;
     box-shadow: 0 0 10px 3px rgba(208, 208, 208, 0.782);

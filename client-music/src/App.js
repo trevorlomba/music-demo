@@ -31,22 +31,28 @@ function App() {
 	if (params.has('song')) {
 		setSongId(songs.findIndex(song => params.get('song') === song.data.path))
 		setSong(songs[params.get('song')])
+		console.log(currentSongSrc)
+	} else {
+		setSongId(0)
+		setSong(songs[0])
 	}
   }
   , [])
+
+  const currentSongSrc = songs[songId]?.data?.songLink
   return (
 		// <ShoppingCartProvider>
 			<BrowserRouter basename='/music-demo'>
 				<div className='App'>
-					<ReactHowler
-						src={songs[songId]?.data?.songLink}
+					{currentSongSrc ? <ReactHowler
+						src={currentSongSrc}
 						playing={playing}
 						html5={true}
 						preload={true}
 						format={['m4a']}
 						loop={true}
 						volume={vocalVolume}
-					/>
+					/> : null}
 					<Featured
 						artistName={artistName}
 						song={songs[songId]}
@@ -60,7 +66,10 @@ function App() {
 						vocalVolume={vocalVolume}
 						setVocalVolume={setVocalVolume}
 					/>
-					<MainSite />	
+					<MainSite 
+				  songId={songId}
+				  song={songs[songId]}
+					/>
 					{/* <div className='volume'>
 				<label>
 					Volume:
