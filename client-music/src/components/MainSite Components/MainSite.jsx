@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useRef, useEffect} from "react";
 import "./MainSite.scss";
 import Navbar from "./Navbar";
 import MusicInline from "./MusicInline"
@@ -8,8 +8,11 @@ import songs from "../../songs";
 
 function MainSite({songId, song}) {
 
+
+    
+
     return (
-        <div className="body template-index">
+        <div  className="body template-index page-section">
 
             <div className="navbar-logo-center">
                 {/* <Navbar /> */}
@@ -19,7 +22,7 @@ function MainSite({songId, song}) {
             <div id="about" className="bio-section">
                 {/* <Bio />  */}
             </div>
-            <div id="music" className="music-section">
+            <div id="music" className="music-section ">
                 <MusicInline 
                     songId={songId}
                     song={song}

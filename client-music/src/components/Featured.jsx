@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from 'react'
+import React, { useEffect, useState, createContext, useRef } from 'react'
 import './Featured.scss'
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import {
@@ -11,6 +11,8 @@ import { TbPlayerSkipBack, TbPlayerSkipForward } from 'react-icons/tb'
 import merch1 from '../assets/merch.png'
 import merch2 from '../assets/merch2.png'
 import MainSite from './MainSite Components/MainSite'
+import _ from 'lodash';  // Import lodash for the throttle function
+
 
 import MusicComponent from '../components/MusicComponent'
 
@@ -50,10 +52,10 @@ export const Featured = ({
 	vocalVolume,
 	setVocalVolume,
 	songId,
-	setSongId
+	setSongId,
+	visible, setVisible
 }) => {
 	// Initialize state variables
-	const [visible, setVisible] = useState(true)
 	const [feature, setFeature] = useState(0)
 	const [cartTotal, setCartTotal] = useState(0)
 	const [lagCorrect, setLagCorrect] = useState(0)
@@ -152,10 +154,43 @@ export const Featured = ({
 		}
 	}
 
+	
+	const domRef = useRef();
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(entries => {
+			// In the case of a single target, you can find the entry in the array
+			if (entries[0].isIntersecting) {
+				// Set the state to indicate visibility
+				setVisible(false);
+			} else {
+				setVisible(true);
+			}
+		}, {
+			// Options: this threshold defines at what percentage of the target's visibility the observer's callback should be executed
+			threshold: 0.1  // 50% of the target is visible
+		});
+
+		// You have to set the element to observe
+		if (domRef.current) {
+			observer.observe(domRef.current);
+		}
+
+		// Cleanup: stop observing on component unmount
+		return () => {
+			if (domRef.current) {
+				observer.unobserve(domRef.current);
+			}
+		};
+	}, []); 
+
 
 const toggleVisible = () => {
 	setVisible((prevState) => !prevState)
 }
+
+	
+
 
 const togglePlaying = () => {
 	setPlaying((prevState) => !prevState)
@@ -563,11 +598,39 @@ const onLoadedData = () => {
 							/> */}
 							<Route
 								path='/'
-								element={<FeaturedLinks song={song} visibility={visibility} handleUpdateFeature={handleUpdateFeature} />}
+								element={<FeaturedLinks
+										song={song}
+										visibility={visibility}
+										setSearchParams={setSearchParams}
+									/>}
 							/>
 							<Route
 								path='/*'
-								element={<FeaturedLinks song={song} visibility={visibility} handleUpdateFeature={handleUpdateFeature} />}
+								className={'page-section'}
+								element={<Merch
+									visibility={visibility}
+									cartQtyObj={cartQtyObj}
+									setCartTotal={setCartTotal}
+									active={active}
+									setActive={setActive}
+									size={size}
+									image={image}
+									updateSize={updateSize}
+									incrementQuantity={incrementQuantity}
+									decrementQuantity={decrementQuantity}
+									products={products}
+									cart={cart}
+									handleUpdateCartQty={handleUpdateCartQty}
+									onAddToCart={handleAddToCart}
+									cartTotal={cartTotal}
+									lagCorrect={lagCorrect}
+									setLagCorrect={setLagCorrect}
+									color={color}
+									setColor={setColor}
+									updateColor={updateColor}
+									feature={feature}
+								/>}
+								// element={<FeaturedLinks song={song} visibility={visibility} handleUpdateFeature={handleUpdateFeature} />}
 							/>
 							<Route
 								path='/merch'
@@ -644,7 +707,7 @@ const onLoadedData = () => {
 					onLoadedData={onLoadedData}>
 					<source src={song?.video} type='video/mp4' />
 				</video>
-					{current.pathname === '/merch' ? (
+					{/* {current.pathname === '/merch' ? (
 				<NavLink
 					to={'/featured' + '?song=' + song?.id}
 					className={({ isActive }) =>
@@ -665,7 +728,7 @@ const onLoadedData = () => {
 							onClick={handleUpdateFeature}
 							className={`scroll-prompt scroll-prompt-right ${visibility}`}
 						/></NavLink>
-					)}
+					)} */}
 				<>
 					<NavLink
 						// to={
@@ -705,10 +768,40 @@ const onLoadedData = () => {
 				{current.pathname} */}
 				</>
 			</CartContext.Provider>
+			<div className="mainsite__container" ref={domRef} style={{ backgroundImage: `url(${song?.data.banner})` }}><MainSite className={'page-section'}
+				songId={songId}
+				song={songs[songId]}
+			/>
+			<Merch
+					className={'page-section'}
+				visibility={visibility}
+				cartQtyObj={cartQtyObj}
+				setCartTotal={setCartTotal}
+				active={active}
+				setActive={setActive}
+				size={size}
+				image={image}
+				updateSize={updateSize}
+				incrementQuantity={incrementQuantity}
+				decrementQuantity={decrementQuantity}
+				products={products}
+				cart={cart}
+				handleUpdateCartQty={handleUpdateCartQty}
+				onAddToCart={handleAddToCart}
+				cartTotal={cartTotal}
+				lagCorrect={lagCorrect}
+				setLagCorrect={setLagCorrect}
+				color={color}
+				setColor={setColor}
+				updateColor={updateColor}
+				feature={feature}
+				/></div>
+			
 			<MusicComponent 
 			setSong={setSong}
 			setSongId={setSongId}
 			songId={songId}
+			visible={visible}
 		/>
 
 		</div>

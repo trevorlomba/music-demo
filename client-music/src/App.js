@@ -8,6 +8,7 @@ import { ShoppingCartProvider } from './context/shoppingCartContext';
 
 // import { Howl, Howler } from 'howler'
 import ReactHowler from 'react-howler'
+import _ from 'lodash'  // Import lodash
 
 import ReactGA, { set } from 'react-ga'
 import MainSite from './components/MainSite Components/MainSite';
@@ -23,6 +24,7 @@ function App() {
   const [song, setSong] = useState(0)
 	const [songId, setSongId] = useState(songs?.findIndex(song => params.get('song') === song.data.path || 0))
   const [vocalVolume, setVocalVolume] = useState(1.0)
+  const [visible, setVisible] = useState(true)
 
   let activeClassName = 'nav-active'
 
@@ -39,11 +41,32 @@ function App() {
   }
   , [])
 
+	useEffect(() => {
+		const handleScroll = _.throttle(() => {  // Throttled function
+			console.log('Scroll event fired!');  // Debugging line
+			console.log('Current scroll position:', window.scrollY);  // Debugging line
+			console.log('Window innerHeight:', window.innerHeight);  // Debugging line
+
+			if (window.scrollY > window.innerHeight) {
+				console.log('Setting visible to false');  // Debugging line
+				setVisible(false);
+			} else {
+				console.log('Setting visible to true');  // Debugging line
+				setVisible(true);
+			}
+		}, 200);  // Throttle timeout
+
+		window.addEventListener('scroll', handleScroll);
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);  // Notice, we're not using any external values, so it's okay not to have dependencies
+
   const currentSongSrc = songs[songId]?.data?.songLink
   return (
 		// <ShoppingCartProvider>
 			<BrowserRouter basename='/music-demo'>
 				<div className='App'>
+
 					{currentSongSrc ? <ReactHowler
 						src={currentSongSrc}
 						playing={playing}
@@ -53,7 +76,8 @@ function App() {
 						loop={true}
 						volume={vocalVolume}
 					/> : null}
-					<Featured
+			  <div className="page-section">
+						<Featured
 						artistName={artistName}
 						song={songs[songId]}
 						songId = {songId}
@@ -65,11 +89,11 @@ function App() {
 						setPlaying={setPlaying}
 						vocalVolume={vocalVolume}
 						setVocalVolume={setVocalVolume}
-					/>
-					<MainSite 
-				  songId={songId}
-				  song={songs[songId]}
-					/>
+						visible={visible}
+						setVisible={setVisible}
+						/>
+						</div>
+					
 					{/* <div className='volume'>
 				<label>
 					Volume:

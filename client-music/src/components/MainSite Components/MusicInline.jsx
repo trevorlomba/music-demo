@@ -63,7 +63,7 @@ const MusicInline = ({songId, song}) => {
         // </OwlCarousel>
         // </div>
 
-        <div className="music-container" style={{ backgroundImage: `url(${song.data.banner})` }}>
+        <div className="music-container">
             <div className="artwork-container">
                 <img className="album-art" src={song.data.artwork} alt={`${song.title} Album Artwork`} />
             </div>

@@ -11,13 +11,14 @@ const ProductItem = ({
 	cart,
 	itemQty,
 	setItemQty,
-	handleUpdateFeature,
+	// handleUpdateFeature,
 	products,
 	lagCorrect,
 	setLagCorrect,
 	color,
 	updateColor,
-	feature
+	feature, 
+	LoadingImage
 }) => {
 	let { result } = ''
 	const [colorObject, setColorObject] = useState({})
@@ -188,7 +189,12 @@ const incrementItemQty = (quantity) => {
 					<div className='product__name'>
 						{/* {product.name} */}
 					</div>
-					<img
+					{product?.assets?.find(
+							({ id }) =>
+								id ===
+								product.variant_groups.find(({ name }) => name === 'Color')
+									.options[color].assets[0]
+						).url ? <img
 						className='product__image'
 						src={product?.assets ? 
 							product?.assets?.find(
@@ -199,8 +205,7 @@ const incrementItemQty = (quantity) => {
 							).url : ''
 						}
 						alt={product.name}
-						onClick={handleUpdateFeature}
-						/>
+					/> : <div className='product__image_holder'>Loading...</div>}
 					<div className="product_details">
 
 					<div >

@@ -32,6 +32,18 @@
   transition: 500ms;
   opacity: 100%;
 }
+.music-drawer.visible:hover {
+  bottom: -15vh; /* This is what brings the component into view when hovered over. */
+//   background: #0000004d;
+  transition: 500ms;
+  opacity: 100%;
+}
+.music-drawer.visible {
+  bottom: -20vh; /* This is what brings the component into view when hovered over. */
+//   background: #0000004d;
+  transition: 500ms;
+  opacity: 50%;
+}
 .musictitle {
     // Your styles for the music title
 }

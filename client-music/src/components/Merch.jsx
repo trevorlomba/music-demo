@@ -32,7 +32,7 @@ const Merch = ({
 }) => {
 
 	const [currentMerch, setCurrentMerch] = useState(cartQtyObj[0])
-	const { total, setTotal } = useContext(CartContext)
+	// const {total, setTotal } = useContext(CartContext)
 	
 	const [activeProduct, setActiveProduct] = useState(products[active])
 	
@@ -111,6 +111,7 @@ const Merch = ({
 			return null
 		}
 		return (
+			<div className="merch__page page-section">
 			<ProductItem
 				product={activeProduct}
 				size={size}
@@ -129,14 +130,14 @@ const Merch = ({
 				color={color}
 				updateColor={updateColor}
 				feature={feature}
-			/>
+				/></div>
 		)
 	}
 
 	const renderable = products[active] === null || cart.line_items === null
 	
 	return (
-		<div className={`merch ${visibility}`}>
+		<div className={`merch ${!visibility}`}>
 			{renderable  ? 
 			'loading' : renderProductItem()
 		}

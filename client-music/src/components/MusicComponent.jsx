@@ -12,6 +12,7 @@ const MusicComponent = (
         setSongId,
         songId,
         setSearchParams,
+        visible
     }
 ) => {
 
@@ -75,7 +76,7 @@ const MusicComponent = (
     const location = useLocation();
     
     return (
-        <div className="music-drawer" id="">
+        <div className={`music-drawer ${visible ? '' : 'visible'}`} id="">
             <div className="content">
                 {/* Other content... */}
                 <div className="view-content">

@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.App {
+  /* Set up scroll container */
+  height: 100vh; /* Full height of the viewport */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Defines strict snapping on the y-axis */
+  /* Ensure every section/page is forced to snap even if scrolling quickly */
+}
+
+.page-section {
+  /* Set up scroll snap on each child */
+  height: 100vh; /* Each child takes up full height of the viewport */
+  scroll-snap-align: start; /* Snap to the top of the parent container */
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,4 +50,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+html, body, #root, .App {
+  height: 100%;
+   overflow: scroll;
+  scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; /* Newer versions of Firefox */
 }
