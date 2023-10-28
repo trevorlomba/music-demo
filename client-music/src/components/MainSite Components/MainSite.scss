@@ -87,7 +87,7 @@ $merch: #a6a9af;
 .socials-section {
   // padding: 20px;
   // background-color: rgb(255, 255, 255); /* Change to your desired background color */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+
   text-align: center; /* Center the content */
 }
 
@@ -118,17 +118,19 @@ $merch: #a6a9af;
 .music-container {
   display: flex;
   align-items: center;
-  width: 80%;
   margin: auto;
+    padding-left: 10vw;
+    padding-right: 10vw;
 
   .artwork-container {
-    flex: .5;
+    flex: 1;
   }
 
   .album-art {
     flex: 1;
-    max-width: 80%;
-    margin-left: 20%;
+    max-width: 70%;
+    max-height: 50vh;
+    margin: auto;
 
     box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.4); /* Add a drop shadow to the bottom right */
 
@@ -142,8 +144,8 @@ $merch: #a6a9af;
     
 
    .main-header {
-  font-size: calc(3vh + 3vw);
-  margin-bottom: 10px;
+  font-size: calc(4vw);
+  margin-bottom: 1rem;
   font-family: 'Fira Sans', sans-serif; 
   font-weight: 600;  /* Semibold weight for Fira Sans is typically 600 */
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); /* Add a drop shadow to the bottom right */
@@ -151,8 +153,8 @@ $merch: #a6a9af;
 }
 
 .sub-header {
-   font-size: calc(1.5vh + 1.5vw);
-   margin-top: (-1.5vh);
+   font-size: calc(2vw);
+  //  margin-top: (-1.5vh);
 
   margin-bottom: 3vh;
   font-family: 'Source Sans Pro', sans-serif;
@@ -212,7 +214,8 @@ $merch: #a6a9af;
                     
   background-size: cover;
   background-position: center;
-  width: 101vw;
+  width: 80vw;
+
   // margin: 1vw;
   height: 100vh;
   overflow: hidden;
@@ -262,4 +265,40 @@ $merch: #a6a9af;
 	background: #2e3c3700!important; 
 	color: #fff;
 	text-decoration: none;
+}
+
+.music-container .info-container .sub-header {
+  /* text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); */
+  text-shadow: .1vw .3vw .2vw rgba(0, 0, 0, 0.4);
+}
+
+
+.music-container .info-container .main-header {
+  /* text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); */
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
+  -webkit-text-stroke-width: .05vw;
+  -webkit-text-stroke-color: rgba(0,0,0,.2);
+  }
+
+.music-container .info-container .sub-header {
+  -webkit-text-stroke-width: .01vw;
+  -webkit-text-stroke-color: rgba(0,0,0,.2);
+}
+
+@media (max-width: 800px) {
+  .music-container {
+    flex-direction: column; /* stack flex items vertically */
+    max-height: 50vh;
+    padding-top: 30vh;
+    padding-bottom: 20vh;
+
+    justify-content: space-around;
+    align-items: center;
+    }
+    .main-header {
+      font-size: 7vw!important;
+    }
+    .sub-header {
+      font-size: 3vw!important;
+    }
 }

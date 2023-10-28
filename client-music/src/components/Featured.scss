@@ -110,6 +110,8 @@ $merch: #a6a9af;
 }
 
 .title {
+    filter: drop-shadow(2px 2px 3px #00000035);
+
     position:fixed;
     /* height: auto; */
     /* max-height: 100vh; */
@@ -128,8 +130,7 @@ $merch: #a6a9af;
     // max-height: 30vh;
 
     /* margin-left: 10vw; */
-    cursor: pointer;
-    opacity: 95%;
+    opacity: 100%;
 
     /* padding: 12em; */
     /* height: auto; */
@@ -140,13 +141,12 @@ $merch: #a6a9af;
     transition: 200ms;
 
     /* position: fixed; */
-    cursor: pointer;
     opacity: 95%;
 
     /* width: 100%; */
     pointer-events: all;
 
-    filter: drop-shadow(1px 1px) &;
+
 
     hover {
         transform: scale(0.9);
@@ -350,6 +350,7 @@ flex-item-5 {
     cursor: grab;
     opacity: 80%;
 
+
     &:hover {
         transform: scale(110%);
         transition: 500ms;
@@ -373,6 +374,8 @@ flex-item-5 {
     opacity: 100%;
 
     filter: brightness(85%);
+    // backdrop-filter: blur(15px) saturate(3);
+    padding: 5vh;
 
     &:hover {
         transform: scale(95%);
@@ -454,7 +457,9 @@ flex-item-5 {
 
 .playButton {
     position: fixed;
-    filter: drop-shadow(1px 1px #00000087);
+        filter: drop-shadow(2px 2px 3px #00000035);
+
+
 
     /* height: auto; */
     /* max-height: 100vh; */
@@ -503,12 +508,17 @@ flex-item-5 {
             /* color: black; */
         }
     }
+
+    >*>* {
+        transition: 500ms
+    }
 }
 
 .pause {
     color: #ffffff;
-    filter: drop-shadow(1px 1px #00000087);
+    // filter: drop-shadow(1px 1px #00000087);
 
+    transition: 500ms;
 
     &:hover {
         color: rgb(255, 255, 255);
@@ -517,9 +527,23 @@ flex-item-5 {
 
 .invisible>.pause {
     color: #ffffff;
-    transform: scale(1.1);
     opacity: .8;
-
+    > * {    transform: scale(1.1);
+        transition: 500ms;
+    }
+    /* transition-delay: 1000ms; */
+    
+    &:hover {
+        color: rgb(255, 255, 255);
+        opacity: 1;
+    }
+}
+.invisible>.play {
+    color: #ffffff;
+    opacity: .8;
+    > * {    transform: scale(1.1);
+        transition: 500ms;
+    }
     /* transition-delay: 1000ms; */
     
     &:hover {
@@ -550,7 +574,7 @@ flex-item-5 {
 .invisible {
     opacity: 0;
     transition: 500ms!important;
-    pointer-events: none;
+
     // transform: scale(1.1);
 
 
@@ -580,7 +604,6 @@ flex-item-5 {
 }
 
 .title.invisible {
-    filter: drop-shadow(1px 1px #00000087);
     &:hover {
         transition: 500ms;
         opacity: 100;
@@ -671,7 +694,7 @@ flex-item-5 {
     // display:block;
     // position:fixed;
     // width: 100vw;
-    font-size: 2vw;
+    font-size: 3.5vw;
     // text-align: center;
     // right: 5vh;
     // bottom: 1vh;
@@ -689,7 +712,9 @@ flex-item-5 {
 
     user-select: none;
     /* Standard syntax */
-    text-shadow: -1px 0.8px #00000030;
+   text-shadow: 0.2vw 0.4vw 0.4vw rgba(0, 0, 0, 0.1882352941);
+   -webkit-text-stroke-width: .03vw;
+-webkit-text-stroke-color: rgba(0,0,0,.4);
 }
 
 #video {
@@ -730,13 +755,17 @@ flex-item-5 {
 
 .shopping-cart {
     position: absolute;
-    top: 1vh;
-    right: 1vw;
+    top: 2vh;
+    right: 2vw;
     font-size: calc(2vw + 2vh);
     color: white;
+    z-index: 2;
 
     &:hover {
         cursor: pointer;
+    }
+    &.invisible {
+        opacity: 1
     }
 }
 
@@ -797,8 +826,8 @@ flex-item-5 {
 .cart-count {
     position: absolute;
     display: block;
-    top: calc(1vw + 2vh);
-    right: 1vw;
+    top: calc(1vw + 3vh);
+    right: 2vw;
     text-align: center;
     margin: auto;
     text-justify: auto;
@@ -808,10 +837,15 @@ flex-item-5 {
     min-height: calc(1vw + 1vh);
     line-height: calc(1vw + 1vh);
     border-radius: 50%;
+    z-index: 2;
+
 
     &:hover {
         scale: 125%;
         cursor: pointer;
+    }
+    &.invisible {
+        opacity: 1
     }
 }
 
@@ -1093,7 +1127,7 @@ flex-item-5 {
   // if your elements are not stacking correctly, use this property to change flex direction
   // flex-direction: column; 
 //   background-color: #a0a0a02d;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 80%, #00000081 100%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 40%, #00000081 100%);
     background-position: bottom;
     
   z-index: 0;
@@ -1108,4 +1142,11 @@ flex-item-5 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.playButton.invisible {
+  /* width: 10%; */
+  opacity: 1;
+  transition: 500ms;
+  /* transition-delay: 400ms; */
 }

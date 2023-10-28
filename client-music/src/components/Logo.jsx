@@ -12,16 +12,14 @@ const Logo = ({
 }) => {
 	const location = useLocation()
 	return (
-		<NavLink
-			to={location + '?song=' + song?.data.path}
+		<div
 			className={({ isActive }) => (isActive ? activeClassName : undefined)}>
 			<img
 				className={`title ${visibility}`}
-				onClick={toggleVisible}
 				src={`${visible ? logoImage : logoImage2}`}
 				alt='logo'
 			/>
-		</NavLink>
+		</div>
 	)
 }
 
