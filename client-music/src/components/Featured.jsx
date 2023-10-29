@@ -63,6 +63,10 @@ export const Featured = ({
 	const [active, setActive] = useState(0)
 	const current = useLocation()
 	const [path, setPath] = useState('/')
+	const [merchant, setMerchant] = useState({})
+	const [products, setProducts] = useState([])
+	const [isCartVisible, setIsCartVisible] = useState(false)
+	const [order, setOrder] = useState({})
 
 		// Navigate to the new path when the state changes
 	const navigate = useNavigate()
@@ -476,10 +480,7 @@ const onLoadedData = () => {
 			})
 	}
 
-	const [merchant, setMerchant] = useState({})
-	const [products, setProducts] = useState([])
-	const [isCartVisible, setIsCartVisible] = useState(false)
-	const [order, setOrder] = useState({})
+
 
 	// useEffect(() => console.log(products), [products])
 	useEffect(() => {

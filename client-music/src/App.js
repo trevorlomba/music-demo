@@ -15,6 +15,10 @@ import MainSite from './components/MainSite Components/MainSite';
 // ReactGA.initialize('G-22X1L2K6WV')
 // ReactGA.pageview(window.location.pathname + window.location.search)
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 let params = new URLSearchParams(window.location.search)
 
 

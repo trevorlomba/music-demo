@@ -94,7 +94,7 @@
 
     &:hover {
         >* {
-            margin-top: -10vh;
+            margin-top: -10vw;
              transform: scale(1.1);
              opacity: 100%; 
             
@@ -159,3 +159,11 @@
 	overflow:visible;
 	-webkit-transform: translate3d(0px, 0px, 0px);
 }
+
+/* Inline #14 | http://localhost:3000/music-demo/?song=hurt-you */
+
+.albumartworkcontainer:hover > * {
+  /* margin-top: -10vh; */
+  margin-top: -10vw;
+}
+

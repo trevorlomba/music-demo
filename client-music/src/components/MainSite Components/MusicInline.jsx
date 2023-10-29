@@ -1,5 +1,5 @@
 import {React, useRef, useEffect} from 'react'; // 'useEffect' and 'useState' are not used in the current component, so I removed them.
-import { useLocation } from 'react-router-dom'; // 'NavLink' is not used, so I removed it.
+import { useLocation, NavLink } from 'react-router-dom'; 
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -64,7 +64,8 @@ const MusicInline = ({songId, song}) => {
         // </div>
 
         <div className="music-container">
-            <div className="artwork-container">
+            <div onClick={() => {
+                window.open(`${song.data.featuredLinks[0].link}`)}}className="artwork-container">
                 <img className="album-art" src={song.data.artwork} alt={`${song.title} Album Artwork`} />
             </div>
             <div className="info-container">
