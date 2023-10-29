@@ -150,6 +150,9 @@ const incrementItemQty = (quantity) => {
 			</>
 		)
 	}
+
+	
+
 	const renderColors = () => {
 
 		return (
@@ -181,6 +184,13 @@ const incrementItemQty = (quantity) => {
 		)
 	}
 
+	const clickProductImage = () => {
+		// Check the current color value and toggle between 1 and 2.
+		const newColor = color === 0 ? 1 : 0;
+
+		// Update the state with the new color.
+		updateColor(newColor);
+	};
 
 	return (
 		<>
@@ -205,6 +215,7 @@ const incrementItemQty = (quantity) => {
 							).url : ''
 						}
 						alt={product.name}
+							onClick={() => clickProductImage()}
 					/> : <div className='product__image_holder'>Loading...</div>}
 					<div className="product_details">
 

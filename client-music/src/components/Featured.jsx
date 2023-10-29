@@ -300,8 +300,8 @@ const onLoadedData = () => {
 	const updateSize = (size) => {
 		setSize(size)
 	}
-	const updateColor = (size) => {
-		setColor(size)
+	const updateColor = (color) => {
+		setColor(color)
 	}
 
 	// let cartSum = () => {
